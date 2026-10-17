@@ -5,15 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#020817">
-  <title>TNT APK 2.0 — Gerador de Key</title>
+  <title>TNT APK 2.0 - Gerador de Key</title>
 
   <style>
     :root {
       --blue: #00aaff;
-      --blue-light: #63dcff;
-      --bg: #020817;
+      --cyan: #63dcff;
+      --dark: #020817;
       --text: #eef8ff;
-      --muted: #91a9c5;
     }
 
     * {
@@ -22,27 +21,27 @@
 
     html {
       min-height: 100%;
-      background: var(--bg);
+      background: var(--dark);
     }
 
     body {
-      margin: 0;
+      position: relative;
+      isolation: isolate;
       min-height: 100vh;
       min-height: 100dvh;
-      padding: 24px 16px;
+      margin: 0;
+      padding: 24px 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow-x: hidden;
-      position: relative;
-      isolation: isolate;
       background: transparent;
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* VÍDEO DE FUNDO: fica atrás de todo o conteúdo */
-    .bg-video {
+    /* VÍDEO ATRÁS DA PÁGINA INTEIRA */
+    #bgVideo {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -54,21 +53,15 @@
       background: #020817;
     }
 
-    /* Escurece o vídeo sem escondê-lo */
+    /* CAMADA PARA MELHORAR A LEITURA */
     .video-shade {
       position: fixed;
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(1, 6, 20, 0.52),
-          rgba(1, 8, 24, 0.68)
-        );
+      background: rgba(1, 7, 22, 0.48);
     }
 
-    /* Partículas animadas sobre o vídeo */
     #scene {
       position: fixed;
       inset: 0;
@@ -78,36 +71,32 @@
       pointer-events: none;
     }
 
-    .wrap {
+    .container {
       width: 100%;
       max-width: 430px;
+      margin: auto;
       position: relative;
       z-index: 1;
-      margin: auto;
     }
 
     .card {
       position: relative;
       overflow: hidden;
-      padding: 30px 24px;
+      padding: 30px 23px;
       text-align: center;
-      border: 1px solid rgba(0, 174, 255, 0.65);
+      border: 1px solid rgba(0, 170, 255, 0.7);
       border-radius: 22px;
-
-      /* Transparência para deixar o vídeo aparecer atrás do cartão */
       background: linear-gradient(
         145deg,
-        rgba(5, 20, 43, 0.78),
-        rgba(2, 8, 23, 0.82)
+        rgba(5, 20, 43, 0.73),
+        rgba(2, 8, 23, 0.79)
       );
-
       -webkit-backdrop-filter: blur(9px);
       backdrop-filter: blur(9px);
-
       box-shadow:
-        0 0 18px rgba(0, 153, 255, 0.23),
+        0 0 20px rgba(0, 153, 255, 0.25),
         0 0 55px rgba(0, 100, 255, 0.12),
-        inset 0 0 24px rgba(0, 153, 255, 0.045);
+        inset 0 0 24px rgba(0, 153, 255, 0.05);
     }
 
     .card::before {
@@ -117,28 +106,28 @@
       left: 12%;
       width: 76%;
       height: 2px;
-      background: var(--blue-light);
+      background: var(--cyan);
       box-shadow: 0 0 18px var(--blue);
     }
 
     .logo {
-      width: 94px;
-      height: 94px;
-      margin: 0 auto 14px;
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 15px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 2px solid var(--blue);
       border-radius: 50%;
-      border: 2px solid rgba(0, 174, 255, 0.85);
-      background: rgba(0, 12, 30, 0.7);
-      box-shadow:
-        0 0 18px rgba(0, 170, 255, 0.35),
-        inset 0 0 18px rgba(0, 170, 255, 0.12);
-      color: var(--blue-light);
-      font-size: 23px;
+      background: rgba(0, 12, 30, 0.75);
+      color: var(--cyan);
+      font-size: 22px;
       font-weight: 900;
-      letter-spacing: -1px;
+      line-height: 1.05;
       text-shadow: 0 0 12px var(--blue);
+      box-shadow:
+        0 0 20px rgba(0, 170, 255, 0.35),
+        inset 0 0 18px rgba(0, 170, 255, 0.12);
     }
 
     h1 {
@@ -150,9 +139,9 @@
     }
 
     .subtitle {
-      margin: 9px 0 17px;
-      color: var(--muted);
-      font-size: 13px;
+      margin: 9px 0 18px;
+      color: #91a9c5;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -161,8 +150,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 13px;
-      margin-bottom: 23px;
+      padding: 8px 13px;
+      margin-bottom: 22px;
       border: 1px solid rgba(35, 255, 164, 0.3);
       border-radius: 30px;
       background: rgba(0, 255, 153, 0.07);
@@ -182,7 +171,7 @@
     }
 
     .description {
-      margin: 0 0 22px;
+      margin: 0 0 20px;
       color: #c1d3e8;
       font-size: 14px;
       line-height: 1.7;
@@ -195,19 +184,16 @@
       align-items: center;
       justify-content: center;
       gap: 9px;
-      padding: 14px 16px;
+      padding: 14px 12px;
       margin-top: 13px;
       border: 1px solid transparent;
       border-radius: 10px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 900;
       letter-spacing: 1px;
       text-decoration: none;
       cursor: pointer;
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
@@ -230,49 +216,63 @@
 
     .btn-secondary {
       color: #d8f4ff;
-      border-color: rgba(0, 174, 255, 0.55);
-      background: rgba(0, 112, 190, 0.13);
+      border-color: rgba(0, 174, 255, 0.6);
+      background: rgba(0, 112, 190, 0.18);
     }
 
     .btn-secondary:hover {
-      background: rgba(0, 112, 190, 0.25);
+      background: rgba(0, 112, 190, 0.32);
     }
 
-    .btn:disabled {
-      opacity: 0.48;
-      cursor: not-allowed;
-      transform: none;
+    .verification {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      margin-top: 18px;
+      padding: 16px 8px;
+      border: 1px solid rgba(0, 170, 255, 0.45);
+      border-radius: 10px;
+      background: rgba(0, 100, 200, 0.12);
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.3px;
     }
 
-    .notice {
-      margin: 16px 0 0;
-      color: #91a9c5;
-      font-size: 11px;
+    .spinner {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border: 2px solid rgba(99, 220, 255, 0.25);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .success-check {
+      color: #65ffbb;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .message {
+      min-height: 18px;
+      margin: 13px 0 0;
+      color: var(--cyan);
+      font-size: 12px;
       line-height: 1.6;
     }
 
-    .socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 19px;
-    }
-
-    .socials a {
-      flex: 1;
-      padding: 12px 7px;
-      border: 1px solid rgba(145, 169, 197, 0.22);
-      border-radius: 9px;
-      color: #dceeff;
-      background: rgba(1, 8, 23, 0.35);
-      font-size: 11px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .socials a:hover {
-      border-color: var(--blue);
-      background: rgba(0, 150, 255, 0.13);
+    .notice {
+      margin: 15px 0 0;
+      color: #91a9c5;
+      font-size: 10px;
+      line-height: 1.6;
     }
 
     .divider {
@@ -286,20 +286,41 @@
       );
     }
 
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .socials a {
+      flex: 1;
+      padding: 12px 6px;
+      border: 1px solid rgba(145, 169, 197, 0.25);
+      border-radius: 9px;
+      color: #dceeff;
+      background: rgba(1, 8, 23, 0.4);
+      font-size: 11px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .socials a:hover {
+      border-color: var(--blue);
+      background: rgba(0, 150, 255, 0.15);
+    }
+
     footer {
       margin-top: 16px;
-      color: rgba(205, 225, 245, 0.58);
+      color: rgba(205, 225, 245, 0.65);
       text-align: center;
       font-size: 10px;
       letter-spacing: 1px;
     }
 
-    .message {
-      min-height: 18px;
-      margin-top: 12px;
-      color: var(--blue-light);
-      font-size: 12px;
-      line-height: 1.5;
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     @keyframes pulse {
@@ -315,35 +336,34 @@
 
     @media (max-width: 480px) {
       body {
-        padding: 16px 12px;
+        padding: 16px 11px;
       }
 
       .card {
-        padding: 25px 18px;
+        padding: 25px 17px;
         border-radius: 18px;
       }
 
       .logo {
         width: 82px;
         height: 82px;
-        font-size: 21px;
+        font-size: 20px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+      .status-dot,
+      .spinner {
+        animation-duration: 2s;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- O arquivo background.mp4 precisa estar junto deste HTML -->
+  <!-- O arquivo background.mp4 precisa estar na mesma pasta -->
   <video
     id="bgVideo"
-    class="bg-video"
     autoplay
     muted
     loop
@@ -357,9 +377,10 @@
   <div class="video-shade" aria-hidden="true"></div>
   <canvas id="scene" aria-hidden="true"></canvas>
 
-  <main class="wrap">
+  <main class="container">
     <section class="card">
-      <div class="logo" aria-label="TNT APK">TNT<br>APK</div>
+
+      <div class="logo">TNT<br>APK</div>
 
       <h1>TNT APK 2.0</h1>
       <p class="subtitle">Painel de acesso</p>
@@ -371,9 +392,10 @@
 
       <p class="description">
         Bem-vindo ao painel oficial.<br>
-        Acesse o canal e depois libere o botão para gerar sua key.
+        Acesse nosso canal para continuar.
       </p>
 
+      <!-- ÚNICO BOTÃO MOSTRADO INICIALMENTE -->
       <a
         class="btn btn-secondary"
         id="channelButton"
@@ -381,33 +403,43 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>◈</span> ACESSAR CANAL DO WHATSAPP
+        ◈ ACESSAR CANAL DO WHATSAPP
       </a>
 
-      <button
-        class="btn btn-primary"
-        id="verifyButton"
-        type="button"
+      <!-- VERIFICAÇÃO AUTOMÁTICA -->
+      <div
+        class="verification"
+        id="verification"
+        role="status"
+        aria-live="polite"
+        hidden
       >
-        ✓ JÁ ACESSEI O CANAL
-      </button>
+        <span class="spinner" id="spinner"></span>
+        <span id="verificationText">VERIFICANDO...</span>
+      </div>
 
-      <button
-        class="btn btn-primary"
-        id="generateButton"
-        type="button"
-        disabled
-      >
-        🔑 GERAR KEY
-      </button>
+      <!-- GERADOR DESBLOQUEADO APÓS A ANIMAÇÃO -->
+      <div id="generator" hidden>
+        <p class="description" style="margin-top: 20px;">
+          Acesso liberado! Você já pode gerar sua key.
+        </p>
+
+        <button
+          class="btn btn-primary"
+          id="generateButton"
+          type="button"
+        >
+          🔑 GERAR KEY
+        </button>
+      </div>
 
       <p class="message" id="message" role="status" aria-live="polite">
-        Acesse o canal e depois toque em “JÁ ACESSEI O CANAL”.
+        Acesse o canal para continuar.
       </p>
 
       <p class="notice">
-        A confirmação é manual. Este site não consegue verificar
-        automaticamente se você entrou no canal do WhatsApp.
+        A liberação é automática após o retorno ao site.
+        Ela não confirma se você realmente seguiu o canal.
       </p>
 
       <div class="divider"></div>
@@ -417,14 +449,19 @@
           href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
           target="_blank"
           rel="noopener noreferrer"
-        >▶ YOUTUBE</a>
+        >
+          ▶ YOUTUBE
+        </a>
 
         <a
           href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
           target="_blank"
           rel="noopener noreferrer"
-        >◈ WHATSAPP</a>
+        >
+          ◈ WHATSAPP
+        </a>
       </div>
+
     </section>
 
     <footer>
@@ -433,21 +470,125 @@
   </main>
 
   <script>
-    // CONFIGURAÇÃO DO GERADOR
-    const KEY_ENDPOINT = "https://proxy-90bc.onrender.com/getkey";
+    // ENDEREÇO DO GERADOR DE KEY
+    const KEY_ENDPOINT =
+      "https://proxy-90bc.onrender.com/getkey";
 
     const video = document.getElementById("bgVideo");
-    const verifyButton = document.getElementById("verifyButton");
+    const channelButton = document.getElementById("channelButton");
+    const verification = document.getElementById("verification");
+    const verificationText =
+      document.getElementById("verificationText");
+    const spinner = document.getElementById("spinner");
+    const generator = document.getElementById("generator");
     const generateButton = document.getElementById("generateButton");
     const message = document.getElementById("message");
 
-    // Tenta iniciar o vídeo. Alguns navegadores podem bloquear autoplay.
+    let verificationStarted = false;
+    let unlocked = false;
+
+    /*
+      O clique no canal abre uma nova aba.
+      Ao voltar para esta página, a animação começa.
+    */
+    channelButton.addEventListener("click", () => {
+      sessionStorage.setItem("tnt_channel_opened", "1");
+    });
+
+    function checkReturnFromChannel() {
+      const openedChannel =
+        sessionStorage.getItem("tnt_channel_opened") === "1";
+
+      if (
+        openedChannel &&
+        !verificationStarted &&
+        !unlocked
+      ) {
+        sessionStorage.removeItem("tnt_channel_opened");
+        startVerification();
+      }
+    }
+
+    function startVerification() {
+      if (verificationStarted || unlocked) return;
+
+      verificationStarted = true;
+
+      channelButton.hidden = true;
+      verification.hidden = false;
+      generator.hidden = true;
+
+      spinner.className = "spinner";
+      spinner.textContent = "";
+      verificationText.textContent = "VERIFICANDO...";
+
+      verification.style.color = "#63dcff";
+      verification.style.borderColor =
+        "rgba(0, 170, 255, 0.45)";
+
+      message.textContent =
+        "Aguarde enquanto verificamos o acesso...";
+
+      // Animação de verificação
+      setTimeout(() => {
+        verificationText.textContent = "ACESSO LIBERADO!";
+        spinner.className = "success-check";
+        spinner.textContent = "✓";
+
+        verification.style.color = "#65ffbb";
+        verification.style.borderColor =
+          "rgba(35, 255, 164, 0.5)";
+
+        // Mostra o gerador depois da mensagem de sucesso
+        setTimeout(() => {
+          verification.hidden = true;
+          generator.hidden = false;
+          unlocked = true;
+
+          message.textContent =
+            "Gerador desbloqueado com sucesso!";
+        }, 900);
+      }, 2500);
+    }
+
+    // Detecta quando a pessoa volta da outra aba
+    window.addEventListener("focus", checkReturnFromChannel);
+    window.addEventListener("pageshow", checkReturnFromChannel);
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        checkReturnFromChannel();
+
+        if (video.paused) {
+          startBackgroundVideo();
+        }
+      }
+    });
+
+    // ABRE O GERADOR DE KEY
+    generateButton.addEventListener("click", () => {
+      if (!unlocked) return;
+
+      const newTab = window.open(
+        KEY_ENDPOINT,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      if (!newTab) {
+        message.textContent =
+          "A nova aba foi bloqueada. Permita pop-ups e tente novamente.";
+        return;
+      }
+
+      message.textContent =
+        "Solicitação do gerador aberta em outra aba.";
+    });
+
+    // INICIA O VÍDEO DE FUNDO
     async function startBackgroundVideo() {
-      if (!video) return;
-
-      video.muted = true;
-
       try {
+        video.muted = true;
         await video.play();
       } catch (error) {
         console.warn(
@@ -459,46 +600,13 @@
 
     startBackgroundVideo();
 
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden && video.paused) {
-        startBackgroundVideo();
-      }
-    });
-
     video.addEventListener("error", () => {
       console.error(
-        "Não foi possível carregar background.mp4. Confira o nome e a pasta."
+        "Vídeo não encontrado. Confira se background.mp4 está na pasta principal."
       );
     });
 
-    // Liberação manual: não confirma a inscrição real no WhatsApp.
-    verifyButton.addEventListener("click", () => {
-      generateButton.disabled = false;
-      verifyButton.textContent = "✓ ACESSO LIBERADO";
-      verifyButton.disabled = true;
-      message.textContent = "Botão liberado! Agora você pode gerar sua key.";
-    });
-
-    // Abre o endpoint do gerador em uma nova aba.
-    generateButton.addEventListener("click", () => {
-      if (generateButton.disabled) return;
-
-      const newTab = window.open(
-        KEY_ENDPOINT,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-      if (!newTab) {
-        message.textContent =
-          "O navegador bloqueou a nova aba. Permita pop-ups e tente novamente.";
-        return;
-      }
-
-      message.textContent = "Solicitação do gerador aberta em outra aba.";
-    });
-
-    // Partículas animadas no fundo.
+    // PARTÍCULAS ANIMADAS
     const canvas = document.getElementById("scene");
     const ctx = canvas.getContext("2d");
 
@@ -515,6 +623,7 @@
 
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
+
       canvas.style.width = width + "px";
       canvas.style.height = height + "px";
 
@@ -546,8 +655,17 @@
         }
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(60, 190, 255, ${p.alpha})`;
+        ctx.arc(
+          p.x,
+          p.y,
+          p.radius,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          `rgba(60, 190, 255, ${p.alpha})`;
+
         ctx.shadowColor = "rgba(0, 160, 255, 0.7)";
         ctx.shadowBlur = 8;
         ctx.fill();
@@ -558,6 +676,7 @@
     }
 
     window.addEventListener("resize", resizeCanvas);
+
     resizeCanvas();
     drawParticles();
 
@@ -566,5 +685,5 @@
     });
   </script>
 </body>
-        </html>
+      </html>
   
