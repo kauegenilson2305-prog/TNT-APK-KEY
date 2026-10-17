@@ -2,823 +2,762 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020611">
-<title>TNT APK 2.0 | KEY GENERATOR</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050816">
+  <title>TNT APK 2.0 — Gerador</title>
 
-<style>
-:root {
-  --blue: #008cff;
-  --cyan: #00f5ff;
-}
+  <style>
+    :root {
+      --blue: #00c8ff;
+      --purple: #754bff;
+      --green: #48ffb0;
+      --bg: #050816;
+      --panel: rgba(9, 18, 42, .92);
+      --text: #f2f8ff;
+      --muted: #a5b5ce;
+      --red: #ff7185;
+    }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body {
-  min-height: 100vh;
-  background: #020611;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-}
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-#background-video {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -4;
-  opacity: .4;
-}
+    #backgroundVideo,
+    #particles,
+    .overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  background: linear-gradient(
-    135deg,
-    rgba(0,3,13,.9),
-    rgba(0,10,30,.8)
-  );
-}
+    #backgroundVideo {
+      z-index: -3;
+      object-fit: cover;
+      opacity: .23;
+    }
 
-#particles {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  pointer-events: none;
-}
+    .overlay {
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at top, rgba(0, 130, 255, .18), transparent 60%),
+        linear-gradient(rgba(3, 6, 20, .58), rgba(3, 6, 20, .96));
+    }
 
-main {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px 15px;
-}
+    #particles {
+      z-index: -1;
+      pointer-events: none;
+    }
 
-.card {
-  width: 100%;
-  max-width: 440px;
-  padding: 30px 22px;
-  text-align: center;
-  background: rgba(4,13,32,.92);
-  border: 1px solid rgba(0,191,255,.7);
-  border-radius: 20px;
-  box-shadow: 0 0 28px rgba(0,191,255,.25);
-  backdrop-filter: blur(13px);
-  animation: appear .7s ease both;
-}
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 14px;
+    }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 470px;
+      padding: 27px 22px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid rgba(0, 200, 255, .4);
+      border-radius: 23px;
+      background: var(--panel);
+      box-shadow: 0 0 28px rgba(0, 150, 255, .14);
+      backdrop-filter: blur(13px);
+    }
 
-.logo {
-  width: 76px;
-  height: 76px;
-  margin: 0 auto 15px;
-  display: grid;
-  place-items: center;
-  border: 2px solid var(--cyan);
-  border-radius: 50%;
-  color: var(--cyan);
-  font-size: 25px;
-  font-weight: 900;
-  text-shadow: 0 0 15px var(--cyan);
-  box-shadow: 0 0 22px #008cff;
-  animation: pulse 1.8s infinite alternate;
-}
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      width: 76%;
+      height: 2px;
+      background: var(--blue);
+      box-shadow: 0 0 15px var(--blue);
+    }
 
-@keyframes pulse {
-  to {
-    box-shadow: 0 0 32px #00eaff,
-                inset 0 0 15px #008cff;
-  }
-}
+    .logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 15px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--blue);
+      border-radius: 24px;
+      background: linear-gradient(140deg, #15234c, #070b1b);
+      color: #a5edff;
+      font-size: 32px;
+      font-weight: 900;
+      text-shadow: 0 0 16px var(--blue);
+      box-shadow: 0 0 22px rgba(0, 200, 255, .2);
+    }
 
-h1 {
-  font-size: clamp(25px, 6vw, 32px);
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px #008cff;
-}
+    h1 {
+      font-size: clamp(27px, 7vw, 35px);
+      letter-spacing: 1.5px;
+    }
 
-.subtitle {
-  margin-top: 8px;
-  color: #a6c7e8;
-  font-size: 12px;
-  letter-spacing: 3px;
-}
+    h1 span {
+      color: var(--blue);
+    }
 
-.line {
-  height: 1px;
-  margin: 23px 0;
-  background: linear-gradient(
-    90deg, transparent, var(--cyan), transparent
-  );
-}
+    .subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
 
-.description {
-  color: #b7c9dd;
-  font-size: 14px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 19px 0;
+      padding: 8px 13px;
+      border: 1px solid rgba(72, 255, 176, .3);
+      border-radius: 30px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
 
-.btn {
-  width: 100%;
-  min-height: 52px;
-  padding: 14px 12px;
-  margin-top: 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid var(--cyan);
-  border-radius: 10px;
-  background: linear-gradient(100deg, #0066ff, #00bfff);
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 0 16px rgba(0,191,255,.25);
-  transition: .2s;
-}
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 9px var(--green);
+    }
 
-.btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.15);
-  box-shadow: 0 0 25px rgba(0,191,255,.7);
-}
+    .section {
+      margin-top: 14px;
+      padding: 17px;
+      border: 1px solid rgba(140, 170, 220, .17);
+      border-radius: 15px;
+      background: rgba(3, 9, 25, .55);
+    }
 
-.btn:active {
-  transform: scale(.98);
-}
+    .section-title {
+      margin-bottom: 9px;
+      font-size: 14px;
+      font-weight: 800;
+    }
 
-.btn.secondary {
-  background: rgba(0,20,45,.95);
-  border-color: #168bff;
-}
+    .description {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
 
-.btn:disabled {
-  opacity: .6;
-  cursor: wait;
-}
+    .button {
+      width: 100%;
+      min-height: 47px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border: 0;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s, opacity .2s;
+    }
 
-.hidden {
-  display: none !important;
-}
+    .button:hover {
+      transform: translateY(-2px);
+    }
 
-.status {
-  margin: 16px 0 5px;
-  color: #8ebde8;
-  font-size: 12px;
-  line-height: 1.7;
-  letter-spacing: 1px;
-}
+    .button:disabled {
+      opacity: .55;
+      cursor: wait;
+      transform: none;
+    }
 
-.spinner {
-  width: 48px;
-  height: 48px;
-  margin: 22px auto;
-  border: 3px solid rgba(0,191,255,.18);
-  border-top-color: var(--cyan);
-  border-right-color: #168bff;
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-  filter: drop-shadow(0 0 8px var(--cyan));
-}
+    .whatsapp {
+      color: #03150d;
+      background: linear-gradient(90deg, #36e99c, #70ffc1);
+    }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+    .download {
+      color: white;
+      background: linear-gradient(90deg, #087ee8, #00c8ff);
+      box-shadow: 0 0 17px rgba(0, 160, 255, .2);
+    }
 
-.progress {
-  height: 5px;
-  margin: 15px 0;
-  background: #10213a;
-  border-radius: 10px;
-  overflow: hidden;
-}
+    .generate {
+      margin-top: 12px;
+      color: white;
+      background: linear-gradient(90deg, #693cff, #168fff);
+      box-shadow: 0 0 18px rgba(79, 90, 255, .23);
+    }
 
-.progress-fill {
-  width: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #0066ff, #00f5ff);
-  box-shadow: 0 0 12px var(--cyan);
-  transition: width .15s linear;
-}
+    .message {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
 
-.key-box {
-  padding: 18px 12px;
-  margin: 18px 0 8px;
-  border: 1px solid var(--cyan);
-  border-radius: 12px;
-  background: rgba(0,22,48,.95);
-  box-shadow: 0 0 22px rgba(0,191,255,.3);
-  overflow-wrap: anywhere;
-}
+    .message.success {
+      color: var(--green);
+    }
 
-.key-label {
-  color: #87bfe8;
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
+    .message.error {
+      color: var(--red);
+    }
 
-#key-result {
-  color: white;
-  font-size: 15px;
-  font-weight: 900;
-  line-height: 1.7;
-  text-shadow: 0 0 12px var(--cyan);
-}
+    .result {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px solid rgba(0, 200, 255, .38);
+      border-radius: 12px;
+      background: rgba(0, 200, 255, .06);
+      overflow-wrap: anywhere;
+    }
 
-.socials {
-  display: flex;
-  gap: 10px;
-  margin-top: 24px;
-}
+    .result.visible {
+      display: block;
+    }
 
-.socials a {
-  flex: 1;
-  padding: 12px 5px;
-  color: #b6dfff;
-  border: 1px solid rgba(0,191,255,.35);
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: bold;
-}
+    .result-title {
+      margin-bottom: 10px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
 
-.socials a:hover {
-  border-color: var(--cyan);
-  box-shadow: 0 0 12px rgba(0,191,255,.3);
-}
+    .result-value {
+      color: white;
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+      user-select: text;
+    }
 
-footer {
-  margin-top: 24px;
-  color: #7890aa;
-  font-size: 10px;
-  letter-spacing: 1px;
-}
+    .result-link {
+      display: block;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 9px;
+      color: #03101a;
+      background: #72e5ff;
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
 
-/* EXPLOSÃO NEON */
-#celebration {
-  position: fixed;
-  inset: 0;
-  z-index: 20;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(0,91,255,.3),
-    rgba(0,10,30,.1) 45%,
-    transparent 75%
-  );
-}
+    .copy-button {
+      margin-top: 11px;
+      padding: 11px 14px;
+      border: 1px solid rgba(0, 200, 255, .45);
+      border-radius: 9px;
+      color: #a5edff;
+      background: rgba(0, 200, 255, .08);
+      font-weight: 800;
+      cursor: pointer;
+    }
 
-#celebration.hidden {
-  display: none !important;
-}
+    .socials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 17px;
+    }
 
-.blast {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #00f5ff;
-  border-radius: 50%;
-  box-shadow: 0 0 25px #00bfff, inset 0 0 15px #008cff;
-  animation: blastExpand 1s ease-out forwards;
-}
+    .social-link {
+      padding: 12px 8px;
+      border: 1px solid rgba(150, 180, 230, .2);
+      border-radius: 9px;
+      color: #dceaff;
+      background: rgba(255, 255, 255, .025);
+      font-size: 11px;
+      font-weight: 800;
+      text-decoration: none;
+    }
 
-.blast.second {
-  border-color: white;
-  animation-delay: .12s;
-}
+    footer {
+      margin-top: 22px;
+      color: #7888a5;
+      font-size: 10px;
+      line-height: 1.8;
+    }
 
-@keyframes blastExpand {
-  0% { transform: scale(.1); opacity: 1; }
-  100% { transform: scale(28); opacity: 0; }
-}
+    footer strong {
+      color: #a5edff;
+    }
 
-.energy-ring {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border: 3px solid #00eaff;
-  border-radius: 50%;
-  box-shadow: 0 0 22px #00bfff, inset 0 0 20px #006eff;
-  animation: ringBurst 1.2s ease-out forwards;
-}
+    .flash {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(circle, rgba(0, 200, 255, .24), transparent 65%);
+    }
 
-.ring-two {
-  border-color: white;
-  animation-delay: .15s;
-}
+    .flash.active {
+      animation: flash .65s ease-out;
+    }
 
-@keyframes ringBurst {
-  0% { transform: scale(.1) rotate(0); opacity: 1; }
-  100% { transform: scale(5.5) rotate(180deg); opacity: 0; }
-}
+    @keyframes flash {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      100% { opacity: 0; }
+    }
 
-.shard {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 5px;
-  height: 17px;
-  border-radius: 4px;
-  background: #00f5ff;
-  box-shadow: 0 0 12px #00bfff, 0 0 25px #0077ff;
-  animation: shardFly 1.1s ease-out forwards;
-}
+    @media (max-width: 380px) {
+      .container {
+        padding: 22px 15px;
+      }
 
-@keyframes shardFly {
-  0% {
-    transform: translate(-50%,-50%)
-      rotate(var(--angle)) translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%,-50%)
-      rotate(var(--angle)) translateY(var(--distance));
-    opacity: 0;
-  }
-}
+      .section {
+        padding: 14px;
+      }
+    }
 
-.holo-key {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 125px;
-  height: 125px;
-  color: #dfffff;
-  font-size: 75px;
-  text-shadow: 0 0 10px white,
-               0 0 25px #00eaff,
-               0 0 55px #0077ff;
-  animation: keyReveal 1.15s cubic-bezier(.2,1.7,.4,1) forwards;
-}
-
-@keyframes keyReveal {
-  0% {
-    opacity: 0;
-    transform: scale(.1) rotate(-90deg);
-    filter: blur(12px);
-  }
-  65% {
-    opacity: 1;
-    transform: scale(1.25) rotate(10deg);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0);
-    filter: blur(0);
-  }
-}
-
-.success-message {
-  position: absolute;
-  top: calc(50% + 100px);
-  width: 100%;
-  padding: 0 15px;
-  color: #d9ffff;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  text-align: center;
-  text-shadow: 0 0 15px #00eaff;
-  animation: textAppear .5s .5s both;
-}
-
-@keyframes textAppear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
-</style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Coloque background.mp4 na mesma pasta deste index.html. -->
+  <video id="backgroundVideo" autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4">
+  </video>
 
-<!-- Coloque background.mp4 na mesma pasta do index.html -->
-<video id="background-video" autoplay muted loop playsinline>
-  <source src="background.mp4" type="video/mp4">
-</video>
+  <div class="overlay"></div>
+  <canvas id="particles"></canvas>
+  <div id="flash" class="flash"></div>
 
-<div class="overlay"></div>
-<canvas id="particles"></canvas>
+  <main class="page">
+    <div class="container">
+      <div class="logo">TNT</div>
 
-<div id="celebration" class="hidden" aria-hidden="true">
-  <div class="blast"></div>
-  <div class="blast second"></div>
-  <div class="energy-ring"></div>
-  <div class="energy-ring ring-two"></div>
-  <div id="shards"></div>
-  <div class="holo-key">⚿</div>
-  <div class="success-message">ENERGIA DESBLOQUEADA</div>
-</div>
+      <h1>TNT APK <span>2.0</span></h1>
+      <p class="subtitle">Central oficial de acesso e geração de key</p>
 
-<main>
-  <section class="card">
-
-    <div class="logo">TNT</div>
-    <h1>TNT APK 2.0</h1>
-    <p class="subtitle">KEY GENERATOR</p>
-
-    <div class="line"></div>
-
-    <p class="description">
-      Bem-vindo ao gerador TNT APK 2.0.<br>
-      Acesse nosso canal para continuar.
-    </p>
-
-    <!-- ACESSO AO CANAL -->
-    <div id="channel-section">
-      <a
-        id="channel-button"
-        class="btn"
-        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ◈ ACESSAR CANAL WHATSAPP
-      </a>
-
-      <p class="status">
-        Depois de visitar o canal, volte para esta página.
-      </p>
-    </div>
-
-    <!-- VERIFICAÇÃO VISUAL -->
-    <div id="verification-section" class="hidden">
-      <div class="spinner"></div>
-
-      <p id="verification-status" class="status">
-        VERIFICANDO...
-      </p>
-
-      <div class="progress">
-        <div id="verification-progress" class="progress-fill"></div>
+      <div class="status">
+        <span class="dot"></span>
+        SISTEMA ONLINE
       </div>
-    </div>
 
-    <!-- GERADOR LIBERADO -->
-    <div id="generator-section" class="hidden">
+      <section class="section">
+        <div class="section-title">📲 Etapa 1 — Canal oficial</div>
 
-      <p class="description">
-        Acesso liberado! Escolha uma opção abaixo.
-      </p>
+        <p class="description">
+          Abra o canal oficial do WhatsApp. Depois, volte para esta página
+          para continuar.
+        </p>
 
-      <!-- BOTÃO MOSTRA SOMENTE BAIXAR PROXY -->
-      <a
-        id="download-proxy"
-        class="btn secondary"
-        href="https://www.mediafire.com/file/4bl2cxzi3yq78l7/PROXY_TNT_EXTERNAL.zip/file"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        ⇩ BAIXAR PROXY
-      </a>
+        <a
+          id="whatsappButton"
+          class="button whatsapp"
+          href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ✓ ABRIR CANAL DO WHATSAPP
+        </a>
 
-      <button id="generate-button" class="btn" type="button">
-        ⚡ GERAR KEY
-      </button>
+        <p id="verificationMessage" class="message">
+          Abra o canal e retorne para esta página.
+        </p>
+      </section>
 
-      <div id="generation-status" class="status" aria-live="polite"></div>
+      <section class="section">
+        <div class="section-title">⚡ Gerador de Key</div>
 
-      <div id="key-box" class="key-box hidden">
-        <div class="key-label">SUA KEY</div>
+        <p class="description">
+          Baixe o proxy e pressione GERAR KEY para solicitar seu link.
+        </p>
 
-        <div id="key-result"></div>
+        <a
+          class="button download"
+          href="https://www.mediafire.com/file/4bl2cxzi3yq78l7/PROXY_TNT_EXTERNAL.zip/file"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ⇩ BAIXAR PROXY
+        </a>
 
-        <button id="copy-button" class="btn secondary" type="button">
-          ▣ COPIAR KEY
+        <button id="gerarKey" class="button generate" type="button">
+          ⚡ GERAR KEY
         </button>
+
+        <div
+          id="resultadoKey"
+          class="result"
+          aria-live="polite"
+        ></div>
+      </section>
+
+      <div class="socials">
+        <a
+          class="social-link"
+          href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ▶ CANAL NO YOUTUBE
+        </a>
+
+        <a
+          class="social-link"
+          href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ◉ WHATSAPP
+        </a>
       </div>
+
+      <footer>
+        <strong>TNT APK 2.0</strong><br>
+        Central de acesso · Todos os direitos reservados
+      </footer>
     </div>
+  </main>
 
-    <!-- REDES SOCIAIS -->
-    <div class="socials">
-      <a
-        href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
-        target="_blank"
-        rel="noopener noreferrer"
-      >▶ YOUTUBE</a>
+  <script>
+    "use strict";
 
-      <a
-        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-        target="_blank"
-        rel="noopener noreferrer"
-      >◈ WHATSAPP</a>
-    </div>
+    /*
+     * CONFIGURAÇÃO
+     *
+     * Por padrão, este código espera que a API retorne:
+     * {"key":"https://seu-link-verdadeiro.com"}
+     *
+     * Se a API usar outro nome de campo, altere CAMPO_RESULTADO
+     * para o nome EXATO retornado pelo seu servidor.
+     */
+    const API_URL = "https://proxy-90bc.onrender.com/getkey";
+    const CAMPO_RESULTADO = "key";
 
-    <footer>TNT APK 2.0 · INTERFACE DIGITAL</footer>
-  </section>
-</main>
+    const botao = document.getElementById("gerarKey");
+    const caixaResultado = document.getElementById("resultadoKey");
+    const botaoWhatsApp = document.getElementById("whatsappButton");
+    const mensagemVerificacao =
+      document.getElementById("verificationMessage");
 
-<script>
-(() => {
-  "use strict";
+    let canalFoiAberto = false;
 
-  const ENDPOINT = "https://proxy-90bc.onrender.com/getkey";
+    botaoWhatsApp.addEventListener("click", () => {
+      canalFoiAberto = true;
+      mensagemVerificacao.textContent =
+        "Volte para esta página para continuar.";
+      mensagemVerificacao.className = "message";
+    });
 
-  const channelButton = document.getElementById("channel-button");
-  const channelSection = document.getElementById("channel-section");
-  const verificationSection = document.getElementById("verification-section");
-  const verificationStatus = document.getElementById("verification-status");
-  const verificationProgress = document.getElementById("verification-progress");
-  const generatorSection = document.getElementById("generator-section");
-  const generateButton = document.getElementById("generate-button");
-  const generationStatus = document.getElementById("generation-status");
-  const keyBox = document.getElementById("key-box");
-  const keyResult = document.getElementById("key-result");
-  const copyButton = document.getElementById("copy-button");
-  const celebration = document.getElementById("celebration");
-  const shards = document.getElementById("shards");
+    function atualizarVerificacao() {
+      if (!canalFoiAberto) return;
 
-  let verificationStarted = false;
-  let pageWasHidden = false;
-  let celebrationTimer = null;
+      mensagemVerificacao.textContent =
+        "✓ Canal aberto. Você pode solicitar a key.";
+      mensagemVerificacao.className = "message success";
+    }
 
-  // A verificação é visual e não confirma inscrição no canal.
-  channelButton.addEventListener("click", () => {
-    try {
-      sessionStorage.setItem("tnt_channel_opened", "1");
-    } catch (_) {}
-  });
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) atualizarVerificacao();
+    });
 
-  function startVerification() {
-    if (verificationStarted) return;
+    window.addEventListener("focus", atualizarVerificacao);
+    window.addEventListener("pageshow", atualizarVerificacao);
 
-    let visited = false;
+    function limparResultado() {
+      caixaResultado.replaceChildren();
+      caixaResultado.classList.remove("visible");
+    }
 
-    try {
-      visited = sessionStorage.getItem("tnt_channel_opened") === "1";
-    } catch (_) {}
+    function mostrarMensagem(texto, erro = false) {
+      limparResultado();
 
-    if (!visited) return;
+      const titulo = document.createElement("div");
+      titulo.className = "result-title";
+      titulo.textContent = erro ? "AVISO DO GERADOR" : "GERADOR DE KEY";
 
-    verificationStarted = true;
-    channelSection.classList.add("hidden");
-    verificationSection.classList.remove("hidden");
-    verificationProgress.style.width = "0%";
+      const conteudo = document.createElement("p");
+      conteudo.className = "result-value";
+      conteudo.textContent = texto;
 
-    const startedAt = performance.now();
-    const duration = 2600;
+      caixaResultado.append(titulo, conteudo);
+      caixaResultado.classList.add("visible");
+    }
 
-    function updateProgress(now) {
-      const fraction = Math.min((now - startedAt) / duration, 1);
-      verificationProgress.style.width = (fraction * 100) + "%";
+    /*
+     * Não procura valores em campos alternativos.
+     * Não exibe objetos JSON inteiros.
+     * Não inventa keys.
+     *
+     * Só aceita uma URL HTTP/HTTPS do campo configurado.
+     */
+    function obterLink(respostaTexto, contentType) {
+      const texto = respostaTexto.trim();
 
-      if (fraction < 1) {
-        requestAnimationFrame(updateProgress);
-      } else {
-        verificationStatus.textContent = "ACESSO LIBERADO!";
-
-        setTimeout(() => {
-          verificationSection.classList.add("hidden");
-          generatorSection.classList.remove("hidden");
-        }, 650);
+      if (!texto) {
+        throw new Error("O servidor não retornou nenhum resultado.");
       }
-    }
 
-    requestAnimationFrame(updateProgress);
-  }
+      let link;
 
-  window.addEventListener("focus", startVerification);
+      const ehJson =
+        contentType.includes("application/json") ||
+        texto.startsWith("{") ||
+        texto.startsWith("[");
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") {
-      pageWasHidden = true;
-    } else if (pageWasHidden) {
-      pageWasHidden = false;
-      startVerification();
-    }
-  });
+      if (ehJson) {
+        let dados;
 
-  window.addEventListener("pageshow", startVerification);
-
-  // Explosão neon e chave holográfica
-  function showCelebration() {
-    shards.replaceChildren();
-    celebration.classList.remove("hidden");
-
-    const count = 46;
-
-    for (let i = 0; i < count; i++) {
-      const shard = document.createElement("span");
-      shard.className = "shard";
-
-      shard.style.setProperty(
-        "--angle",
-        (i * (360 / count)) + "deg"
-      );
-
-      shard.style.setProperty(
-        "--distance",
-        (120 + Math.random() * 230) + "px"
-      );
-
-      shards.appendChild(shard);
-    }
-
-    clearTimeout(celebrationTimer);
-
-    celebrationTimer = setTimeout(() => {
-      celebration.classList.add("hidden");
-      shards.replaceChildren();
-    }, 1900);
-  }
-
-  function findKey(data) {
-    if (typeof data === "string") return data.trim();
-
-    if (data && typeof data === "object") {
-      const fields = [
-        "key", "KEY", "result", "token", "code", "message"
-      ];
-
-      for (const field of fields) {
-        if (
-          typeof data[field] === "string" &&
-          data[field].trim()
-        ) {
-          return data[field].trim();
+        try {
+          dados = JSON.parse(texto);
+        } catch {
+          throw new Error("A resposta do servidor não é um JSON válido.");
         }
+
+        if (
+          !dados ||
+          typeof dados !== "object" ||
+          Array.isArray(dados)
+        ) {
+          throw new Error("O formato da resposta não é o esperado.");
+        }
+
+        link = dados[CAMPO_RESULTADO];
+      } else {
+        // Texto simples só é válido quando é um link completo.
+        link = texto;
       }
+
+      if (typeof link !== "string" || !link.trim()) {
+        throw new Error(
+          'O link não foi encontrado no campo "' +
+          CAMPO_RESULTADO +
+          '". É necessário configurar o campo correto da API.'
+        );
+      }
+
+      link = link.trim();
+
+      let url;
+
+      try {
+        url = new URL(link);
+      } catch {
+        throw new Error("O servidor não retornou um link válido.");
+      }
+
+      if (url.protocol !== "https:" && url.protocol !== "http:") {
+        throw new Error("O tipo de link retornado não é permitido.");
+      }
+
+      return url.href;
     }
 
-    return "";
-  }
+    function animarSucesso() {
+      const flash = document.getElementById("flash");
+      flash.classList.remove("active");
+      void flash.offsetWidth;
+      flash.classList.add("active");
+    }
 
-  // Solicita a key ao endpoint
-  generateButton.addEventListener("click", async () => {
-    generateButton.disabled = true;
-    generationStatus.textContent = "CONECTANDO AO GERADOR...";
-    keyBox.classList.add("hidden");
-    keyResult.textContent = "";
+    function mostrarLink(link) {
+      limparResultado();
 
-    try {
-      const response = await fetch(ENDPOINT, {
-        method: "GET",
-        headers: {
-          "Accept": "application/json, text/plain, */*"
+      const titulo = document.createElement("div");
+      titulo.className = "result-title";
+      titulo.textContent = "✓ SEU LINK ESTÁ PRONTO";
+
+      const texto = document.createElement("p");
+      texto.className = "result-value";
+      texto.textContent = link;
+
+      const abrir = document.createElement("a");
+      abrir.className = "result-link";
+      abrir.href = link;
+      abrir.target = "_blank";
+      abrir.rel = "noopener noreferrer";
+      abrir.textContent = "ABRIR MEU LINK";
+
+      const copiar = document.createElement("button");
+      copiar.className = "copy-button";
+      copiar.type = "button";
+      copiar.textContent = "COPIAR LINK";
+
+      copiar.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(link);
+          copiar.textContent = "✓ LINK COPIADO!";
+        } catch {
+          mostrarMensagem(
+            "Não foi possível copiar automaticamente. Selecione o link para copiá-lo.",
+            true
+          );
         }
       });
 
-      const body = await response.text();
+      caixaResultado.append(titulo, texto, abrir, copiar);
+      caixaResultado.classList.add("visible");
+      animarSucesso();
+    }
 
-      if (!response.ok) {
-        throw new Error("Erro HTTP " + response.status);
-      }
-
-      let data = body;
+    async function gerarKey() {
+      limparResultado();
+      botao.disabled = true;
+      botao.textContent = "⏳ AGUARDE...";
 
       try {
-        data = JSON.parse(body);
-      } catch (_) {}
+        const resposta = await fetch(API_URL, {
+          method: "GET",
+          headers: {
+            "Accept": "application/json, text/plain"
+          },
+          cache: "no-store"
+        });
 
-      const key = findKey(data);
+        if (!resposta.ok) {
+          throw new Error(
+            "O servidor respondeu com erro HTTP " + resposta.status + "."
+          );
+        }
 
-      if (!key) {
-        throw new Error("Nenhuma key reconhecida na resposta.");
+        const tipo = resposta.headers.get("content-type") || "";
+        const corpo = await resposta.text();
+        const link = obterLink(corpo, tipo);
+
+        mostrarLink(link);
+      } catch (erro) {
+        console.error("Falha ao gerar link:", erro);
+
+        const mensagem = erro instanceof TypeError
+          ? "Não foi possível acessar o servidor. Verifique a conexão e a configuração CORS da API."
+          : (erro.message || "Não foi possível gerar o link.");
+
+        mostrarMensagem(mensagem, true);
+      } finally {
+        botao.disabled = false;
+        botao.textContent = "⚡ GERAR KEY";
+      }
+    }
+
+    botao.addEventListener("click", gerarKey);
+
+    /*
+     * Partículas decorativas do fundo.
+     */
+    const canvas = document.getElementById("particles");
+    const contexto = canvas.getContext("2d");
+    const movimentoReduzido =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let particulas = [];
+    let largura = 0;
+    let altura = 0;
+    let frame = null;
+
+    function dimensionarCanvas() {
+      const escala = Math.min(window.devicePixelRatio || 1, 2);
+
+      largura = window.innerWidth;
+      altura = window.innerHeight;
+
+      canvas.width = Math.round(largura * escala);
+      canvas.height = Math.round(altura * escala);
+      canvas.style.width = largura + "px";
+      canvas.style.height = altura + "px";
+
+      contexto.setTransform(escala, 0, 0, escala, 0, 0);
+
+      const quantidade = Math.min(
+        60,
+        Math.max(20, Math.floor(largura / 16))
+      );
+
+      particulas = Array.from({ length: quantidade }, () => ({
+        x: Math.random() * largura,
+        y: Math.random() * altura,
+        raio: Math.random() * 1.5 + .4,
+        velocidade: Math.random() * .35 + .08,
+        opacidade: Math.random() * .45 + .15
+      }));
+
+      desenharParticulas();
+    }
+
+    function desenharParticulas() {
+      contexto.clearRect(0, 0, largura, altura);
+
+      for (const particula of particulas) {
+        contexto.beginPath();
+        contexto.arc(
+          particula.x,
+          particula.y,
+          particula.raio,
+          0,
+          Math.PI * 2
+        );
+
+        contexto.fillStyle =
+          "rgba(70, 195, 255, " + particula.opacidade + ")";
+        contexto.fill();
+
+        if (!movimentoReduzido) {
+          particula.y -= particula.velocidade;
+
+          if (particula.y < -5) {
+            particula.y = altura + 5;
+            particula.x = Math.random() * largura;
+          }
+        }
       }
 
-      keyResult.textContent = key;
-      keyBox.classList.remove("hidden");
-      generationStatus.textContent = "GERAÇÃO CONCLUÍDA!";
-
-      showCelebration();
-
-    } catch (error) {
-      console.error("Erro ao gerar key:", error);
-
-      generationStatus.textContent =
-        "Não foi possível obter a key. Tente novamente ou verifique o servidor.";
-
-    } finally {
-      generateButton.disabled = false;
-    }
-  });
-
-  // Copiar resultado
-  copyButton.addEventListener("click", async () => {
-    const key = keyResult.textContent.trim();
-    if (!key) return;
-
-    try {
-      await navigator.clipboard.writeText(key);
-      copyButton.textContent = "✓ KEY COPIADA!";
-
-    } catch (_) {
-      const temp = document.createElement("textarea");
-      temp.value = key;
-      temp.style.position = "fixed";
-      temp.style.opacity = "0";
-
-      document.body.appendChild(temp);
-      temp.select();
-
-      const copied = document.execCommand("copy");
-      temp.remove();
-
-      copyButton.textContent = copied
-        ? "✓ KEY COPIADA!"
-        : "COPIE MANUALMENTE";
-    }
-
-    setTimeout(() => {
-      copyButton.textContent = "▣ COPIAR KEY";
-    }, 1800);
-  });
-
-  // Partículas neon de fundo
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-
-  let particles = [];
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
-
-  function resizeCanvas() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.min(75, Math.floor(width / 12));
-
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.8 + .4,
-      speed: Math.random() * .45 + .12,
-      alpha: Math.random() * .65 + .2
-    }));
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, width, height);
-
-    for (const p of particles) {
-      p.y -= p.speed;
-
-      if (p.y < -5) {
-        p.y = height + 5;
-        p.x = Math.random() * width;
+      if (!movimentoReduzido) {
+        frame = requestAnimationFrame(desenharParticulas);
       }
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(0, 191, 255, " + p.alpha + ")";
-      ctx.shadowBlur = 9;
-      ctx.shadowColor = "#008cff";
-      ctx.fill();
     }
 
-    ctx.shadowBlur = 0;
-    requestAnimationFrame(animateParticles);
-  }
+    window.addEventListener("resize", () => {
+      if (frame !== null) cancelAnimationFrame(frame);
+      dimensionarCanvas();
+    });
 
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-  animateParticles();
+    dimensionarCanvas();
 
-  const video = document.getElementById("background-video");
-  video.play().catch(() => {});
-})();
-</script>
-
+    const video = document.getElementById("backgroundVideo");
+    video.play().catch(() => {
+      // O site continua funcionando mesmo se o vídeo não reproduzir.
+    });
+  </script>
 </body>
-                                        </html>
+  </html>
   
