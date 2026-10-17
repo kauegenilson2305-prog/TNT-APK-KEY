@@ -10,8 +10,10 @@
 *{box-sizing:border-box}
 html{min-height:100%;background:var(--ink)}
 body{margin:0;min-height:100vh;overflow-x:hidden;color:#f7fbff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 50% 18%,#062b67 0%,#031633 42%,#020817 78%,#01040b 100%)}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:linear-gradient(#1c7ee61a 1px,transparent 1px),linear-gradient(90deg,#1c7ee61a 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 95%);z-index:0}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(#1c7ee61a 1px,transparent 1px),linear-gradient(90deg,#1c7ee61a 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 95%);z-index:0}
 #scene{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none}
+.video-shade{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(1,8,23,.58),rgba(2,10,26,.76) 52%,rgba(1,5,15,.88));}
 .aurora{position:fixed;inset:-25%;z-index:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,#0077ff14 50deg,transparent 105deg,#00e5ff12 180deg,transparent 260deg);filter:blur(30px);animation:aurora 22s linear infinite}
 @keyframes aurora{to{transform:rotate(360deg)}}
 .wrap{position:relative;z-index:1;width:min(680px,100%);margin:0 auto;padding:34px 20px 26px}
@@ -55,6 +57,10 @@ h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:9
 </style>
 </head>
 <body>
+<video id="bgVideo" class="bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+  <source src="background.mp4" type="video/mp4">
+</video>
+<div class="video-shade" aria-hidden="true"></div>
 <canvas id="scene" aria-hidden="true"></canvas><div class="aurora" aria-hidden="true"></div>
 <main class="wrap">
   <header class="brand">
@@ -72,14 +78,14 @@ h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:9
     <div id="gate" class="panel hidden">
       <h2 style="text-align:center;margin:0;font-size:1.35rem">📢 UMA ETAPA RÁPIDA</h2>
       <p class="intro" style="font-size:1rem;margin:12px auto">Entre no canal oficial do WhatsApp e depois volte aqui para continuar.</p>
-      <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">💬 ENTRAR NO CANAL DO WHATSAPP ↗</a>
-      <div class="steps">
-        <div class="step"><span class="num">1</span><span>Toque no botão verde e abra o canal.</span></div>
-        <div class="step"><span class="num">2</span><span>No WhatsApp, toque em <strong>Seguir</strong> (se ainda não estiver seguindo).</span></div>
-        <div class="step"><span class="num">3</span><span>Volte para esta página e toque em <strong>JÁ ENTREI — VERIFICAR</strong>.</span></div>
+      <a class="btn whatsapp" id="channelBtn" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">🔓 ACESSAR O CANAL PARA DESBLOQUEAR ↗</a>
+      <div id="verifyProgress" class="hidden">
+        <div class="steps">
+          <div class="step"><span class="num">✓</span><span>Canal aberto. Aguarde enquanto preparamos o gerador.</span></div>
+        </div>
+        <p class="status" id="verifyStatus" role="status" aria-live="polite"><span class="spinner"></span> VERIFICANDO...</p>
+        <div style="height:8px;background:#10294a;border-radius:20px;overflow:hidden;margin-top:14px"><div id="progressBar" style="height:100%;width:0%;background:linear-gradient(90deg,#087cff,#35f2ff);border-radius:20px;transition:width .25s ease"></div></div>
       </div>
-      <button class="btn verify" id="verifyBtn" type="button">🔎 JÁ ENTREI — VERIFICAR</button>
-      <p class="status" id="verifyStatus" role="status" aria-live="polite">A confirmação é manual; este site não consegue consultar sua inscrição no WhatsApp.</p>
     </div>
 
     <div id="generator" class="panel hidden">
@@ -93,7 +99,7 @@ h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:9
     <div class="section-title">NOSSAS REDES</div>
     <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">💬 CANAL DO WHATSAPP</a>
     <a class="btn youtube" href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk" target="_blank" rel="noopener noreferrer">▶ CANAL DO YOUTUBE</a>
-    <p class="small">O botão de verificação é uma confirmação manual, não uma checagem real de associação ao canal.</p>
+    <p class="small">A animação inicia quando você retorna do canal. Ela não consegue confirmar automaticamente se você realmente seguiu o canal do WhatsApp.</p>
   </section>
 
   <footer class="footer">CRIADO POR<strong>TNT APK 2.0</strong></footer>
@@ -107,18 +113,54 @@ h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:9
     gate.classList.remove('hidden');
     gate.scrollIntoView({behavior:'smooth',block:'nearest'});
   });
-  $('verifyBtn').addEventListener('click', () => {
-    const button = $('verifyBtn'), status = $('verifyStatus');
-    button.disabled = true;
-    button.innerHTML = '<span class="spinner"></span> VERIFICANDO...';
-    status.innerHTML = '<span class="spinner"></span> Conferindo sua confirmação...';
+  const channelBtn = $('channelBtn');
+  const verifyProgress = $('verifyProgress');
+  let verificationStarted = false;
+  let verifyTimer = null;
+  function beginVisualVerification() {
+    if (verificationStarted) return;
+    verificationStarted = true;
+    verifyProgress.classList.remove('hidden');
+    const status = $('verifyStatus'), bar = $('progressBar');
+    status.innerHTML = '<span class="spinner"></span> VERIFICANDO...';
+    let progress = 0;
+    verifyTimer = window.setInterval(() => {
+      progress = Math.min(100, progress + 5);
+      bar.style.width = progress + '%';
+      if (progress >= 100) {
+        window.clearInterval(verifyTimer);
+        status.textContent = 'Etapa concluída! Liberando o gerador...';
+        window.setTimeout(() => {
+          generator.classList.remove('hidden');
+          generator.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }, 450);
+      }
+    }, 90);
+  }
+  // Ao tocar no link, a verificação visual começa quando a pessoa volta para esta aba.
+  channelBtn.addEventListener('click', () => {
+    try { sessionStorage.setItem('tnt_channel_opened', '1'); } catch(e) {}
     window.setTimeout(() => {
-      button.disabled = false;
-      button.textContent = '✅ CONFIRMAÇÃO MANUAL CONCLUÍDA';
-      status.textContent = 'Acesso liberado por confirmação manual. A inscrição não foi verificada pelo WhatsApp.';
-      generator.classList.remove('hidden');
-      generator.scrollIntoView({behavior:'smooth',block:'nearest'});
-    }, 1700);
+      if (!document.hidden) beginVisualVerification();
+    }, 800);
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      let opened = false;
+      try {
+        opened = sessionStorage.getItem('tnt_channel_opened') === '1';
+        if (opened) sessionStorage.removeItem('tnt_channel_opened');
+      } catch(e) {}
+      if (opened && !verificationStarted) beginVisualVerification();
+    }
+  });
+  window.addEventListener('focus', () => {
+    let opened = false;
+    try {
+      opened = sessionStorage.getItem('tnt_channel_opened') === '1';
+      if (opened) sessionStorage.removeItem('tnt_channel_opened');
+    } catch(e) {}
+    if (opened && !verificationStarted) beginVisualVerification();
   });
   $('generateBtn').addEventListener('click', () => {
     const result = $('keyResult');
@@ -135,7 +177,7 @@ h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:9
     dpr=Math.min(window.devicePixelRatio||1,2); w=innerWidth; h=innerHeight;
     canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);
     canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
-    const count=Math.min(95,Math.max(35,Math.floor(w*h/10500)));
+    const count=Math.min(62,Math.max(24,Math.floor(w*h/15000)));
     particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.4,v:Math.random()*.45+.12,a:Math.random()*.55+.18,dr:(Math.random()-.5)*.28,trail:Math.random()<.16}));
   }
   function draw(){
