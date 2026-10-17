@@ -2,688 +2,823 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#020817">
-  <title>TNT APK 2.0 - Gerador de Key</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020611">
+<title>TNT APK 2.0 | KEY GENERATOR</title>
 
-  <style>
-    :root {
-      --blue: #00aaff;
-      --cyan: #63dcff;
-      --dark: #020817;
-      --text: #eef8ff;
-    }
+<style>
+:root {
+  --blue: #008cff;
+  --cyan: #00f5ff;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    html {
-      min-height: 100%;
-      background: var(--dark);
-    }
+body {
+  min-height: 100vh;
+  background: #020611;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
 
-    body {
-      position: relative;
-      isolation: isolate;
-      min-height: 100vh;
-      min-height: 100dvh;
-      margin: 0;
-      padding: 24px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow-x: hidden;
-      background: transparent;
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-    }
+#background-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -4;
+  opacity: .4;
+}
 
-    /* VÍDEO ATRÁS DA PÁGINA INTEIRA */
-    #bgVideo {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: -3;
-      pointer-events: none;
-      background: #020817;
-    }
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background: linear-gradient(
+    135deg,
+    rgba(0,3,13,.9),
+    rgba(0,10,30,.8)
+  );
+}
 
-    /* CAMADA PARA MELHORAR A LEITURA */
-    .video-shade {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      background: rgba(1, 7, 22, 0.48);
-    }
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
 
-    #scene {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 15px;
+}
 
-    .container {
-      width: 100%;
-      max-width: 430px;
-      margin: auto;
-      position: relative;
-      z-index: 1;
-    }
+.card {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px 22px;
+  text-align: center;
+  background: rgba(4,13,32,.92);
+  border: 1px solid rgba(0,191,255,.7);
+  border-radius: 20px;
+  box-shadow: 0 0 28px rgba(0,191,255,.25);
+  backdrop-filter: blur(13px);
+  animation: appear .7s ease both;
+}
 
-    .card {
-      position: relative;
-      overflow: hidden;
-      padding: 30px 23px;
-      text-align: center;
-      border: 1px solid rgba(0, 170, 255, 0.7);
-      border-radius: 22px;
-      background: linear-gradient(
-        145deg,
-        rgba(5, 20, 43, 0.73),
-        rgba(2, 8, 23, 0.79)
-      );
-      -webkit-backdrop-filter: blur(9px);
-      backdrop-filter: blur(9px);
-      box-shadow:
-        0 0 20px rgba(0, 153, 255, 0.25),
-        0 0 55px rgba(0, 100, 255, 0.12),
-        inset 0 0 24px rgba(0, 153, 255, 0.05);
-    }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 12%;
-      width: 76%;
-      height: 2px;
-      background: var(--cyan);
-      box-shadow: 0 0 18px var(--blue);
-    }
+.logo {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  color: var(--cyan);
+  font-size: 25px;
+  font-weight: 900;
+  text-shadow: 0 0 15px var(--cyan);
+  box-shadow: 0 0 22px #008cff;
+  animation: pulse 1.8s infinite alternate;
+}
 
-    .logo {
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--blue);
-      border-radius: 50%;
-      background: rgba(0, 12, 30, 0.75);
-      color: var(--cyan);
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.05;
-      text-shadow: 0 0 12px var(--blue);
-      box-shadow:
-        0 0 20px rgba(0, 170, 255, 0.35),
-        inset 0 0 18px rgba(0, 170, 255, 0.12);
-    }
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 32px #00eaff,
+                inset 0 0 15px #008cff;
+  }
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(25px, 7vw, 32px);
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-shadow: 0 0 18px rgba(0, 170, 255, 0.45);
-    }
+h1 {
+  font-size: clamp(25px, 6vw, 32px);
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px #008cff;
+}
 
-    .subtitle {
-      margin: 9px 0 18px;
-      color: #91a9c5;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+.subtitle {
+  margin-top: 8px;
+  color: #a6c7e8;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
 
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 13px;
-      margin-bottom: 22px;
-      border: 1px solid rgba(35, 255, 164, 0.3);
-      border-radius: 30px;
-      background: rgba(0, 255, 153, 0.07);
-      color: #65ffbb;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1.5px;
-    }
+.line {
+  height: 1px;
+  margin: 23px 0;
+  background: linear-gradient(
+    90deg, transparent, var(--cyan), transparent
+  );
+}
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #36ff9d;
-      box-shadow: 0 0 10px #36ff9d;
-      animation: pulse 1.5s infinite;
-    }
+.description {
+  color: #b7c9dd;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
 
-    .description {
-      margin: 0 0 20px;
-      color: #c1d3e8;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+.btn {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 12px;
+  margin-top: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  background: linear-gradient(100deg, #0066ff, #00bfff);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(0,191,255,.25);
+  transition: .2s;
+}
 
-    .btn {
-      width: 100%;
-      min-height: 49px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 14px 12px;
-      margin-top: 13px;
-      border: 1px solid transparent;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 0 25px rgba(0,191,255,.7);
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+.btn:active {
+  transform: scale(.98);
+}
 
-    .btn:active {
-      transform: scale(0.98);
-    }
+.btn.secondary {
+  background: rgba(0,20,45,.95);
+  border-color: #168bff;
+}
 
-    .btn-primary {
-      color: #00101d;
-      background: linear-gradient(100deg, #00aaff, #65e1ff);
-      box-shadow: 0 0 22px rgba(0, 170, 255, 0.25);
-    }
+.btn:disabled {
+  opacity: .6;
+  cursor: wait;
+}
 
-    .btn-primary:hover {
-      box-shadow: 0 0 30px rgba(0, 170, 255, 0.48);
-    }
+.hidden {
+  display: none !important;
+}
 
-    .btn-secondary {
-      color: #d8f4ff;
-      border-color: rgba(0, 174, 255, 0.6);
-      background: rgba(0, 112, 190, 0.18);
-    }
+.status {
+  margin: 16px 0 5px;
+  color: #8ebde8;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
 
-    .btn-secondary:hover {
-      background: rgba(0, 112, 190, 0.32);
-    }
+.spinner {
+  width: 48px;
+  height: 48px;
+  margin: 22px auto;
+  border: 3px solid rgba(0,191,255,.18);
+  border-top-color: var(--cyan);
+  border-right-color: #168bff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  filter: drop-shadow(0 0 8px var(--cyan));
+}
 
-    .verification {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      margin-top: 18px;
-      padding: 16px 8px;
-      border: 1px solid rgba(0, 170, 255, 0.45);
-      border-radius: 10px;
-      background: rgba(0, 100, 200, 0.12);
-      color: var(--cyan);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1.3px;
-    }
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
-    .spinner {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      border: 2px solid rgba(99, 220, 255, 0.25);
-      border-top-color: var(--cyan);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
+.progress {
+  height: 5px;
+  margin: 15px 0;
+  background: #10213a;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-    .success-check {
-      color: #65ffbb;
-      font-size: 21px;
-      font-weight: bold;
-    }
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #0066ff, #00f5ff);
+  box-shadow: 0 0 12px var(--cyan);
+  transition: width .15s linear;
+}
 
-    [hidden] {
-      display: none !important;
-    }
+.key-box {
+  padding: 18px 12px;
+  margin: 18px 0 8px;
+  border: 1px solid var(--cyan);
+  border-radius: 12px;
+  background: rgba(0,22,48,.95);
+  box-shadow: 0 0 22px rgba(0,191,255,.3);
+  overflow-wrap: anywhere;
+}
 
-    .message {
-      min-height: 18px;
-      margin: 13px 0 0;
-      color: var(--cyan);
-      font-size: 12px;
-      line-height: 1.6;
-    }
+.key-label {
+  color: #87bfe8;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
 
-    .notice {
-      margin: 15px 0 0;
-      color: #91a9c5;
-      font-size: 10px;
-      line-height: 1.6;
-    }
+#key-result {
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.7;
+  text-shadow: 0 0 12px var(--cyan);
+}
 
-    .divider {
-      height: 1px;
-      margin: 22px 0 15px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 174, 255, 0.45),
-        transparent
-      );
-    }
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
 
-    .socials {
-      display: flex;
-      gap: 10px;
-    }
+.socials a {
+  flex: 1;
+  padding: 12px 5px;
+  color: #b6dfff;
+  border: 1px solid rgba(0,191,255,.35);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: bold;
+}
 
-    .socials a {
-      flex: 1;
-      padding: 12px 6px;
-      border: 1px solid rgba(145, 169, 197, 0.25);
-      border-radius: 9px;
-      color: #dceeff;
-      background: rgba(1, 8, 23, 0.4);
-      font-size: 11px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.2s;
-    }
+.socials a:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0,191,255,.3);
+}
 
-    .socials a:hover {
-      border-color: var(--blue);
-      background: rgba(0, 150, 255, 0.15);
-    }
+footer {
+  margin-top: 24px;
+  color: #7890aa;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
 
-    footer {
-      margin-top: 16px;
-      color: rgba(205, 225, 245, 0.65);
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
+/* EXPLOSÃO NEON */
+#celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(0,91,255,.3),
+    rgba(0,10,30,.1) 45%,
+    transparent 75%
+  );
+}
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+#celebration.hidden {
+  display: none !important;
+}
 
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.5;
-        transform: scale(0.8);
-      }
-    }
+.blast {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #00f5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 25px #00bfff, inset 0 0 15px #008cff;
+  animation: blastExpand 1s ease-out forwards;
+}
 
-    @media (max-width: 480px) {
-      body {
-        padding: 16px 11px;
-      }
+.blast.second {
+  border-color: white;
+  animation-delay: .12s;
+}
 
-      .card {
-        padding: 25px 17px;
-        border-radius: 18px;
-      }
+@keyframes blastExpand {
+  0% { transform: scale(.1); opacity: 1; }
+  100% { transform: scale(28); opacity: 0; }
+}
 
-      .logo {
-        width: 82px;
-        height: 82px;
-        font-size: 20px;
-      }
-    }
+.energy-ring {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 3px solid #00eaff;
+  border-radius: 50%;
+  box-shadow: 0 0 22px #00bfff, inset 0 0 20px #006eff;
+  animation: ringBurst 1.2s ease-out forwards;
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      .status-dot,
-      .spinner {
-        animation-duration: 2s;
-      }
-    }
-  </style>
+.ring-two {
+  border-color: white;
+  animation-delay: .15s;
+}
+
+@keyframes ringBurst {
+  0% { transform: scale(.1) rotate(0); opacity: 1; }
+  100% { transform: scale(5.5) rotate(180deg); opacity: 0; }
+}
+
+.shard {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 17px;
+  border-radius: 4px;
+  background: #00f5ff;
+  box-shadow: 0 0 12px #00bfff, 0 0 25px #0077ff;
+  animation: shardFly 1.1s ease-out forwards;
+}
+
+@keyframes shardFly {
+  0% {
+    transform: translate(-50%,-50%)
+      rotate(var(--angle)) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%,-50%)
+      rotate(var(--angle)) translateY(var(--distance));
+    opacity: 0;
+  }
+}
+
+.holo-key {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 125px;
+  height: 125px;
+  color: #dfffff;
+  font-size: 75px;
+  text-shadow: 0 0 10px white,
+               0 0 25px #00eaff,
+               0 0 55px #0077ff;
+  animation: keyReveal 1.15s cubic-bezier(.2,1.7,.4,1) forwards;
+}
+
+@keyframes keyReveal {
+  0% {
+    opacity: 0;
+    transform: scale(.1) rotate(-90deg);
+    filter: blur(12px);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.25) rotate(10deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    filter: blur(0);
+  }
+}
+
+.success-message {
+  position: absolute;
+  top: calc(50% + 100px);
+  width: 100%;
+  padding: 0 15px;
+  color: #d9ffff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 0 0 15px #00eaff;
+  animation: textAppear .5s .5s both;
+}
+
+@keyframes textAppear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
 </head>
 
 <body>
-  <!-- O arquivo background.mp4 precisa estar na mesma pasta -->
-  <video
-    id="bgVideo"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    aria-hidden="true"
-  >
-    <source src="./background.mp4" type="video/mp4">
-  </video>
 
-  <div class="video-shade" aria-hidden="true"></div>
-  <canvas id="scene" aria-hidden="true"></canvas>
+<!-- Coloque background.mp4 na mesma pasta do index.html -->
+<video id="background-video" autoplay muted loop playsinline>
+  <source src="background.mp4" type="video/mp4">
+</video>
 
-  <main class="container">
-    <section class="card">
+<div class="overlay"></div>
+<canvas id="particles"></canvas>
 
-      <div class="logo">TNT<br>APK</div>
+<div id="celebration" class="hidden" aria-hidden="true">
+  <div class="blast"></div>
+  <div class="blast second"></div>
+  <div class="energy-ring"></div>
+  <div class="energy-ring ring-two"></div>
+  <div id="shards"></div>
+  <div class="holo-key">⚿</div>
+  <div class="success-message">ENERGIA DESBLOQUEADA</div>
+</div>
 
-      <h1>TNT APK 2.0</h1>
-      <p class="subtitle">Painel de acesso</p>
+<main>
+  <section class="card">
 
-      <div class="status">
-        <span class="status-dot"></span>
-        SISTEMA ONLINE
-      </div>
+    <div class="logo">TNT</div>
+    <h1>TNT APK 2.0</h1>
+    <p class="subtitle">KEY GENERATOR</p>
 
-      <p class="description">
-        Bem-vindo ao painel oficial.<br>
-        Acesse nosso canal para continuar.
-      </p>
+    <div class="line"></div>
 
-      <!-- ÚNICO BOTÃO MOSTRADO INICIALMENTE -->
+    <p class="description">
+      Bem-vindo ao gerador TNT APK 2.0.<br>
+      Acesse nosso canal para continuar.
+    </p>
+
+    <!-- ACESSO AO CANAL -->
+    <div id="channel-section">
       <a
-        class="btn btn-secondary"
-        id="channelButton"
+        id="channel-button"
+        class="btn"
         href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
         target="_blank"
         rel="noopener noreferrer"
       >
-        ◈ ACESSAR CANAL DO WHATSAPP
+        ◈ ACESSAR CANAL WHATSAPP
       </a>
 
-      <!-- VERIFICAÇÃO AUTOMÁTICA -->
-      <div
-        class="verification"
-        id="verification"
-        role="status"
-        aria-live="polite"
-        hidden
-      >
-        <span class="spinner" id="spinner"></span>
-        <span id="verificationText">VERIFICANDO...</span>
+      <p class="status">
+        Depois de visitar o canal, volte para esta página.
+      </p>
+    </div>
+
+    <!-- VERIFICAÇÃO VISUAL -->
+    <div id="verification-section" class="hidden">
+      <div class="spinner"></div>
+
+      <p id="verification-status" class="status">
+        VERIFICANDO...
+      </p>
+
+      <div class="progress">
+        <div id="verification-progress" class="progress-fill"></div>
       </div>
+    </div>
 
-      <!-- GERADOR DESBLOQUEADO APÓS A ANIMAÇÃO -->
-      <div id="generator" hidden>
-        <p class="description" style="margin-top: 20px;">
-          Acesso liberado! Você já pode gerar sua key.
-        </p>
+    <!-- GERADOR LIBERADO -->
+    <div id="generator-section" class="hidden">
 
-        <button
-          class="btn btn-primary"
-          id="generateButton"
-          type="button"
-        >
-          🔑 GERAR KEY
+      <p class="description">
+        Acesso liberado! Escolha uma opção abaixo.
+      </p>
+
+      <!-- BOTÃO MOSTRA SOMENTE BAIXAR PROXY -->
+      <a
+        id="download-proxy"
+        class="btn secondary"
+        href="https://www.mediafire.com/file/4bl2cxzi3yq78l7/PROXY_TNT_EXTERNAL.zip/file"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ⇩ BAIXAR PROXY
+      </a>
+
+      <button id="generate-button" class="btn" type="button">
+        ⚡ GERAR KEY
+      </button>
+
+      <div id="generation-status" class="status" aria-live="polite"></div>
+
+      <div id="key-box" class="key-box hidden">
+        <div class="key-label">SUA KEY</div>
+
+        <div id="key-result"></div>
+
+        <button id="copy-button" class="btn secondary" type="button">
+          ▣ COPIAR KEY
         </button>
       </div>
+    </div>
 
-      <p class="message" id="message" role="status" aria-live="polite">
-        Acesse o canal para continuar.
-      </p>
+    <!-- REDES SOCIAIS -->
+    <div class="socials">
+      <a
+        href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+        target="_blank"
+        rel="noopener noreferrer"
+      >▶ YOUTUBE</a>
 
-      <p class="notice">
-        A liberação é automática após o retorno ao site.
-        Ela não confirma se você realmente seguiu o canal.
-      </p>
+      <a
+        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+        target="_blank"
+        rel="noopener noreferrer"
+      >◈ WHATSAPP</a>
+    </div>
 
-      <div class="divider"></div>
+    <footer>TNT APK 2.0 · INTERFACE DIGITAL</footer>
+  </section>
+</main>
 
-      <div class="socials">
-        <a
-          href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ▶ YOUTUBE
-        </a>
+<script>
+(() => {
+  "use strict";
 
-        <a
-          href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ◈ WHATSAPP
-        </a>
-      </div>
+  const ENDPOINT = "https://proxy-90bc.onrender.com/getkey";
 
-    </section>
+  const channelButton = document.getElementById("channel-button");
+  const channelSection = document.getElementById("channel-section");
+  const verificationSection = document.getElementById("verification-section");
+  const verificationStatus = document.getElementById("verification-status");
+  const verificationProgress = document.getElementById("verification-progress");
+  const generatorSection = document.getElementById("generator-section");
+  const generateButton = document.getElementById("generate-button");
+  const generationStatus = document.getElementById("generation-status");
+  const keyBox = document.getElementById("key-box");
+  const keyResult = document.getElementById("key-result");
+  const copyButton = document.getElementById("copy-button");
+  const celebration = document.getElementById("celebration");
+  const shards = document.getElementById("shards");
 
-    <footer>
-      TNT APK 2.0 · PAINEL OFICIAL
-    </footer>
-  </main>
+  let verificationStarted = false;
+  let pageWasHidden = false;
+  let celebrationTimer = null;
 
-  <script>
-    // ENDEREÇO DO GERADOR DE KEY
-    const KEY_ENDPOINT =
-      "https://proxy-90bc.onrender.com/getkey";
-
-    const video = document.getElementById("bgVideo");
-    const channelButton = document.getElementById("channelButton");
-    const verification = document.getElementById("verification");
-    const verificationText =
-      document.getElementById("verificationText");
-    const spinner = document.getElementById("spinner");
-    const generator = document.getElementById("generator");
-    const generateButton = document.getElementById("generateButton");
-    const message = document.getElementById("message");
-
-    let verificationStarted = false;
-    let unlocked = false;
-
-    /*
-      O clique no canal abre uma nova aba.
-      Ao voltar para esta página, a animação começa.
-    */
-    channelButton.addEventListener("click", () => {
+  // A verificação é visual e não confirma inscrição no canal.
+  channelButton.addEventListener("click", () => {
+    try {
       sessionStorage.setItem("tnt_channel_opened", "1");
-    });
+    } catch (_) {}
+  });
 
-    function checkReturnFromChannel() {
-      const openedChannel =
-        sessionStorage.getItem("tnt_channel_opened") === "1";
+  function startVerification() {
+    if (verificationStarted) return;
 
-      if (
-        openedChannel &&
-        !verificationStarted &&
-        !unlocked
-      ) {
-        sessionStorage.removeItem("tnt_channel_opened");
-        startVerification();
-      }
-    }
+    let visited = false;
 
-    function startVerification() {
-      if (verificationStarted || unlocked) return;
+    try {
+      visited = sessionStorage.getItem("tnt_channel_opened") === "1";
+    } catch (_) {}
 
-      verificationStarted = true;
+    if (!visited) return;
 
-      channelButton.hidden = true;
-      verification.hidden = false;
-      generator.hidden = true;
+    verificationStarted = true;
+    channelSection.classList.add("hidden");
+    verificationSection.classList.remove("hidden");
+    verificationProgress.style.width = "0%";
 
-      spinner.className = "spinner";
-      spinner.textContent = "";
-      verificationText.textContent = "VERIFICANDO...";
+    const startedAt = performance.now();
+    const duration = 2600;
 
-      verification.style.color = "#63dcff";
-      verification.style.borderColor =
-        "rgba(0, 170, 255, 0.45)";
+    function updateProgress(now) {
+      const fraction = Math.min((now - startedAt) / duration, 1);
+      verificationProgress.style.width = (fraction * 100) + "%";
 
-      message.textContent =
-        "Aguarde enquanto verificamos o acesso...";
+      if (fraction < 1) {
+        requestAnimationFrame(updateProgress);
+      } else {
+        verificationStatus.textContent = "ACESSO LIBERADO!";
 
-      // Animação de verificação
-      setTimeout(() => {
-        verificationText.textContent = "ACESSO LIBERADO!";
-        spinner.className = "success-check";
-        spinner.textContent = "✓";
-
-        verification.style.color = "#65ffbb";
-        verification.style.borderColor =
-          "rgba(35, 255, 164, 0.5)";
-
-        // Mostra o gerador depois da mensagem de sucesso
         setTimeout(() => {
-          verification.hidden = true;
-          generator.hidden = false;
-          unlocked = true;
-
-          message.textContent =
-            "Gerador desbloqueado com sucesso!";
-        }, 900);
-      }, 2500);
+          verificationSection.classList.add("hidden");
+          generatorSection.classList.remove("hidden");
+        }, 650);
+      }
     }
 
-    // Detecta quando a pessoa volta da outra aba
-    window.addEventListener("focus", checkReturnFromChannel);
-    window.addEventListener("pageshow", checkReturnFromChannel);
+    requestAnimationFrame(updateProgress);
+  }
 
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) {
-        checkReturnFromChannel();
+  window.addEventListener("focus", startVerification);
 
-        if (video.paused) {
-          startBackgroundVideo();
-        }
-      }
-    });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      pageWasHidden = true;
+    } else if (pageWasHidden) {
+      pageWasHidden = false;
+      startVerification();
+    }
+  });
 
-    // ABRE O GERADOR DE KEY
-    generateButton.addEventListener("click", () => {
-      if (!unlocked) return;
+  window.addEventListener("pageshow", startVerification);
 
-      const newTab = window.open(
-        KEY_ENDPOINT,
-        "_blank",
-        "noopener,noreferrer"
+  // Explosão neon e chave holográfica
+  function showCelebration() {
+    shards.replaceChildren();
+    celebration.classList.remove("hidden");
+
+    const count = 46;
+
+    for (let i = 0; i < count; i++) {
+      const shard = document.createElement("span");
+      shard.className = "shard";
+
+      shard.style.setProperty(
+        "--angle",
+        (i * (360 / count)) + "deg"
       );
 
-      if (!newTab) {
-        message.textContent =
-          "A nova aba foi bloqueada. Permita pop-ups e tente novamente.";
-        return;
+      shard.style.setProperty(
+        "--distance",
+        (120 + Math.random() * 230) + "px"
+      );
+
+      shards.appendChild(shard);
+    }
+
+    clearTimeout(celebrationTimer);
+
+    celebrationTimer = setTimeout(() => {
+      celebration.classList.add("hidden");
+      shards.replaceChildren();
+    }, 1900);
+  }
+
+  function findKey(data) {
+    if (typeof data === "string") return data.trim();
+
+    if (data && typeof data === "object") {
+      const fields = [
+        "key", "KEY", "result", "token", "code", "message"
+      ];
+
+      for (const field of fields) {
+        if (
+          typeof data[field] === "string" &&
+          data[field].trim()
+        ) {
+          return data[field].trim();
+        }
+      }
+    }
+
+    return "";
+  }
+
+  // Solicita a key ao endpoint
+  generateButton.addEventListener("click", async () => {
+    generateButton.disabled = true;
+    generationStatus.textContent = "CONECTANDO AO GERADOR...";
+    keyBox.classList.add("hidden");
+    keyResult.textContent = "";
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "GET",
+        headers: {
+          "Accept": "application/json, text/plain, */*"
+        }
+      });
+
+      const body = await response.text();
+
+      if (!response.ok) {
+        throw new Error("Erro HTTP " + response.status);
       }
 
-      message.textContent =
-        "Solicitação do gerador aberta em outra aba.";
-    });
+      let data = body;
 
-    // INICIA O VÍDEO DE FUNDO
-    async function startBackgroundVideo() {
       try {
-        video.muted = true;
-        await video.play();
-      } catch (error) {
-        console.warn(
-          "O navegador bloqueou a reprodução automática do vídeo.",
-          error
-        );
-      }
-    }
+        data = JSON.parse(body);
+      } catch (_) {}
 
-    startBackgroundVideo();
+      const key = findKey(data);
 
-    video.addEventListener("error", () => {
-      console.error(
-        "Vídeo não encontrado. Confira se background.mp4 está na pasta principal."
-      );
-    });
-
-    // PARTÍCULAS ANIMADAS
-    const canvas = document.getElementById("scene");
-    const ctx = canvas.getContext("2d");
-
-    let particles = [];
-    let width = 0;
-    let height = 0;
-    let animationFrame = 0;
-
-    function resizeCanvas() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-      width = window.innerWidth;
-      height = window.innerHeight;
-
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-
-      canvas.style.width = width + "px";
-      canvas.style.height = height + "px";
-
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const count = Math.min(
-        75,
-        Math.max(25, Math.floor((width * height) / 16000))
-      );
-
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 1.8 + 0.4,
-        speed: Math.random() * 0.45 + 0.12,
-        alpha: Math.random() * 0.55 + 0.15
-      }));
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, width, height);
-
-      for (const p of particles) {
-        p.y -= p.speed;
-
-        if (p.y < -5) {
-          p.y = height + 5;
-          p.x = Math.random() * width;
-        }
-
-        ctx.beginPath();
-        ctx.arc(
-          p.x,
-          p.y,
-          p.radius,
-          0,
-          Math.PI * 2
-        );
-
-        ctx.fillStyle =
-          `rgba(60, 190, 255, ${p.alpha})`;
-
-        ctx.shadowColor = "rgba(0, 160, 255, 0.7)";
-        ctx.shadowBlur = 8;
-        ctx.fill();
+      if (!key) {
+        throw new Error("Nenhuma key reconhecida na resposta.");
       }
 
-      ctx.shadowBlur = 0;
-      animationFrame = requestAnimationFrame(drawParticles);
+      keyResult.textContent = key;
+      keyBox.classList.remove("hidden");
+      generationStatus.textContent = "GERAÇÃO CONCLUÍDA!";
+
+      showCelebration();
+
+    } catch (error) {
+      console.error("Erro ao gerar key:", error);
+
+      generationStatus.textContent =
+        "Não foi possível obter a key. Tente novamente ou verifique o servidor.";
+
+    } finally {
+      generateButton.disabled = false;
+    }
+  });
+
+  // Copiar resultado
+  copyButton.addEventListener("click", async () => {
+    const key = keyResult.textContent.trim();
+    if (!key) return;
+
+    try {
+      await navigator.clipboard.writeText(key);
+      copyButton.textContent = "✓ KEY COPIADA!";
+
+    } catch (_) {
+      const temp = document.createElement("textarea");
+      temp.value = key;
+      temp.style.position = "fixed";
+      temp.style.opacity = "0";
+
+      document.body.appendChild(temp);
+      temp.select();
+
+      const copied = document.execCommand("copy");
+      temp.remove();
+
+      copyButton.textContent = copied
+        ? "✓ KEY COPIADA!"
+        : "COPIE MANUALMENTE";
     }
 
-    window.addEventListener("resize", resizeCanvas);
+    setTimeout(() => {
+      copyButton.textContent = "▣ COPIAR KEY";
+    }, 1800);
+  });
 
-    resizeCanvas();
-    drawParticles();
+  // Partículas neon de fundo
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
 
-    window.addEventListener("pagehide", () => {
-      cancelAnimationFrame(animationFrame);
-    });
-  </script>
+  let particles = [];
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+
+  function resizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(75, Math.floor(width / 12));
+
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.8 + .4,
+      speed: Math.random() * .45 + .12,
+      alpha: Math.random() * .65 + .2
+    }));
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const p of particles) {
+      p.y -= p.speed;
+
+      if (p.y < -5) {
+        p.y = height + 5;
+        p.x = Math.random() * width;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(0, 191, 255, " + p.alpha + ")";
+      ctx.shadowBlur = 9;
+      ctx.shadowColor = "#008cff";
+      ctx.fill();
+    }
+
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(animateParticles);
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+  animateParticles();
+
+  const video = document.getElementById("background-video");
+  video.play().catch(() => {});
+})();
+</script>
+
 </body>
-      </html>
+                                        </html>
   
