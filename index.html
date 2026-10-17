@@ -1,114 +1,156 @@
-
-<section class="card">
-  <div class="card-heading">
-    <div class="icon-box">🔐</div>
-    <div>
-      <h2>Desbloquear Gerador</h2>
-      <p class="muted">Entre no canal para continuar.</p>
-    </div>
-  </div>
-
-  <div id="whatsappGate">
-    <a
-      class="btn btn-green"
-      href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-      target="_blank"
-      rel="noopener noreferrer"
-      id="joinChannel">
-      💬 ENTRAR NO CANAL
-    </a>
-
-    <button
-      class="btn btn-primary"
-      id="verifyButton"
-      type="button">
-      🔎 JÁ ENTREI — VERIFICAR
-    </button>
-
-    <p class="note" id="verifyStatus" aria-live="polite">
-      Acesse o canal e depois volte aqui para continuar.
-    </p>
-  </div>
-
-  <div id="keyArea" hidden>
-    <div class="statusbar">
-      <span>Etapa do canal</span>
-      <span class="status-ready">✓ CONFIRMADA MANUALMENTE</span>
-    </div>
-
-    <p class="muted">
-      Você pode continuar para o serviço de geração de keys.
-    </p>
-
-    <a
-      class="btn btn-primary"
-      href="https://proxy-90bc.onrender.com/getkey"
-      target="_blank"
-      rel="noopener noreferrer"
-      id="generateKey">
-      ⚡ GERAR MINHA KEY
-    </a>
-  </div>
-</section>
-
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030b1c">
+<title>TNT APK 2.0 • Gerador de Key</title>
 <style>
-[hidden] {
-  display: none !important;
-}
-
-#verifyButton:disabled {
-  opacity: .7;
-  cursor: wait;
-}
-
-.spinner {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #ffffff55;
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+:root{--blue:#087cff;--cyan:#19c9ff;--green:#00e676;--red:#ff2638;--ink:#030b1c;--muted:#b9cbe5}
+*{box-sizing:border-box}
+html{min-height:100%;background:var(--ink)}
+body{margin:0;min-height:100vh;overflow-x:hidden;color:#f7fbff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 50% 18%,#062b67 0%,#031633 42%,#020817 78%,#01040b 100%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:linear-gradient(#1c7ee61a 1px,transparent 1px),linear-gradient(90deg,#1c7ee61a 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 95%);z-index:0}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.aurora{position:fixed;inset:-25%;z-index:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,#0077ff14 50deg,transparent 105deg,#00e5ff12 180deg,transparent 260deg);filter:blur(30px);animation:aurora 22s linear infinite}
+@keyframes aurora{to{transform:rotate(360deg)}}
+.wrap{position:relative;z-index:1;width:min(680px,100%);margin:0 auto;padding:34px 20px 26px}
+.brand{text-align:center;margin:12px 0 30px}
+.logo{font-weight:950;font-size:clamp(2.65rem,10vw,4.8rem);letter-spacing:-.065em;line-height:1.05;text-shadow:0 0 18px #008cff80,0 0 40px #0077ff40}
+.logo .blue{color:#0789ff;text-shadow:0 0 20px #0789ffb0}
+.tagline{font-size:clamp(.9rem,3vw,1.25rem);font-weight:850;letter-spacing:.28em;margin-top:17px;color:#d5e8ff}
+.online{display:inline-flex;align-items:center;gap:12px;border:2px solid #00ed91;border-radius:50px;padding:12px 27px;margin-top:26px;color:#00f39a;font-weight:900;font-size:1.1rem;box-shadow:0 0 22px #00ed9124,inset 0 0 18px #00ed9112}
+.dot{width:12px;height:12px;border-radius:50%;background:#00ff91;box-shadow:0 0 15px #00ff91;animation:pulse 1.3s infinite}
+@keyframes pulse{50%{opacity:.45;transform:scale(.78)}}
+.card{border:1.5px solid #168de6;border-radius:38px;padding:clamp(24px,5vw,40px) clamp(20px,4.5vw,32px);background:linear-gradient(145deg,#06152beF,#020a18f5);box-shadow:0 0 0 1px #0088ff18,0 0 28px #007bff22,inset 0 0 32px #006eff0a;backdrop-filter:blur(12px);position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;top:0;left:-80%;width:55%;height:2px;background:linear-gradient(90deg,transparent,#51e8ff,transparent);animation:scan 5s linear infinite}
+@keyframes scan{to{left:140%}}
+h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:950;letter-spacing:-.035em}
+.intro{text-align:center;color:var(--muted);font-size:clamp(1rem,3.6vw,1.3rem);line-height:1.65;margin:20px auto 28px;max-width:520px}
+.btn{width:100%;min-height:66px;border:0;border-radius:24px;display:flex;justify-content:center;align-items:center;gap:10px;padding:17px 15px;color:white;text-decoration:none;text-align:center;font-size:clamp(1rem,3.8vw,1.3rem);font-weight:900;cursor:pointer;transition:transform .18s,filter .18s,box-shadow .18s;box-shadow:0 9px 25px #0004}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn:active{transform:scale(.99)}
+.primary{background:linear-gradient(110deg,#0759ff,#058fff);box-shadow:0 8px 28px #006dff40}
+.whatsapp{background:linear-gradient(110deg,#009844,#00d568);margin-top:13px}
+.youtube{background:linear-gradient(110deg,#c90012,#ff0618);margin-top:13px}
+.section-title{text-align:center;color:#c8e1ff;letter-spacing:.18em;font-size:1.25rem;font-weight:900;margin:30px 0 15px}
+.small{font-size:.88rem;color:#91a9c8;line-height:1.6;text-align:center;margin:18px 0 0}
+.hidden{display:none!important}
+.panel{border:1px solid #1a8fe6;border-radius:22px;background:#03132be8;padding:20px;margin-top:20px;animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.steps{display:grid;gap:11px;margin:18px 0}
+.step{display:flex;gap:12px;align-items:flex-start;color:#dceaff;line-height:1.45}
+.num{flex:0 0 29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#087cff2b;border:1px solid #148bff;color:#69caff;font-weight:900}
+.outline{background:#071b35;border:1px solid #258ee7;box-shadow:none}
+.verify{background:linear-gradient(110deg,#0069d9,#00a5ff)}
+.status{min-height:28px;text-align:center;color:#9fd7ff;font-size:.95rem;margin:14px 0 0}
+.spinner{display:inline-block;width:17px;height:17px;border:2px solid #bceaff55;border-top-color:#65e8ff;border-radius:50%;vertical-align:-4px;margin-right:8px;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.keybox{background:#020916;border:1px dashed #18bfff;border-radius:15px;padding:18px 12px;text-align:center;color:#70edff;font-size:1.12rem;font-weight:850;overflow-wrap:anywhere;margin:16px 0;min-height:58px}
+.footer{text-align:center;color:#7f94b2;letter-spacing:.24em;margin:42px 0 4px}
+.footer strong{display:block;color:#39aaff;font-size:1.5rem;letter-spacing:.18em;margin-top:12px}
+.footer-note{text-align:center;color:#6e829f;font-size:.75rem;margin-top:15px}
+@media(max-width:420px){.wrap{padding:24px 14px}.card{border-radius:29px}.btn{border-radius:19px;min-height:61px}.logo{font-size:2.8rem}.tagline{letter-spacing:.2em}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
+</head>
+<body>
+<canvas id="scene" aria-hidden="true"></canvas><div class="aurora" aria-hidden="true"></div>
+<main class="wrap">
+  <header class="brand">
+    <div class="logo"><span>TNT</span> <span class="blue">APK</span> <span>2.0</span></div>
+    <div class="tagline">GERADOR DE KEY</div>
+    <div class="online"><span class="dot"></span> ONLINE</div>
+  </header>
 
+  <section class="card" aria-labelledby="main-title">
+    <h1 id="main-title">🔑 GERE SUA KEY</h1>
+    <p class="intro">Acesse a etapa do canal e confirme para liberar o gerador. É grátis!</p>
+
+    <button class="btn primary" id="startBtn" type="button">⚡ GERAR KEY</button>
+
+    <div id="gate" class="panel hidden">
+      <h2 style="text-align:center;margin:0;font-size:1.35rem">📢 UMA ETAPA RÁPIDA</h2>
+      <p class="intro" style="font-size:1rem;margin:12px auto">Entre no canal oficial do WhatsApp e depois volte aqui para continuar.</p>
+      <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">💬 ENTRAR NO CANAL DO WHATSAPP ↗</a>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><span>Toque no botão verde e abra o canal.</span></div>
+        <div class="step"><span class="num">2</span><span>No WhatsApp, toque em <strong>Seguir</strong> (se ainda não estiver seguindo).</span></div>
+        <div class="step"><span class="num">3</span><span>Volte para esta página e toque em <strong>JÁ ENTREI — VERIFICAR</strong>.</span></div>
+      </div>
+      <button class="btn verify" id="verifyBtn" type="button">🔎 JÁ ENTREI — VERIFICAR</button>
+      <p class="status" id="verifyStatus" role="status" aria-live="polite">A confirmação é manual; este site não consegue consultar sua inscrição no WhatsApp.</p>
+    </div>
+
+    <div id="generator" class="panel hidden">
+      <h2 style="text-align:center;margin:0;font-size:1.4rem">✅ ETAPA CONCLUÍDA</h2>
+      <p class="intro" style="font-size:1rem;margin:10px auto 18px">O gerador foi liberado. Toque abaixo para solicitar sua key.</p>
+      <button class="btn primary" id="generateBtn" type="button">🔐 GERAR MINHA KEY</button>
+      <div id="keyResult" class="keybox hidden" role="status" aria-live="polite"></div>
+      <p class="small">A solicitação abre o serviço de geração em outra aba. Se ele não carregar, verifique sua conexão e tente novamente.</p>
+    </div>
+
+    <div class="section-title">NOSSAS REDES</div>
+    <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">💬 CANAL DO WHATSAPP</a>
+    <a class="btn youtube" href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk" target="_blank" rel="noopener noreferrer">▶ CANAL DO YOUTUBE</a>
+    <p class="small">O botão de verificação é uma confirmação manual, não uma checagem real de associação ao canal.</p>
+  </section>
+
+  <footer class="footer">CRIADO POR<strong>TNT APK 2.0</strong></footer>
+  <div class="footer-note">Efeitos animados • Interface adaptável para celular e computador</div>
+</main>
 <script>
-const verifyButton = document.getElementById("verifyButton");
-const verifyStatus = document.getElementById("verifyStatus");
-const keyArea = document.getElementById("keyArea");
+(() => {
+  const $ = id => document.getElementById(id);
+  const startBtn = $('startBtn'), gate = $('gate'), generator = $('generator');
+  startBtn.addEventListener('click', () => {
+    gate.classList.remove('hidden');
+    gate.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  $('verifyBtn').addEventListener('click', () => {
+    const button = $('verifyBtn'), status = $('verifyStatus');
+    button.disabled = true;
+    button.innerHTML = '<span class="spinner"></span> VERIFICANDO...';
+    status.innerHTML = '<span class="spinner"></span> Conferindo sua confirmação...';
+    window.setTimeout(() => {
+      button.disabled = false;
+      button.textContent = '✅ CONFIRMAÇÃO MANUAL CONCLUÍDA';
+      status.textContent = 'Acesso liberado por confirmação manual. A inscrição não foi verificada pelo WhatsApp.';
+      generator.classList.remove('hidden');
+      generator.scrollIntoView({behavior:'smooth',block:'nearest'});
+    }, 1700);
+  });
+  $('generateBtn').addEventListener('click', () => {
+    const result = $('keyResult');
+    result.classList.remove('hidden');
+    result.textContent = 'Abrindo o serviço de geração de key…';
+    const win = window.open('https://proxy-90bc.onrender.com/getkey', '_blank', 'noopener,noreferrer');
+    if (!win) result.textContent = 'O navegador bloqueou a nova aba. Permita pop-ups para este site e toque em “GERAR MINHA KEY” novamente.';
+  });
 
-let checking = false;
-
-verifyButton.addEventListener("click", function () {
-  if (checking) return;
-
-  checking = true;
-  verifyButton.disabled = true;
-  verifyButton.innerHTML =
-    '<span class="spinner"></span> VERIFICANDO ACESSO...';
-
-  verifyStatus.textContent =
-    "Conferindo sua etapa. Aguarde um instante...";
-
-  setTimeout(function () {
-    verifyButton.disabled = false;
-    verifyButton.textContent = "✓ ETAPA CONCLUÍDA";
-    verifyStatus.textContent =
-      "Etapa confirmada manualmente. A inscrição não foi verificada pelo WhatsApp.";
-    keyArea.hidden = false;
-    checking = false;
-
-    keyArea.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  }, 1800);
-});
-  </script>
-  
+  // Fundo animado: partículas luminosas e rastros em movimento.
+  const canvas = $('scene'), ctx = canvas.getContext('2d');
+  let w=0,h=0,dpr=1,particles=[];
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2); w=innerWidth; h=innerHeight;
+    canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);
+    canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count=Math.min(95,Math.max(35,Math.floor(w*h/10500)));
+    particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.4,v:Math.random()*.45+.12,a:Math.random()*.55+.18,dr:(Math.random()-.5)*.28,trail:Math.random()<.16}));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of particles){
+      p.y-=p.v;p.x+=p.dr;
+      if(p.y<-10){p.y=h+10;p.x=Math.random()*w}
+      if(p.x<-10)p.x=w+10;if(p.x>w+10)p.x=-10;
+      ctx.beginPath();ctx.fillStyle=`rgba(${p.trail?'0,190,255':'91,165,255'},${p.a})`;ctx.shadowBlur=p.trail?15:7;ctx.shadowColor=p.trail?'#00bfff':'#268cff';ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+      if(p.trail){ctx.beginPath();ctx.strokeStyle=`rgba(0,170,255,${p.a*.45})`;ctx.lineWidth=1;ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.dr*9,p.y+18);ctx.stroke()}
+    }
+    ctx.shadowBlur=0;requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize,{passive:true});resize();draw();
+})();
+</script>
+</body>
+</html>
