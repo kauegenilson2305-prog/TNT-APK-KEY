@@ -1,247 +1,114 @@
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020612">
-<title>TNT APK 2.0 - Gerador de Key</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  min-height:100vh;
-  font-family:Arial,Helvetica,sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(0,110,255,.25),transparent 35%),
-    radial-gradient(circle at 20% 80%,rgba(0,60,255,.18),transparent 30%),
-    linear-gradient(145deg,#020612,#00112c 45%,#00030a);
-  overflow-x:hidden;
-  padding:25px 0;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.35;
-  background-image:
-    linear-gradient(rgba(0,120,255,.08) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,120,255,.08) 1px,transparent 1px);
-  background-size:35px 35px;
-}
-
-.container{
-  width:min(94%,620px);
-  margin:auto;
-  text-align:center;
-  position:relative;
-  z-index:1;
-}
-
-.logo-area{margin-bottom:20px}
-
-.logo{
-  font-size:clamp(42px,10vw,78px);
-  font-weight:1000;
-  letter-spacing:-3px;
-  line-height:.95;
-  text-transform:uppercase;
-  text-shadow:0 0 5px #008cff,0 0 20px rgba(0,100,255,.7);
-}
-
-.logo span{color:#008cff}
-
-.subtitle{
-  margin-top:12px;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:8px;
-  color:#dcecff;
-  text-shadow:0 0 12px #008cff;
-}
-
-.online{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  margin-top:18px;
-  padding:8px 22px;
-  border:1px solid #00ff88;
-  border-radius:30px;
-  color:#00ff88;
-  font-weight:bold;
-  box-shadow:0 0 10px rgba(0,255,120,.35);
-}
-
-.online-dot{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:#00ff66;
-  box-shadow:0 0 14px #00ff66;
-}
-
-.card{
-  margin-top:28px;
-  padding:34px 24px;
-  border:1px solid rgba(0,150,255,.7);
-  border-radius:28px;
-  background:linear-gradient(145deg,rgba(8,20,40,.95),rgba(0,5,15,.96));
-  box-shadow:0 0 15px rgba(0,100,255,.35),0 0 50px rgba(0,80,255,.18);
-}
-
-.card h2{
-  font-size:31px;
-  margin-bottom:12px;
-  text-shadow:0 0 12px rgba(0,150,255,.8);
-}
-
-.description{
-  color:#9cb8d5;
-  line-height:1.5;
-  font-size:16px;
-  margin-bottom:25px;
-}
-
-.generate-btn{
-  display:block;
-  width:100%;
-  border:0;
-  border-radius:18px;
-  padding:21px 18px;
-  cursor:pointer;
-  color:white;
-  font-size:20px;
-  font-weight:900;
-  text-decoration:none;
-  background:linear-gradient(90deg,#005eff,#008cff,#005eff);
-  box-shadow:0 0 12px #0077ff,0 0 35px rgba(0,100,255,.55);
-  transition:.2s;
-}
-
-.generate-btn:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.12);
-}
-
-.social-title{
-  margin:30px 0 15px;
-  font-size:19px;
-  font-weight:900;
-  color:#b9dcff;
-  letter-spacing:2px;
-}
-
-.social{
-  display:flex;
-  flex-direction:column;
-  gap:13px;
-}
-
-.social a{
-  text-decoration:none;
-  color:white;
-  font-weight:900;
-  font-size:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  padding:17px;
-  border-radius:16px;
-  transition:.2s;
-}
-
-.whatsapp{background:linear-gradient(90deg,#008f3d,#00c95a)}
-.youtube{background:linear-gradient(90deg,#a80000,#ff0000)}
-
-.social a:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.15);
-}
-
-.footer{
-  margin-top:30px;
-  color:#7891ad;
-  font-size:13px;
-  letter-spacing:3px;
-}
-
-.footer strong{
-  display:block;
-  margin-top:7px;
-  color:#36aaff;
-  font-size:16px;
-}
-
-@media(max-width:480px){
-  .container{padding-top:10px}
-  .card{padding:27px 17px}
-  .subtitle{font-size:14px;letter-spacing:5px}
-  .card h2{font-size:26px}
-}
-</style>
-</head>
-
-<body>
-<div class="container">
-
-  <header class="logo-area">
-    <div class="logo">TNT <span>APK</span> 2.0</div>
-    <div class="subtitle">GERADOR DE KEY</div>
-    <div class="online">
-      <span class="online-dot"></span>
-      ONLINE
+<section class="card">
+  <div class="card-heading">
+    <div class="icon-box">🔐</div>
+    <div>
+      <h2>Desbloquear Gerador</h2>
+      <p class="muted">Entre no canal para continuar.</p>
     </div>
-  </header>
+  </div>
 
-  <main class="card">
-    <h2>🔑 GERE SUA KEY</h2>
+  <div id="whatsappGate">
+    <a
+      class="btn btn-green"
+      href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+      target="_blank"
+      rel="noopener noreferrer"
+      id="joinChannel">
+      💬 ENTRAR NO CANAL
+    </a>
 
-    <p class="description">
-      Toque no botão abaixo para continuar para o gerador
-      de key do <strong>TNT APK 2.0</strong>.
+    <button
+      class="btn btn-primary"
+      id="verifyButton"
+      type="button">
+      🔎 JÁ ENTREI — VERIFICAR
+    </button>
+
+    <p class="note" id="verifyStatus" aria-live="polite">
+      Acesse o canal e depois volte aqui para continuar.
+    </p>
+  </div>
+
+  <div id="keyArea" hidden>
+    <div class="statusbar">
+      <span>Etapa do canal</span>
+      <span class="status-ready">✓ CONFIRMADA MANUALMENTE</span>
+    </div>
+
+    <p class="muted">
+      Você pode continuar para o serviço de geração de keys.
     </p>
 
     <a
-      class="generate-btn"
+      class="btn btn-primary"
       href="https://proxy-90bc.onrender.com/getkey"
       target="_blank"
-      rel="noopener noreferrer">
-      🔑 &nbsp; GERAR UMA KEY
+      rel="noopener noreferrer"
+      id="generateKey">
+      ⚡ GERAR MINHA KEY
     </a>
+  </div>
+</section>
 
-    <div class="social-title">NOSSAS REDES</div>
+<style>
+[hidden] {
+  display: none !important;
+}
 
-    <div class="social">
-      <a
-        class="whatsapp"
-        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-        target="_blank"
-        rel="noopener noreferrer">
-        💬 ENTRAR NO CANAL DO WHATSAPP <span>›</span>
-      </a>
+#verifyButton:disabled {
+  opacity: .7;
+  cursor: wait;
+}
 
-      <a
-        class="youtube"
-        href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
-        target="_blank"
-        rel="noopener noreferrer">
-        ▶ ENTRAR NO CANAL DO YOUTUBE <span>›</span>
-      </a>
-    </div>
-  </main>
+.spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #ffffff55;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
 
-  <footer class="footer">
-    CRIADO POR
-    <strong>TNT APK 2.0</strong>
-  </footer>
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
 
-</div>
-</body>
-    </html>
-    
+<script>
+const verifyButton = document.getElementById("verifyButton");
+const verifyStatus = document.getElementById("verifyStatus");
+const keyArea = document.getElementById("keyArea");
+
+let checking = false;
+
+verifyButton.addEventListener("click", function () {
+  if (checking) return;
+
+  checking = true;
+  verifyButton.disabled = true;
+  verifyButton.innerHTML =
+    '<span class="spinner"></span> VERIFICANDO ACESSO...';
+
+  verifyStatus.textContent =
+    "Conferindo sua etapa. Aguarde um instante...";
+
+  setTimeout(function () {
+    verifyButton.disabled = false;
+    verifyButton.textContent = "✓ ETAPA CONCLUÍDA";
+    verifyStatus.textContent =
+      "Etapa confirmada manualmente. A inscrição não foi verificada pelo WhatsApp.";
+    keyArea.hidden = false;
+    checking = false;
+
+    keyArea.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }, 1800);
+});
+  </script>
+  
