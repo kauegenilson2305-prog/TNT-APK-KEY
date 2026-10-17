@@ -1,198 +1,570 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#030b1c">
-<title>TNT APK 2.0 • Gerador de Key</title>
-<style>
-:root{--blue:#087cff;--cyan:#19c9ff;--green:#00e676;--red:#ff2638;--ink:#030b1c;--muted:#b9cbe5}
-*{box-sizing:border-box}
-html{min-height:100%;background:var(--ink)}
-body{margin:0;min-height:100vh;overflow-x:hidden;color:#f7fbff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 50% 18%,#062b67 0%,#031633 42%,#020817 78%,#01040b 100%)}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(#1c7ee61a 1px,transparent 1px),linear-gradient(90deg,#1c7ee61a 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 95%);z-index:0}
-#scene{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none}
-.video-shade{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(1,8,23,.58),rgba(2,10,26,.76) 52%,rgba(1,5,15,.88));}
-.aurora{position:fixed;inset:-25%;z-index:0;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,#0077ff14 50deg,transparent 105deg,#00e5ff12 180deg,transparent 260deg);filter:blur(30px);animation:aurora 22s linear infinite}
-@keyframes aurora{to{transform:rotate(360deg)}}
-.wrap{position:relative;z-index:1;width:min(680px,100%);margin:0 auto;padding:34px 20px 26px}
-.brand{text-align:center;margin:12px 0 30px}
-.logo{font-weight:950;font-size:clamp(2.65rem,10vw,4.8rem);letter-spacing:-.065em;line-height:1.05;text-shadow:0 0 18px #008cff80,0 0 40px #0077ff40}
-.logo .blue{color:#0789ff;text-shadow:0 0 20px #0789ffb0}
-.tagline{font-size:clamp(.9rem,3vw,1.25rem);font-weight:850;letter-spacing:.28em;margin-top:17px;color:#d5e8ff}
-.online{display:inline-flex;align-items:center;gap:12px;border:2px solid #00ed91;border-radius:50px;padding:12px 27px;margin-top:26px;color:#00f39a;font-weight:900;font-size:1.1rem;box-shadow:0 0 22px #00ed9124,inset 0 0 18px #00ed9112}
-.dot{width:12px;height:12px;border-radius:50%;background:#00ff91;box-shadow:0 0 15px #00ff91;animation:pulse 1.3s infinite}
-@keyframes pulse{50%{opacity:.45;transform:scale(.78)}}
-.card{border:1.5px solid #168de6;border-radius:38px;padding:clamp(24px,5vw,40px) clamp(20px,4.5vw,32px);background:linear-gradient(145deg,#06152beF,#020a18f5);box-shadow:0 0 0 1px #0088ff18,0 0 28px #007bff22,inset 0 0 32px #006eff0a;backdrop-filter:blur(12px);position:relative;overflow:hidden}
-.card:before{content:"";position:absolute;top:0;left:-80%;width:55%;height:2px;background:linear-gradient(90deg,transparent,#51e8ff,transparent);animation:scan 5s linear infinite}
-@keyframes scan{to{left:140%}}
-h1{margin:0;text-align:center;font-size:clamp(1.55rem,5vw,2.25rem);font-weight:950;letter-spacing:-.035em}
-.intro{text-align:center;color:var(--muted);font-size:clamp(1rem,3.6vw,1.3rem);line-height:1.65;margin:20px auto 28px;max-width:520px}
-.btn{width:100%;min-height:66px;border:0;border-radius:24px;display:flex;justify-content:center;align-items:center;gap:10px;padding:17px 15px;color:white;text-decoration:none;text-align:center;font-size:clamp(1rem,3.8vw,1.3rem);font-weight:900;cursor:pointer;transition:transform .18s,filter .18s,box-shadow .18s;box-shadow:0 9px 25px #0004}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.btn:active{transform:scale(.99)}
-.primary{background:linear-gradient(110deg,#0759ff,#058fff);box-shadow:0 8px 28px #006dff40}
-.whatsapp{background:linear-gradient(110deg,#009844,#00d568);margin-top:13px}
-.youtube{background:linear-gradient(110deg,#c90012,#ff0618);margin-top:13px}
-.section-title{text-align:center;color:#c8e1ff;letter-spacing:.18em;font-size:1.25rem;font-weight:900;margin:30px 0 15px}
-.small{font-size:.88rem;color:#91a9c8;line-height:1.6;text-align:center;margin:18px 0 0}
-.hidden{display:none!important}
-.panel{border:1px solid #1a8fe6;border-radius:22px;background:#03132be8;padding:20px;margin-top:20px;animation:rise .35s ease both}
-@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.steps{display:grid;gap:11px;margin:18px 0}
-.step{display:flex;gap:12px;align-items:flex-start;color:#dceaff;line-height:1.45}
-.num{flex:0 0 29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#087cff2b;border:1px solid #148bff;color:#69caff;font-weight:900}
-.outline{background:#071b35;border:1px solid #258ee7;box-shadow:none}
-.verify{background:linear-gradient(110deg,#0069d9,#00a5ff)}
-.status{min-height:28px;text-align:center;color:#9fd7ff;font-size:.95rem;margin:14px 0 0}
-.spinner{display:inline-block;width:17px;height:17px;border:2px solid #bceaff55;border-top-color:#65e8ff;border-radius:50%;vertical-align:-4px;margin-right:8px;animation:spin .7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.keybox{background:#020916;border:1px dashed #18bfff;border-radius:15px;padding:18px 12px;text-align:center;color:#70edff;font-size:1.12rem;font-weight:850;overflow-wrap:anywhere;margin:16px 0;min-height:58px}
-.footer{text-align:center;color:#7f94b2;letter-spacing:.24em;margin:42px 0 4px}
-.footer strong{display:block;color:#39aaff;font-size:1.5rem;letter-spacing:.18em;margin-top:12px}
-.footer-note{text-align:center;color:#6e829f;font-size:.75rem;margin-top:15px}
-@media(max-width:420px){.wrap{padding:24px 14px}.card{border-radius:29px}.btn{border-radius:19px;min-height:61px}.logo{font-size:2.8rem}.tagline{letter-spacing:.2em}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
-</style>
-</head>
-<body>
-<video id="bgVideo" class="bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-  <source src="background.mp4" type="video/mp4">
-</video>
-<div class="video-shade" aria-hidden="true"></div>
-<canvas id="scene" aria-hidden="true"></canvas><div class="aurora" aria-hidden="true"></div>
-<main class="wrap">
-  <header class="brand">
-    <div class="logo"><span>TNT</span> <span class="blue">APK</span> <span>2.0</span></div>
-    <div class="tagline">GERADOR DE KEY</div>
-    <div class="online"><span class="dot"></span> ONLINE</div>
-  </header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020817">
+  <title>TNT APK 2.0 — Gerador de Key</title>
 
-  <section class="card" aria-labelledby="main-title">
-    <h1 id="main-title">🔑 GERE SUA KEY</h1>
-    <p class="intro">Acesse a etapa do canal e confirme para liberar o gerador. É grátis!</p>
+  <style>
+    :root {
+      --blue: #00aaff;
+      --blue-light: #63dcff;
+      --bg: #020817;
+      --text: #eef8ff;
+      --muted: #91a9c5;
+    }
 
-    <button class="btn primary" id="startBtn" type="button">⚡ GERAR KEY</button>
+    * {
+      box-sizing: border-box;
+    }
 
-    <div id="gate" class="panel hidden">
-      <h2 style="text-align:center;margin:0;font-size:1.35rem">📢 UMA ETAPA RÁPIDA</h2>
-      <p class="intro" style="font-size:1rem;margin:12px auto">Entre no canal oficial do WhatsApp e depois volte aqui para continuar.</p>
-      <a class="btn whatsapp" id="channelBtn" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">🔓 ACESSAR O CANAL PARA DESBLOQUEAR ↗</a>
-      <div id="verifyProgress" class="hidden">
-        <div class="steps">
-          <div class="step"><span class="num">✓</span><span>Canal aberto. Aguarde enquanto preparamos o gerador.</span></div>
-        </div>
-        <p class="status" id="verifyStatus" role="status" aria-live="polite"><span class="spinner"></span> VERIFICANDO...</p>
-        <div style="height:8px;background:#10294a;border-radius:20px;overflow:hidden;margin-top:14px"><div id="progressBar" style="height:100%;width:0%;background:linear-gradient(90deg,#087cff,#35f2ff);border-radius:20px;transition:width .25s ease"></div></div>
-      </div>
-    </div>
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
 
-    <div id="generator" class="panel hidden">
-      <h2 style="text-align:center;margin:0;font-size:1.4rem">✅ ETAPA CONCLUÍDA</h2>
-      <p class="intro" style="font-size:1rem;margin:10px auto 18px">O gerador foi liberado. Toque abaixo para solicitar sua key.</p>
-      <button class="btn primary" id="generateBtn" type="button">🔐 GERAR MINHA KEY</button>
-      <div id="keyResult" class="keybox hidden" role="status" aria-live="polite"></div>
-      <p class="small">A solicitação abre o serviço de geração em outra aba. Se ele não carregar, verifique sua conexão e tente novamente.</p>
-    </div>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      isolation: isolate;
+      background: transparent;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-    <div class="section-title">NOSSAS REDES</div>
-    <a class="btn whatsapp" href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x" target="_blank" rel="noopener noreferrer">💬 CANAL DO WHATSAPP</a>
-    <a class="btn youtube" href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk" target="_blank" rel="noopener noreferrer">▶ CANAL DO YOUTUBE</a>
-    <p class="small">A animação inicia quando você retorna do canal. Ela não consegue confirmar automaticamente se você realmente seguiu o canal do WhatsApp.</p>
-  </section>
+    /* VÍDEO DE FUNDO: fica atrás de todo o conteúdo */
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -3;
+      pointer-events: none;
+      background: #020817;
+    }
 
-  <footer class="footer">CRIADO POR<strong>TNT APK 2.0</strong></footer>
-  <div class="footer-note">Efeitos animados • Interface adaptável para celular e computador</div>
-</main>
-<script>
-(() => {
-  const $ = id => document.getElementById(id);
-  const startBtn = $('startBtn'), gate = $('gate'), generator = $('generator');
-  startBtn.addEventListener('click', () => {
-    gate.classList.remove('hidden');
-    gate.scrollIntoView({behavior:'smooth',block:'nearest'});
-  });
-  const channelBtn = $('channelBtn');
-  const verifyProgress = $('verifyProgress');
-  let verificationStarted = false;
-  let verifyTimer = null;
-  function beginVisualVerification() {
-    if (verificationStarted) return;
-    verificationStarted = true;
-    verifyProgress.classList.remove('hidden');
-    const status = $('verifyStatus'), bar = $('progressBar');
-    status.innerHTML = '<span class="spinner"></span> VERIFICANDO...';
-    let progress = 0;
-    verifyTimer = window.setInterval(() => {
-      progress = Math.min(100, progress + 5);
-      bar.style.width = progress + '%';
-      if (progress >= 100) {
-        window.clearInterval(verifyTimer);
-        status.textContent = 'Etapa concluída! Liberando o gerador...';
-        window.setTimeout(() => {
-          generator.classList.remove('hidden');
-          generator.scrollIntoView({behavior:'smooth',block:'nearest'});
-        }, 450);
+    /* Escurece o vídeo sem escondê-lo */
+    .video-shade {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(1, 6, 20, 0.52),
+          rgba(1, 8, 24, 0.68)
+        );
+    }
+
+    /* Partículas animadas sobre o vídeo */
+    #scene {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 430px;
+      position: relative;
+      z-index: 1;
+      margin: auto;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 24px;
+      text-align: center;
+      border: 1px solid rgba(0, 174, 255, 0.65);
+      border-radius: 22px;
+
+      /* Transparência para deixar o vídeo aparecer atrás do cartão */
+      background: linear-gradient(
+        145deg,
+        rgba(5, 20, 43, 0.78),
+        rgba(2, 8, 23, 0.82)
+      );
+
+      -webkit-backdrop-filter: blur(9px);
+      backdrop-filter: blur(9px);
+
+      box-shadow:
+        0 0 18px rgba(0, 153, 255, 0.23),
+        0 0 55px rgba(0, 100, 255, 0.12),
+        inset 0 0 24px rgba(0, 153, 255, 0.045);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      width: 76%;
+      height: 2px;
+      background: var(--blue-light);
+      box-shadow: 0 0 18px var(--blue);
+    }
+
+    .logo {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 174, 255, 0.85);
+      background: rgba(0, 12, 30, 0.7);
+      box-shadow:
+        0 0 18px rgba(0, 170, 255, 0.35),
+        inset 0 0 18px rgba(0, 170, 255, 0.12);
+      color: var(--blue-light);
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-shadow: 0 0 12px var(--blue);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(25px, 7vw, 32px);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 18px rgba(0, 170, 255, 0.45);
+    }
+
+    .subtitle {
+      margin: 9px 0 17px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      margin-bottom: 23px;
+      border: 1px solid rgba(35, 255, 164, 0.3);
+      border-radius: 30px;
+      background: rgba(0, 255, 153, 0.07);
+      color: #65ffbb;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #36ff9d;
+      box-shadow: 0 0 10px #36ff9d;
+      animation: pulse 1.5s infinite;
+    }
+
+    .description {
+      margin: 0 0 22px;
+      color: #c1d3e8;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      width: 100%;
+      min-height: 49px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 16px;
+      margin-top: 13px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      color: #00101d;
+      background: linear-gradient(100deg, #00aaff, #65e1ff);
+      box-shadow: 0 0 22px rgba(0, 170, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 170, 255, 0.48);
+    }
+
+    .btn-secondary {
+      color: #d8f4ff;
+      border-color: rgba(0, 174, 255, 0.55);
+      background: rgba(0, 112, 190, 0.13);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 112, 190, 0.25);
+    }
+
+    .btn:disabled {
+      opacity: 0.48;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .notice {
+      margin: 16px 0 0;
+      color: #91a9c5;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 19px;
+    }
+
+    .socials a {
+      flex: 1;
+      padding: 12px 7px;
+      border: 1px solid rgba(145, 169, 197, 0.22);
+      border-radius: 9px;
+      color: #dceeff;
+      background: rgba(1, 8, 23, 0.35);
+      font-size: 11px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .socials a:hover {
+      border-color: var(--blue);
+      background: rgba(0, 150, 255, 0.13);
+    }
+
+    .divider {
+      height: 1px;
+      margin: 22px 0 15px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 174, 255, 0.45),
+        transparent
+      );
+    }
+
+    footer {
+      margin-top: 16px;
+      color: rgba(205, 225, 245, 0.58);
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .message {
+      min-height: 18px;
+      margin-top: 12px;
+      color: var(--blue-light);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
       }
-    }, 90);
-  }
-  // Ao tocar no link, a verificação visual começa quando a pessoa volta para esta aba.
-  channelBtn.addEventListener('click', () => {
-    try { sessionStorage.setItem('tnt_channel_opened', '1'); } catch(e) {}
-    window.setTimeout(() => {
-      if (!document.hidden) beginVisualVerification();
-    }, 800);
-  });
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      let opened = false;
-      try {
-        opened = sessionStorage.getItem('tnt_channel_opened') === '1';
-        if (opened) sessionStorage.removeItem('tnt_channel_opened');
-      } catch(e) {}
-      if (opened && !verificationStarted) beginVisualVerification();
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
     }
-  });
-  window.addEventListener('focus', () => {
-    let opened = false;
-    try {
-      opened = sessionStorage.getItem('tnt_channel_opened') === '1';
-      if (opened) sessionStorage.removeItem('tnt_channel_opened');
-    } catch(e) {}
-    if (opened && !verificationStarted) beginVisualVerification();
-  });
-  $('generateBtn').addEventListener('click', () => {
-    const result = $('keyResult');
-    result.classList.remove('hidden');
-    result.textContent = 'Abrindo o serviço de geração de key…';
-    const win = window.open('https://proxy-90bc.onrender.com/getkey', '_blank', 'noopener,noreferrer');
-    if (!win) result.textContent = 'O navegador bloqueou a nova aba. Permita pop-ups para este site e toque em “GERAR MINHA KEY” novamente.';
-  });
 
-  // Fundo animado: partículas luminosas e rastros em movimento.
-  const canvas = $('scene'), ctx = canvas.getContext('2d');
-  let w=0,h=0,dpr=1,particles=[];
-  function resize(){
-    dpr=Math.min(window.devicePixelRatio||1,2); w=innerWidth; h=innerHeight;
-    canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);
-    canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
-    const count=Math.min(62,Math.max(24,Math.floor(w*h/15000)));
-    particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.4,v:Math.random()*.45+.12,a:Math.random()*.55+.18,dr:(Math.random()-.5)*.28,trail:Math.random()<.16}));
-  }
-  function draw(){
-    ctx.clearRect(0,0,w,h);
-    for(const p of particles){
-      p.y-=p.v;p.x+=p.dr;
-      if(p.y<-10){p.y=h+10;p.x=Math.random()*w}
-      if(p.x<-10)p.x=w+10;if(p.x>w+10)p.x=-10;
-      ctx.beginPath();ctx.fillStyle=`rgba(${p.trail?'0,190,255':'91,165,255'},${p.a})`;ctx.shadowBlur=p.trail?15:7;ctx.shadowColor=p.trail?'#00bfff':'#268cff';ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
-      if(p.trail){ctx.beginPath();ctx.strokeStyle=`rgba(0,170,255,${p.a*.45})`;ctx.lineWidth=1;ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.dr*9,p.y+18);ctx.stroke()}
+    @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      .card {
+        padding: 25px 18px;
+        border-radius: 18px;
+      }
+
+      .logo {
+        width: 82px;
+        height: 82px;
+        font-size: 21px;
+      }
     }
-    ctx.shadowBlur=0;requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize',resize,{passive:true});resize();draw();
-})();
-</script>
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- O arquivo background.mp4 precisa estar junto deste HTML -->
+  <video
+    id="bgVideo"
+    class="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  >
+    <source src="./background.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-shade" aria-hidden="true"></div>
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="logo" aria-label="TNT APK">TNT<br>APK</div>
+
+      <h1>TNT APK 2.0</h1>
+      <p class="subtitle">Painel de acesso</p>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        SISTEMA ONLINE
+      </div>
+
+      <p class="description">
+        Bem-vindo ao painel oficial.<br>
+        Acesse o canal e depois libere o botão para gerar sua key.
+      </p>
+
+      <a
+        class="btn btn-secondary"
+        id="channelButton"
+        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>◈</span> ACESSAR CANAL DO WHATSAPP
+      </a>
+
+      <button
+        class="btn btn-primary"
+        id="verifyButton"
+        type="button"
+      >
+        ✓ JÁ ACESSEI O CANAL
+      </button>
+
+      <button
+        class="btn btn-primary"
+        id="generateButton"
+        type="button"
+        disabled
+      >
+        🔑 GERAR KEY
+      </button>
+
+      <p class="message" id="message" role="status" aria-live="polite">
+        Acesse o canal e depois toque em “JÁ ACESSEI O CANAL”.
+      </p>
+
+      <p class="notice">
+        A confirmação é manual. Este site não consegue verificar
+        automaticamente se você entrou no canal do WhatsApp.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="socials">
+        <a
+          href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
+          target="_blank"
+          rel="noopener noreferrer"
+        >▶ YOUTUBE</a>
+
+        <a
+          href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+          target="_blank"
+          rel="noopener noreferrer"
+        >◈ WHATSAPP</a>
+      </div>
+    </section>
+
+    <footer>
+      TNT APK 2.0 · PAINEL OFICIAL
+    </footer>
+  </main>
+
+  <script>
+    // CONFIGURAÇÃO DO GERADOR
+    const KEY_ENDPOINT = "https://proxy-90bc.onrender.com/getkey";
+
+    const video = document.getElementById("bgVideo");
+    const verifyButton = document.getElementById("verifyButton");
+    const generateButton = document.getElementById("generateButton");
+    const message = document.getElementById("message");
+
+    // Tenta iniciar o vídeo. Alguns navegadores podem bloquear autoplay.
+    async function startBackgroundVideo() {
+      if (!video) return;
+
+      video.muted = true;
+
+      try {
+        await video.play();
+      } catch (error) {
+        console.warn(
+          "O navegador bloqueou a reprodução automática do vídeo.",
+          error
+        );
+      }
+    }
+
+    startBackgroundVideo();
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && video.paused) {
+        startBackgroundVideo();
+      }
+    });
+
+    video.addEventListener("error", () => {
+      console.error(
+        "Não foi possível carregar background.mp4. Confira o nome e a pasta."
+      );
+    });
+
+    // Liberação manual: não confirma a inscrição real no WhatsApp.
+    verifyButton.addEventListener("click", () => {
+      generateButton.disabled = false;
+      verifyButton.textContent = "✓ ACESSO LIBERADO";
+      verifyButton.disabled = true;
+      message.textContent = "Botão liberado! Agora você pode gerar sua key.";
+    });
+
+    // Abre o endpoint do gerador em uma nova aba.
+    generateButton.addEventListener("click", () => {
+      if (generateButton.disabled) return;
+
+      const newTab = window.open(
+        KEY_ENDPOINT,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      if (!newTab) {
+        message.textContent =
+          "O navegador bloqueou a nova aba. Permita pop-ups e tente novamente.";
+        return;
+      }
+
+      message.textContent = "Solicitação do gerador aberta em outra aba.";
+    });
+
+    // Partículas animadas no fundo.
+    const canvas = document.getElementById("scene");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+    let width = 0;
+    let height = 0;
+    let animationFrame = 0;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.min(
+        75,
+        Math.max(25, Math.floor((width * height) / 16000))
+      );
+
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.8 + 0.4,
+        speed: Math.random() * 0.45 + 0.12,
+        alpha: Math.random() * 0.55 + 0.15
+      }));
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (const p of particles) {
+        p.y -= p.speed;
+
+        if (p.y < -5) {
+          p.y = height + 5;
+          p.x = Math.random() * width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(60, 190, 255, ${p.alpha})`;
+        ctx.shadowColor = "rgba(0, 160, 255, 0.7)";
+        ctx.shadowBlur = 8;
+        ctx.fill();
+      }
+
+      ctx.shadowBlur = 0;
+      animationFrame = requestAnimationFrame(drawParticles);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    drawParticles();
+
+    window.addEventListener("pagehide", () => {
+      cancelAnimationFrame(animationFrame);
+    });
+  </script>
 </body>
-</html>
+        </html>
+  
