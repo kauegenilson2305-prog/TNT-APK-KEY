@@ -5,18 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#050816">
-  <title>TNT APK 2.0 — Gerador</title>
+  <title>TNT APK 2.0 — Desbloqueio</title>
 
   <style>
     :root {
       --blue: #00c8ff;
       --purple: #754bff;
-      --green: #48ffb0;
-      --bg: #050816;
-      --panel: rgba(9, 18, 42, .92);
-      --text: #f2f8ff;
-      --muted: #a5b5ce;
+      --green: #42ffb0;
       --red: #ff7185;
+      --bg: #050816;
+      --panel: rgba(8, 17, 40, .94);
+      --muted: #a5b5ce;
     }
 
     * {
@@ -29,7 +28,7 @@
       min-height: 100vh;
       overflow-x: hidden;
       background: var(--bg);
-      color: var(--text);
+      color: #f2f8ff;
       font-family: Arial, Helvetica, sans-serif;
     }
 
@@ -45,14 +44,14 @@
     #backgroundVideo {
       z-index: -3;
       object-fit: cover;
-      opacity: .23;
+      opacity: .22;
     }
 
     .overlay {
       z-index: -2;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at top, rgba(0, 130, 255, .18), transparent 60%),
+        radial-gradient(ellipse at top, rgba(0, 130, 255, .19), transparent 60%),
         linear-gradient(rgba(3, 6, 20, .58), rgba(3, 6, 20, .96));
     }
 
@@ -66,17 +65,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px 14px;
+      padding: 26px 14px;
     }
 
     .container {
       position: relative;
       width: 100%;
       max-width: 470px;
-      padding: 27px 22px;
+      padding: 25px 21px;
       overflow: hidden;
       text-align: center;
-      border: 1px solid rgba(0, 200, 255, .4);
+      border: 1px solid rgba(0, 200, 255, .42);
       border-radius: 23px;
       background: var(--panel);
       box-shadow: 0 0 28px rgba(0, 150, 255, .14);
@@ -95,24 +94,24 @@
     }
 
     .logo {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 15px;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 14px;
       display: grid;
       place-items: center;
       border: 1px solid var(--blue);
-      border-radius: 24px;
+      border-radius: 22px;
       background: linear-gradient(140deg, #15234c, #070b1b);
       color: #a5edff;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 900;
       text-shadow: 0 0 16px var(--blue);
       box-shadow: 0 0 22px rgba(0, 200, 255, .2);
     }
 
     h1 {
-      font-size: clamp(27px, 7vw, 35px);
-      letter-spacing: 1.5px;
+      font-size: clamp(27px, 7vw, 34px);
+      letter-spacing: 1.4px;
     }
 
     h1 span {
@@ -130,9 +129,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin: 19px 0;
+      margin: 17px 0;
       padding: 8px 13px;
-      border: 1px solid rgba(72, 255, 176, .3);
+      border: 1px solid rgba(66, 255, 176, .3);
       border-radius: 30px;
       color: var(--green);
       font-size: 11px;
@@ -149,24 +148,24 @@
     }
 
     .section {
-      margin-top: 14px;
+      margin-top: 13px;
       padding: 17px;
       border: 1px solid rgba(140, 170, 220, .17);
       border-radius: 15px;
-      background: rgba(3, 9, 25, .55);
+      background: rgba(3, 9, 25, .56);
     }
 
     .section-title {
-      margin-bottom: 9px;
-      font-size: 14px;
-      font-weight: 800;
+      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 900;
     }
 
     .description {
-      margin-bottom: 14px;
+      margin-bottom: 15px;
       color: var(--muted);
       font-size: 12px;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .button {
@@ -216,10 +215,10 @@
     }
 
     .message {
-      margin-top: 10px;
+      margin-top: 11px;
       color: var(--muted);
       font-size: 11px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .message.success {
@@ -230,58 +229,48 @@
       color: var(--red);
     }
 
-    .result {
-      display: none;
-      margin-top: 15px;
-      padding: 15px;
-      border: 1px solid rgba(0, 200, 255, .38);
-      border-radius: 12px;
-      background: rgba(0, 200, 255, .06);
-      overflow-wrap: anywhere;
+    .hidden {
+      display: none !important;
     }
 
-    .result.visible {
-      display: block;
+    .lock-icon {
+      margin-bottom: 8px;
+      font-size: 29px;
     }
 
-    .result-title {
-      margin-bottom: 10px;
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
+    .loading-area {
+      padding: 20px 8px;
     }
 
-    .result-value {
-      color: white;
-      font-size: 13px;
-      line-height: 1.7;
-      overflow-wrap: anywhere;
-      user-select: text;
+    .spinner {
+      width: 43px;
+      height: 43px;
+      margin: 0 auto 14px;
+      border: 3px solid rgba(0, 200, 255, .17);
+      border-top-color: var(--blue);
+      border-right-color: var(--purple);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
     }
 
-    .result-link {
-      display: block;
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 9px;
-      color: #03101a;
-      background: #72e5ff;
-      font-size: 12px;
-      font-weight: 900;
-      text-decoration: none;
-      overflow-wrap: anywhere;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    .copy-button {
-      margin-top: 11px;
-      padding: 11px 14px;
-      border: 1px solid rgba(0, 200, 255, .45);
-      border-radius: 9px;
-      color: #a5edff;
-      background: rgba(0, 200, 255, .08);
-      font-weight: 800;
-      cursor: pointer;
+    .progress-track {
+      height: 5px;
+      margin-top: 17px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      transition: width .25s ease;
     }
 
     .socials {
@@ -303,7 +292,7 @@
     }
 
     footer {
-      margin-top: 22px;
+      margin-top: 21px;
       color: #7888a5;
       font-size: 10px;
       line-height: 1.8;
@@ -313,72 +302,53 @@
       color: #a5edff;
     }
 
-    .flash {
-      position: fixed;
-      inset: 0;
-      z-index: 5;
-      pointer-events: none;
-      opacity: 0;
-      background: radial-gradient(circle, rgba(0, 200, 255, .24), transparent 65%);
-    }
-
-    .flash.active {
-      animation: flash .65s ease-out;
-    }
-
-    @keyframes flash {
-      0% { opacity: 0; }
-      25% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
     @media (max-width: 380px) {
-      .container {
-        padding: 22px 15px;
-      }
-
-      .section {
-        padding: 14px;
-      }
+      .container { padding: 21px 14px; }
+      .section { padding: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Coloque background.mp4 na mesma pasta deste index.html. -->
+  <!-- Opcional: envie background.mp4 para a pasta do index.html. -->
   <video id="backgroundVideo" autoplay muted loop playsinline>
     <source src="background.mp4" type="video/mp4">
   </video>
 
   <div class="overlay"></div>
   <canvas id="particles"></canvas>
-  <div id="flash" class="flash"></div>
 
   <main class="page">
     <div class="container">
       <div class="logo">TNT</div>
 
       <h1>TNT APK <span>2.0</span></h1>
-      <p class="subtitle">Central oficial de acesso e geração de key</p>
+      <p class="subtitle">Central oficial de acesso</p>
 
       <div class="status">
         <span class="dot"></span>
-        SISTEMA ONLINE
+        SISTEMA TNT APK
       </div>
 
-      <section class="section">
-        <div class="section-title">📲 Etapa 1 — Canal oficial</div>
+      <!-- PRIMEIRO PASSO: WHATSAPP -->
+      <section class="section" id="etapaWhatsApp">
+        <div class="lock-icon">🔒</div>
+
+        <div class="section-title">
+          Desbloqueie o acesso gratuito
+        </div>
 
         <p class="description">
-          Abra o canal oficial do WhatsApp. Depois, volte para esta página
-          para continuar.
+          Para desbloquear o gerador e liberar o download da proxy,
+          acesse nosso canal oficial do WhatsApp e siga o canal.
+          Depois, volte para esta página e aguarde a verificação.
         </p>
 
         <a
@@ -388,19 +358,40 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          ✓ ABRIR CANAL DO WHATSAPP
+          📲 ACESSAR CANAL DO WHATSAPP
         </a>
 
         <p id="verificationMessage" class="message">
-          Abra o canal e retorne para esta página.
+          Acesse o canal e retorne aqui para iniciar a verificação.
         </p>
       </section>
 
-      <section class="section">
-        <div class="section-title">⚡ Gerador de Key</div>
+      <!-- TELA DE CARREGAMENTO -->
+      <section class="section hidden" id="etapaCarregamento">
+        <div class="loading-area">
+          <div class="spinner"></div>
+
+          <div class="section-title" id="loadingTitle">
+            Verificando acesso...
+          </div>
+
+          <p class="description" id="loadingDescription">
+            Aguarde enquanto preparamos a página.
+          </p>
+
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOWNLOAD E GERADOR: SÓ APÓS A ETAPA DO WHATSAPP -->
+      <section class="section hidden" id="etapaLiberada">
+        <div class="section-title">✅ Acesso liberado</div>
 
         <p class="description">
-          Baixe o proxy e pressione GERAR KEY para solicitar seu link.
+          Você chegou à etapa do gerador. Use os botões abaixo para
+          baixar a proxy ou abrir o link do gerador.
         </p>
 
         <a
@@ -412,15 +403,18 @@
           ⇩ BAIXAR PROXY
         </a>
 
-        <button id="gerarKey" class="button generate" type="button">
+        <a
+          class="button generate"
+          href="https://proxy-90bc.onrender.com/getkey"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           ⚡ GERAR KEY
-        </button>
+        </a>
 
-        <div
-          id="resultadoKey"
-          class="result"
-          aria-live="polite"
-        ></div>
+        <p class="message">
+          O gerador será aberto diretamente no endereço configurado.
+        </p>
       </section>
 
       <div class="socials">
@@ -453,230 +447,99 @@
   <script>
     "use strict";
 
-    /*
-     * CONFIGURAÇÃO
-     *
-     * Por padrão, este código espera que a API retorne:
-     * {"key":"https://seu-link-verdadeiro.com"}
-     *
-     * Se a API usar outro nome de campo, altere CAMPO_RESULTADO
-     * para o nome EXATO retornado pelo seu servidor.
-     */
-    const API_URL = "https://proxy-90bc.onrender.com/getkey";
-    const CAMPO_RESULTADO = "key";
+    const LINK_WHATSAPP =
+      "https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x";
 
-    const botao = document.getElementById("gerarKey");
-    const caixaResultado = document.getElementById("resultadoKey");
+    const etapaWhatsApp = document.getElementById("etapaWhatsApp");
+    const etapaCarregamento =
+      document.getElementById("etapaCarregamento");
+    const etapaLiberada = document.getElementById("etapaLiberada");
     const botaoWhatsApp = document.getElementById("whatsappButton");
-    const mensagemVerificacao =
-      document.getElementById("verificationMessage");
+    const mensagem = document.getElementById("verificationMessage");
+    const loadingTitle = document.getElementById("loadingTitle");
+    const loadingDescription =
+      document.getElementById("loadingDescription");
+    const progressBar = document.getElementById("progressBar");
 
-    let canalFoiAberto = false;
+    let verificacaoIniciada = false;
+    let retornoDetectado = false;
+
+    /*
+     * IMPORTANTE:
+     * Um site estático não consegue confirmar automaticamente que
+     * alguém realmente seguiu um canal do WhatsApp.
+     *
+     * Este fluxo detecta a abertura do canal e o retorno à página.
+     * A verificação é visual, não uma confirmação de participação.
+     */
 
     botaoWhatsApp.addEventListener("click", () => {
-      canalFoiAberto = true;
-      mensagemVerificacao.textContent =
-        "Volte para esta página para continuar.";
-      mensagemVerificacao.className = "message";
+      verificacaoIniciada = true;
+      retornoDetectado = false;
+
+      mensagem.textContent =
+        "Canal aberto. Volte para esta página para verificar o acesso.";
+      mensagem.className = "message";
     });
 
-    function atualizarVerificacao() {
-      if (!canalFoiAberto) return;
+    function iniciarCarregamento() {
+      if (!verificacaoIniciada || !retornoDetectado) return;
+      if (!etapaLiberada.classList.contains("hidden")) return;
 
-      mensagemVerificacao.textContent =
-        "✓ Canal aberto. Você pode solicitar a key.";
-      mensagemVerificacao.className = "message success";
+      etapaWhatsApp.classList.add("hidden");
+      etapaCarregamento.classList.remove("hidden");
+
+      loadingTitle.textContent = "Verificando acesso...";
+      loadingDescription.textContent =
+        "Aguarde enquanto preparamos seu acesso.";
+      progressBar.style.width = "0%";
+
+      let progresso = 0;
+
+      const intervalo = setInterval(() => {
+        progresso += 5;
+        progressBar.style.width = progresso + "%";
+
+        if (progresso >= 100) {
+          clearInterval(intervalo);
+
+          loadingTitle.textContent = "Acesso preparado!";
+          loadingDescription.textContent =
+            "Agora você pode baixar a proxy e abrir o gerador.";
+
+          setTimeout(() => {
+            etapaCarregamento.classList.add("hidden");
+            etapaLiberada.classList.remove("hidden");
+          }, 650);
+        }
+      }, 90);
+    }
+
+    function voltouDoWhatsApp() {
+      if (!verificacaoIniciada || retornoDetectado) return;
+
+      retornoDetectado = true;
+
+      mensagem.textContent = "✓ Retorno detectado. Verificando...";
+      mensagem.className = "message success";
+
+      iniciarCarregamento();
     }
 
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) atualizarVerificacao();
+      if (!document.hidden) voltouDoWhatsApp();
     });
 
-    window.addEventListener("focus", atualizarVerificacao);
-    window.addEventListener("pageshow", atualizarVerificacao);
-
-    function limparResultado() {
-      caixaResultado.replaceChildren();
-      caixaResultado.classList.remove("visible");
-    }
-
-    function mostrarMensagem(texto, erro = false) {
-      limparResultado();
-
-      const titulo = document.createElement("div");
-      titulo.className = "result-title";
-      titulo.textContent = erro ? "AVISO DO GERADOR" : "GERADOR DE KEY";
-
-      const conteudo = document.createElement("p");
-      conteudo.className = "result-value";
-      conteudo.textContent = texto;
-
-      caixaResultado.append(titulo, conteudo);
-      caixaResultado.classList.add("visible");
-    }
+    window.addEventListener("focus", voltouDoWhatsApp);
+    window.addEventListener("pageshow", () => {
+      if (verificacaoIniciada) voltouDoWhatsApp();
+    });
 
     /*
-     * Não procura valores em campos alternativos.
-     * Não exibe objetos JSON inteiros.
-     * Não inventa keys.
-     *
-     * Só aceita uma URL HTTP/HTTPS do campo configurado.
-     */
-    function obterLink(respostaTexto, contentType) {
-      const texto = respostaTexto.trim();
-
-      if (!texto) {
-        throw new Error("O servidor não retornou nenhum resultado.");
-      }
-
-      let link;
-
-      const ehJson =
-        contentType.includes("application/json") ||
-        texto.startsWith("{") ||
-        texto.startsWith("[");
-
-      if (ehJson) {
-        let dados;
-
-        try {
-          dados = JSON.parse(texto);
-        } catch {
-          throw new Error("A resposta do servidor não é um JSON válido.");
-        }
-
-        if (
-          !dados ||
-          typeof dados !== "object" ||
-          Array.isArray(dados)
-        ) {
-          throw new Error("O formato da resposta não é o esperado.");
-        }
-
-        link = dados[CAMPO_RESULTADO];
-      } else {
-        // Texto simples só é válido quando é um link completo.
-        link = texto;
-      }
-
-      if (typeof link !== "string" || !link.trim()) {
-        throw new Error(
-          'O link não foi encontrado no campo "' +
-          CAMPO_RESULTADO +
-          '". É necessário configurar o campo correto da API.'
-        );
-      }
-
-      link = link.trim();
-
-      let url;
-
-      try {
-        url = new URL(link);
-      } catch {
-        throw new Error("O servidor não retornou um link válido.");
-      }
-
-      if (url.protocol !== "https:" && url.protocol !== "http:") {
-        throw new Error("O tipo de link retornado não é permitido.");
-      }
-
-      return url.href;
-    }
-
-    function animarSucesso() {
-      const flash = document.getElementById("flash");
-      flash.classList.remove("active");
-      void flash.offsetWidth;
-      flash.classList.add("active");
-    }
-
-    function mostrarLink(link) {
-      limparResultado();
-
-      const titulo = document.createElement("div");
-      titulo.className = "result-title";
-      titulo.textContent = "✓ SEU LINK ESTÁ PRONTO";
-
-      const texto = document.createElement("p");
-      texto.className = "result-value";
-      texto.textContent = link;
-
-      const abrir = document.createElement("a");
-      abrir.className = "result-link";
-      abrir.href = link;
-      abrir.target = "_blank";
-      abrir.rel = "noopener noreferrer";
-      abrir.textContent = "ABRIR MEU LINK";
-
-      const copiar = document.createElement("button");
-      copiar.className = "copy-button";
-      copiar.type = "button";
-      copiar.textContent = "COPIAR LINK";
-
-      copiar.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(link);
-          copiar.textContent = "✓ LINK COPIADO!";
-        } catch {
-          mostrarMensagem(
-            "Não foi possível copiar automaticamente. Selecione o link para copiá-lo.",
-            true
-          );
-        }
-      });
-
-      caixaResultado.append(titulo, texto, abrir, copiar);
-      caixaResultado.classList.add("visible");
-      animarSucesso();
-    }
-
-    async function gerarKey() {
-      limparResultado();
-      botao.disabled = true;
-      botao.textContent = "⏳ AGUARDE...";
-
-      try {
-        const resposta = await fetch(API_URL, {
-          method: "GET",
-          headers: {
-            "Accept": "application/json, text/plain"
-          },
-          cache: "no-store"
-        });
-
-        if (!resposta.ok) {
-          throw new Error(
-            "O servidor respondeu com erro HTTP " + resposta.status + "."
-          );
-        }
-
-        const tipo = resposta.headers.get("content-type") || "";
-        const corpo = await resposta.text();
-        const link = obterLink(corpo, tipo);
-
-        mostrarLink(link);
-      } catch (erro) {
-        console.error("Falha ao gerar link:", erro);
-
-        const mensagem = erro instanceof TypeError
-          ? "Não foi possível acessar o servidor. Verifique a conexão e a configuração CORS da API."
-          : (erro.message || "Não foi possível gerar o link.");
-
-        mostrarMensagem(mensagem, true);
-      } finally {
-        botao.disabled = false;
-        botao.textContent = "⚡ GERAR KEY";
-      }
-    }
-
-    botao.addEventListener("click", gerarKey);
-
-    /*
-     * Partículas decorativas do fundo.
+     * Partículas de fundo decorativas.
      */
     const canvas = document.getElementById("particles");
-    const contexto = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
     const movimentoReduzido =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -696,7 +559,7 @@
       canvas.style.width = largura + "px";
       canvas.style.height = altura + "px";
 
-      contexto.setTransform(escala, 0, 0, escala, 0, 0);
+      ctx.setTransform(escala, 0, 0, escala, 0, 0);
 
       const quantidade = Math.min(
         60,
@@ -715,28 +578,20 @@
     }
 
     function desenharParticulas() {
-      contexto.clearRect(0, 0, largura, altura);
+      ctx.clearRect(0, 0, largura, altura);
 
-      for (const particula of particulas) {
-        contexto.beginPath();
-        contexto.arc(
-          particula.x,
-          particula.y,
-          particula.raio,
-          0,
-          Math.PI * 2
-        );
-
-        contexto.fillStyle =
-          "rgba(70, 195, 255, " + particula.opacidade + ")";
-        contexto.fill();
+      for (const p of particulas) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.raio, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(70, 195, 255, " + p.opacidade + ")";
+        ctx.fill();
 
         if (!movimentoReduzido) {
-          particula.y -= particula.velocidade;
+          p.y -= p.velocidade;
 
-          if (particula.y < -5) {
-            particula.y = altura + 5;
-            particula.x = Math.random() * largura;
+          if (p.y < -5) {
+            p.y = altura + 5;
+            p.x = Math.random() * largura;
           }
         }
       }
@@ -753,11 +608,10 @@
 
     dimensionarCanvas();
 
-    const video = document.getElementById("backgroundVideo");
-    video.play().catch(() => {
-      // O site continua funcionando mesmo se o vídeo não reproduzir.
-    });
+    document.getElementById("backgroundVideo")
+      .play()
+      .catch(() => {});
   </script>
 </body>
-  </html>
+                                                      </html>
   
