@@ -3,615 +3,396 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#050816">
-  <title>TNT APK 2.0 — Desbloqueio</title>
+  <title>PROXY VIP CRAQUETE GRÁTIS, SEM KEY</title>
 
   <style>
-    :root {
-      --blue: #00c8ff;
-      --purple: #754bff;
-      --green: #42ffb0;
-      --red: #ff7185;
-      --bg: #050816;
-      --panel: rgba(8, 17, 40, .94);
-      --muted: #a5b5ce;
-    }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       min-height: 100vh;
-      overflow-x: hidden;
-      background: var(--bg);
-      color: #f2f8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 90px 20px 25px;
       font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      background: #050816;
+      overflow-x: hidden;
     }
 
-    #backgroundVideo,
-    #particles,
-    .overlay {
+    .background {
       position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    #backgroundVideo {
-      z-index: -3;
-      object-fit: cover;
-      opacity: .22;
-    }
-
-    .overlay {
       z-index: -2;
-      pointer-events: none;
       background:
-        radial-gradient(ellipse at top, rgba(0, 130, 255, .19), transparent 60%),
-        linear-gradient(rgba(3, 6, 20, .58), rgba(3, 6, 20, .96));
+        radial-gradient(ellipse at 50% 0%, #12356b 0%, transparent 60%),
+        linear-gradient(145deg, #030611, #07142c, #02040c);
     }
 
-    #particles {
+    .glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #007bff;
+      filter: blur(150px);
+      opacity: 0.2;
+      border-radius: 50%;
       z-index: -1;
       pointer-events: none;
     }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 26px 14px;
-    }
-
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 470px;
-      padding: 25px 21px;
-      overflow: hidden;
-      text-align: center;
-      border: 1px solid rgba(0, 200, 255, .42);
-      border-radius: 23px;
-      background: var(--panel);
-      box-shadow: 0 0 28px rgba(0, 150, 255, .14);
-      backdrop-filter: blur(13px);
-    }
-
-    .container::before {
-      content: "";
+    /* TÍTULO FIXO NO TOPO */
+    .top-title {
       position: absolute;
-      top: 0;
-      left: 12%;
-      width: 76%;
-      height: 2px;
-      background: var(--blue);
-      box-shadow: 0 0 15px var(--blue);
+      top: 18px;
+      left: 0;
+      width: 100%;
+      padding: 12px 10px;
+      text-align: center;
+      color: #00c8ff;
+      font-size: clamp(18px, 4vw, 27px);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      line-height: 1.4;
+      text-shadow:
+        0 0 10px #008cff,
+        0 0 22px #005dff;
+      z-index: 10;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 34px 24px;
+      text-align: center;
+      background: rgba(8, 17, 39, 0.94);
+      border: 1px solid rgba(0, 174, 255, 0.65);
+      border-radius: 22px;
+      box-shadow: 0 0 35px rgba(0, 140, 255, 0.2);
+      backdrop-filter: blur(12px);
     }
 
     .logo {
-      width: 82px;
-      height: 82px;
-      margin: 0 auto 14px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--blue);
-      border-radius: 22px;
-      background: linear-gradient(140deg, #15234c, #070b1b);
-      color: #a5edff;
+      margin-bottom: 32px;
       font-size: 30px;
       font-weight: 900;
-      text-shadow: 0 0 16px var(--blue);
-      box-shadow: 0 0 22px rgba(0, 200, 255, .2);
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px #008cff;
+    }
+
+    .logo span {
+      color: #00baff;
     }
 
     h1 {
-      font-size: clamp(27px, 7vw, 34px);
-      letter-spacing: 1.4px;
-    }
-
-    h1 span {
-      color: var(--blue);
-    }
-
-    .subtitle {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 17px 0;
-      padding: 8px 13px;
-      border: 1px solid rgba(66, 255, 176, .3);
-      border-radius: 30px;
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 9px var(--green);
-    }
-
-    .section {
-      margin-top: 13px;
-      padding: 17px;
-      border: 1px solid rgba(140, 170, 220, .17);
-      border-radius: 15px;
-      background: rgba(3, 9, 25, .56);
-    }
-
-    .section-title {
-      margin-bottom: 10px;
-      font-size: 15px;
-      font-weight: 900;
+      margin-bottom: 12px;
+      font-size: 23px;
+      line-height: 1.4;
     }
 
     .description {
-      margin-bottom: 15px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.75;
+      margin-bottom: 24px;
+      color: #b9c9e7;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     .button {
-      width: 100%;
-      min-height: 47px;
       display: flex;
+      width: 100%;
+      min-height: 52px;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 14px;
-      border: 0;
-      border-radius: 10px;
-      font-size: 13px;
+      padding: 14px;
+      border: none;
+      border-radius: 11px;
+      background: linear-gradient(100deg, #006dff, #00bfff);
+      box-shadow: 0 0 20px rgba(0, 145, 255, 0.25);
+      color: #ffffff;
+      font-size: 14px;
       font-weight: 900;
-      letter-spacing: .5px;
       text-decoration: none;
       cursor: pointer;
-      transition: transform .2s, opacity .2s;
+      transition: transform 0.2s, filter 0.2s;
     }
 
     .button:hover {
+      filter: brightness(1.15);
       transform: translateY(-2px);
     }
 
     .button:disabled {
-      opacity: .55;
+      opacity: 0.65;
       cursor: wait;
       transform: none;
-    }
-
-    .whatsapp {
-      color: #03150d;
-      background: linear-gradient(90deg, #36e99c, #70ffc1);
-    }
-
-    .download {
-      color: white;
-      background: linear-gradient(90deg, #087ee8, #00c8ff);
-      box-shadow: 0 0 17px rgba(0, 160, 255, .2);
-    }
-
-    .generate {
-      margin-top: 12px;
-      color: white;
-      background: linear-gradient(90deg, #693cff, #168fff);
-      box-shadow: 0 0 18px rgba(79, 90, 255, .23);
-    }
-
-    .message {
-      margin-top: 11px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    .message.success {
-      color: var(--green);
-    }
-
-    .message.error {
-      color: var(--red);
     }
 
     .hidden {
       display: none !important;
     }
 
-    .lock-icon {
-      margin-bottom: 8px;
-      font-size: 29px;
-    }
-
-    .loading-area {
-      padding: 20px 8px;
-    }
-
     .spinner {
-      width: 43px;
-      height: 43px;
-      margin: 0 auto 14px;
-      border: 3px solid rgba(0, 200, 255, .17);
-      border-top-color: var(--blue);
-      border-right-color: var(--purple);
+      width: 82px;
+      height: 82px;
+      margin: 26px auto;
+      border: 6px solid rgba(0, 183, 255, 0.15);
+      border-top-color: #00c8ff;
+      border-right-color: #087bff;
       border-radius: 50%;
-      animation: spin .8s linear infinite;
+      animation: spin 0.8s linear infinite;
+      box-shadow: 0 0 20px rgba(0, 145, 255, 0.15);
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .status {
+      margin: 14px 0;
+      color: #b9c9e7;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .countdown {
+      margin: 18px 0;
+      color: #00c8ff;
+      font-size: 29px;
+      font-weight: 900;
     }
 
     .progress-track {
-      height: 5px;
-      margin-top: 17px;
+      width: 100%;
+      height: 7px;
+      margin: 18px 0;
       overflow: hidden;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .08);
+      background: #182744;
+      border-radius: 20px;
     }
 
-    .progress-bar {
-      width: 0;
+    .progress {
+      width: 0%;
       height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      transition: width .25s ease;
+      background: linear-gradient(90deg, #007bff, #00eaff);
+      transition: width 1s linear;
     }
 
-    .socials {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 17px;
+    .success-icon {
+      display: flex;
+      width: 78px;
+      height: 78px;
+      align-items: center;
+      justify-content: center;
+      margin: 24px auto;
+      border: 2px solid #00e6a0;
+      border-radius: 50%;
+      color: #00e6a0;
+      font-size: 42px;
+      box-shadow: 0 0 24px rgba(0, 230, 160, 0.15);
     }
 
-    .social-link {
-      padding: 12px 8px;
-      border: 1px solid rgba(150, 180, 230, .2);
-      border-radius: 9px;
-      color: #dceaff;
-      background: rgba(255, 255, 255, .025);
-      font-size: 11px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    footer {
-      margin-top: 21px;
-      color: #7888a5;
-      font-size: 10px;
-      line-height: 1.8;
-    }
-
-    footer strong {
-      color: #a5edff;
+    .success-title {
+      margin-bottom: 14px;
+      color: #00e6a0;
+      font-size: 21px;
     }
 
     @media (max-width: 380px) {
-      .container { padding: 21px 14px; }
-      .section { padding: 14px; }
+      .card {
+        padding: 28px 18px;
+      }
+
+      .logo {
+        font-size: 26px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
+      .spinner {
+        animation-duration: 2s;
+      }
+
+      .button {
+        transition: none;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Opcional: envie background.mp4 para a pasta do index.html. -->
-  <video id="backgroundVideo" autoplay muted loop playsinline>
-    <source src="background.mp4" type="video/mp4">
-  </video>
+  <div class="background"></div>
+  <div class="glow"></div>
 
-  <div class="overlay"></div>
-  <canvas id="particles"></canvas>
+  <!-- FRASE NO TOPO -->
+  <div class="top-title">
+    PROXY VIP CRAQUETE GRÁTIS, SEM KEY
+  </div>
 
-  <main class="page">
-    <div class="container">
-      <div class="logo">TNT</div>
+  <main class="card">
+    <div class="logo">TNT <span>APK 2.0</span></div>
 
-      <h1>TNT APK <span>2.0</span></h1>
-      <p class="subtitle">Central oficial de acesso</p>
+    <!-- TELA INICIAL -->
+    <section id="locked">
+      <h1>🔒 ACESSO BLOQUEADO</h1>
 
-      <div class="status">
-        <span class="dot"></span>
-        SISTEMA TNT APK
+      <p class="description">
+        Inscreva-se para liberar o download.
+      </p>
+
+      <button class="button" id="subscribeButton">
+        ENTRAR NO CANAL
+      </button>
+    </section>
+
+    <!-- VERIFICAÇÃO DE 15 SEGUNDOS -->
+    <section id="checking" class="hidden" aria-live="polite">
+      <h1>AGUARDE A VERIFICAÇÃO</h1>
+
+      <div class="spinner"></div>
+
+      <p class="status">
+        Aguarde enquanto preparamos o acesso ao download...
+      </p>
+
+      <div class="countdown" id="countdown">15s</div>
+
+      <div class="progress-track">
+        <div class="progress" id="progress"></div>
       </div>
+    </section>
 
-      <!-- PRIMEIRO PASSO: WHATSAPP -->
-      <section class="section" id="etapaWhatsApp">
-        <div class="lock-icon">🔒</div>
+    <!-- DOWNLOAD LIBERADO -->
+    <section id="unlocked" class="hidden" aria-live="polite">
+      <div class="success-icon">✓</div>
 
-        <div class="section-title">
-          Desbloqueie o acesso gratuito
-        </div>
+      <h1 class="success-title">
+        VERIFICAÇÃO CONCLUÍDA
+      </h1>
 
-        <p class="description">
-          Para desbloquear o gerador e liberar o download da proxy,
-          acesse nosso canal oficial do WhatsApp e siga o canal.
-          Depois, volte para esta página e aguarde a verificação.
-        </p>
+      <p class="description">
+        A etapa de espera terminou. O download está disponível.
+      </p>
 
-        <a
-          id="whatsappButton"
-          class="button whatsapp"
-          href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          📲 ACESSAR CANAL DO WHATSAPP
-        </a>
-
-        <p id="verificationMessage" class="message">
-          Acesse o canal e retorne aqui para iniciar a verificação.
-        </p>
-      </section>
-
-      <!-- TELA DE CARREGAMENTO -->
-      <section class="section hidden" id="etapaCarregamento">
-        <div class="loading-area">
-          <div class="spinner"></div>
-
-          <div class="section-title" id="loadingTitle">
-            Verificando acesso...
-          </div>
-
-          <p class="description" id="loadingDescription">
-            Aguarde enquanto preparamos a página.
-          </p>
-
-          <div class="progress-track">
-            <div class="progress-bar" id="progressBar"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DOWNLOAD E GERADOR: SÓ APÓS A ETAPA DO WHATSAPP -->
-      <section class="section hidden" id="etapaLiberada">
-        <div class="section-title">✅ Acesso liberado</div>
-
-        <p class="description">
-          Você chegou à etapa do gerador. Use os botões abaixo para
-          baixar a proxy ou abrir o link do gerador.
-        </p>
-
-        <a
-          class="button download"
-          href="https://www.mediafire.com/file/4bl2cxzi3yq78l7/PROXY_TNT_EXTERNAL.zip/file"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ⇩ BAIXAR PROXY
-        </a>
-
-        <a
-          class="button generate"
-          href="https://proxy-90bc.onrender.com/getkey"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ⚡ GERAR KEY
-        </a>
-
-        <p class="message">
-          O gerador será aberto diretamente no endereço configurado.
-        </p>
-      </section>
-
-      <div class="socials">
-        <a
-          class="social-link"
-          href="https://youtube.com/@tntapk2.0?si=n9vIQ3Nx5t93lImk"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ▶ CANAL NO YOUTUBE
-        </a>
-
-        <a
-          class="social-link"
-          href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ◉ WHATSAPP
-        </a>
-      </div>
-
-      <footer>
-        <strong>TNT APK 2.0</strong><br>
-        Central de acesso · Todos os direitos reservados
-      </footer>
-    </div>
+      <a
+        class="button"
+        id="downloadButton"
+        href="https://alpharede.com/0RoIn4hPJsM"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LIBERAR O DOWNLOAD
+      </a>
+    </section>
   </main>
 
   <script>
-    "use strict";
-
-    const LINK_WHATSAPP =
+    const WHATSAPP_URL =
       "https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x";
 
-    const etapaWhatsApp = document.getElementById("etapaWhatsApp");
-    const etapaCarregamento =
-      document.getElementById("etapaCarregamento");
-    const etapaLiberada = document.getElementById("etapaLiberada");
-    const botaoWhatsApp = document.getElementById("whatsappButton");
-    const mensagem = document.getElementById("verificationMessage");
-    const loadingTitle = document.getElementById("loadingTitle");
-    const loadingDescription =
-      document.getElementById("loadingDescription");
-    const progressBar = document.getElementById("progressBar");
+    const locked = document.getElementById("locked");
+    const checking = document.getElementById("checking");
+    const unlocked = document.getElementById("unlocked");
 
-    let verificacaoIniciada = false;
-    let retornoDetectado = false;
+    const subscribeButton =
+      document.getElementById("subscribeButton");
 
-    /*
-     * IMPORTANTE:
-     * Um site estático não consegue confirmar automaticamente que
-     * alguém realmente seguiu um canal do WhatsApp.
-     *
-     * Este fluxo detecta a abertura do canal e o retorno à página.
-     * A verificação é visual, não uma confirmação de participação.
-     */
+    const countdown = document.getElementById("countdown");
+    const progress = document.getElementById("progress");
 
-    botaoWhatsApp.addEventListener("click", () => {
-      verificacaoIniciada = true;
-      retornoDetectado = false;
+    let started = false;
+    let waitingForReturn = false;
 
-      mensagem.textContent =
-        "Canal aberto. Volte para esta página para verificar o acesso.";
-      mensagem.className = "message";
-    });
+    subscribeButton.addEventListener("click", function () {
+      if (started || waitingForReturn) return;
 
-    function iniciarCarregamento() {
-      if (!verificacaoIniciada || !retornoDetectado) return;
-      if (!etapaLiberada.classList.contains("hidden")) return;
+      waitingForReturn = true;
 
-      etapaWhatsApp.classList.add("hidden");
-      etapaCarregamento.classList.remove("hidden");
-
-      loadingTitle.textContent = "Verificando acesso...";
-      loadingDescription.textContent =
-        "Aguarde enquanto preparamos seu acesso.";
-      progressBar.style.width = "0%";
-
-      let progresso = 0;
-
-      const intervalo = setInterval(() => {
-        progresso += 5;
-        progressBar.style.width = progresso + "%";
-
-        if (progresso >= 100) {
-          clearInterval(intervalo);
-
-          loadingTitle.textContent = "Acesso preparado!";
-          loadingDescription.textContent =
-            "Agora você pode baixar a proxy e abrir o gerador.";
-
-          setTimeout(() => {
-            etapaCarregamento.classList.add("hidden");
-            etapaLiberada.classList.remove("hidden");
-          }, 650);
-        }
-      }, 90);
-    }
-
-    function voltouDoWhatsApp() {
-      if (!verificacaoIniciada || retornoDetectado) return;
-
-      retornoDetectado = true;
-
-      mensagem.textContent = "✓ Retorno detectado. Verificando...";
-      mensagem.className = "message success";
-
-      iniciarCarregamento();
-    }
-
-    document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) voltouDoWhatsApp();
-    });
-
-    window.addEventListener("focus", voltouDoWhatsApp);
-    window.addEventListener("pageshow", () => {
-      if (verificacaoIniciada) voltouDoWhatsApp();
-    });
-
-    /*
-     * Partículas de fundo decorativas.
-     */
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    const movimentoReduzido =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    let particulas = [];
-    let largura = 0;
-    let altura = 0;
-    let frame = null;
-
-    function dimensionarCanvas() {
-      const escala = Math.min(window.devicePixelRatio || 1, 2);
-
-      largura = window.innerWidth;
-      altura = window.innerHeight;
-
-      canvas.width = Math.round(largura * escala);
-      canvas.height = Math.round(altura * escala);
-      canvas.style.width = largura + "px";
-      canvas.style.height = altura + "px";
-
-      ctx.setTransform(escala, 0, 0, escala, 0, 0);
-
-      const quantidade = Math.min(
-        60,
-        Math.max(20, Math.floor(largura / 16))
+      // Abre o canal do WhatsApp em uma nova aba.
+      const channelTab = window.open(
+        WHATSAPP_URL,
+        "_blank"
       );
 
-      particulas = Array.from({ length: quantidade }, () => ({
-        x: Math.random() * largura,
-        y: Math.random() * altura,
-        raio: Math.random() * 1.5 + .4,
-        velocidade: Math.random() * .35 + .08,
-        opacidade: Math.random() * .45 + .15
-      }));
-
-      desenharParticulas();
-    }
-
-    function desenharParticulas() {
-      ctx.clearRect(0, 0, largura, altura);
-
-      for (const p of particulas) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.raio, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(70, 195, 255, " + p.opacidade + ")";
-        ctx.fill();
-
-        if (!movimentoReduzido) {
-          p.y -= p.velocidade;
-
-          if (p.y < -5) {
-            p.y = altura + 5;
-            p.x = Math.random() * largura;
-          }
-        }
+      // Caso o navegador bloqueie a nova aba, abre o canal
+      // nesta mesma aba.
+      if (!channelTab) {
+        waitingForReturn = false;
+        window.location.href = WHATSAPP_URL;
+        return;
       }
 
-      if (!movimentoReduzido) {
-        frame = requestAnimationFrame(desenharParticulas);
-      }
-    }
+      subscribeButton.textContent = "CANAL ABERTO";
+      subscribeButton.disabled = true;
 
-    window.addEventListener("resize", () => {
-      if (frame !== null) cancelAnimationFrame(frame);
-      dimensionarCanvas();
+      // Inicia a contagem quando a pessoa voltar ao site.
+      function returnedToPage() {
+        if (document.visibilityState !== "visible") return;
+        if (started) return;
+
+        document.removeEventListener(
+          "visibilitychange",
+          returnedToPage
+        );
+
+        window.removeEventListener(
+          "focus",
+          returnedToPage
+        );
+
+        waitingForReturn = false;
+        startVerification();
+      }
+
+      document.addEventListener(
+        "visibilitychange",
+        returnedToPage
+      );
+
+      window.addEventListener(
+        "focus",
+        returnedToPage
+      );
     });
 
-    dimensionarCanvas();
+    function startVerification() {
+      if (started) return;
+      started = true;
 
-    document.getElementById("backgroundVideo")
-      .play()
-      .catch(() => {});
+      locked.classList.add("hidden");
+      checking.classList.remove("hidden");
+
+      let seconds = 15;
+
+      countdown.textContent = seconds + "s";
+      progress.style.width = "0%";
+
+      const timer = setInterval(function () {
+        seconds--;
+
+        countdown.textContent = seconds + "s";
+
+        progress.style.width =
+          ((15 - seconds) / 15 * 100) + "%";
+
+        if (seconds <= 0) {
+          clearInterval(timer);
+
+          checking.classList.add("hidden");
+          unlocked.classList.remove("hidden");
+        }
+      }, 1000);
+    }
   </script>
 </body>
-                                                      </html>
-  
+</html>
