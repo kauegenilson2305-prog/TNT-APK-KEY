@@ -1,398 +1,289 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050816">
-  <title>PROXY VIP CRAQUETE GRÁTIS, SEM KEY</title>
+  <meta name="theme-color" content="#050914">
+  <title>Proxy V24 grátis</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 90px 20px 25px;
+      align-items: center;
+      padding: 20px;
       font-family: Arial, Helvetica, sans-serif;
-      color: #ffffff;
-      background: #050816;
-      overflow-x: hidden;
-    }
-
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
+      color: #fff;
       background:
-        radial-gradient(ellipse at 50% 0%, #12356b 0%, transparent 60%),
-        linear-gradient(145deg, #030611, #07142c, #02040c);
-    }
-
-    .glow {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      top: 15%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #007bff;
-      filter: blur(150px);
-      opacity: 0.2;
-      border-radius: 50%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* TÍTULO FIXO NO TOPO */
-    .top-title {
-      position: absolute;
-      top: 18px;
-      left: 0;
-      width: 100%;
-      padding: 12px 10px;
-      text-align: center;
-      color: #00c8ff;
-      font-size: clamp(18px, 4vw, 27px);
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      line-height: 1.4;
-      text-shadow:
-        0 0 10px #008cff,
-        0 0 22px #005dff;
-      z-index: 10;
+        radial-gradient(ellipse at top, #103b70 0%, transparent 55%),
+        #050914;
     }
 
     .card {
       width: 100%;
-      max-width: 420px;
-      padding: 34px 24px;
+      max-width: 390px;
+      padding: 30px 23px;
       text-align: center;
-      background: rgba(8, 17, 39, 0.94);
-      border: 1px solid rgba(0, 174, 255, 0.65);
-      border-radius: 22px;
-      box-shadow: 0 0 35px rgba(0, 140, 255, 0.2);
-      backdrop-filter: blur(12px);
+      background: rgba(8, 18, 38, 0.97);
+      border: 1px solid #147cff;
+      border-radius: 18px;
+      box-shadow: 0 0 30px rgba(0, 119, 255, 0.22);
     }
 
     .logo {
-      margin-bottom: 32px;
-      font-size: 30px;
+      width: 76px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 2px solid #198cff;
+      border-radius: 50%;
+      color: #59b9ff;
+      font-size: 24px;
       font-weight: 900;
-      letter-spacing: 2px;
-      text-shadow: 0 0 20px #008cff;
-    }
-
-    .logo span {
-      color: #00baff;
+      box-shadow: 0 0 22px rgba(0, 119, 255, 0.28);
     }
 
     h1 {
       margin-bottom: 12px;
-      font-size: 23px;
-      line-height: 1.4;
+      font-size: 27px;
+      letter-spacing: 1px;
     }
 
-    .description {
+    .subtitle {
       margin-bottom: 24px;
-      color: #b9c9e7;
+      color: #b7c8df;
       font-size: 14px;
       line-height: 1.7;
     }
 
+    .status {
+      margin-bottom: 18px;
+      padding: 12px;
+      color: #ffcc55;
+      background: #201d13;
+      border: 1px solid #6b5422;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .status.success {
+      color: #5cffad;
+      background: #0b251d;
+      border-color: #176b4a;
+    }
+
     .button {
-      display: flex;
+      display: block;
       width: 100%;
-      min-height: 52px;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
+      padding: 15px 12px;
       border: none;
-      border-radius: 11px;
-      background: linear-gradient(100deg, #006dff, #00bfff);
-      box-shadow: 0 0 20px rgba(0, 145, 255, 0.25);
-      color: #ffffff;
+      border-radius: 9px;
+      color: #fff;
+      background: linear-gradient(90deg, #0865e9, #159dff);
       font-size: 14px;
-      font-weight: 900;
+      font-weight: bold;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 0.2s, filter 0.2s;
+      transition: filter 0.2s, transform 0.2s;
     }
 
     .button:hover {
       filter: brightness(1.15);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
 
-    .button:disabled {
-      opacity: 0.65;
-      cursor: wait;
-      transform: none;
+    .button:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
     }
 
-    .hidden {
-      display: none !important;
+    .secondary {
+      margin-top: 12px;
+      color: #a9cfff;
+      background: #102747;
+      border: 1px solid #2168b5;
+    }
+
+    #verification,
+    #unlocked {
+      display: none;
     }
 
     .spinner {
-      width: 82px;
-      height: 82px;
-      margin: 26px auto;
-      border: 6px solid rgba(0, 183, 255, 0.15);
-      border-top-color: #00c8ff;
-      border-right-color: #087bff;
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 17px;
+      border: 4px solid #18385e;
+      border-top-color: #27a3ff;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      box-shadow: 0 0 20px rgba(0, 145, 255, 0.15);
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .status {
-      margin: 14px 0;
-      color: #b9c9e7;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .countdown {
-      margin: 18px 0;
-      color: #00c8ff;
-      font-size: 29px;
-      font-weight: 900;
+      to { transform: rotate(360deg); }
     }
 
     .progress-track {
       width: 100%;
       height: 7px;
-      margin: 18px 0;
+      margin-top: 18px;
       overflow: hidden;
-      background: #182744;
-      border-radius: 20px;
+      background: #17243a;
+      border-radius: 10px;
     }
 
-    .progress {
+    .progress-bar {
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, #007bff, #00eaff);
-      transition: width 1s linear;
+      background: #169aff;
+      transition: width 0.3s linear;
     }
 
-    .success-icon {
-      display: flex;
-      width: 78px;
-      height: 78px;
-      align-items: center;
-      justify-content: center;
-      margin: 24px auto;
-      border: 2px solid #00e6a0;
-      border-radius: 50%;
-      color: #00e6a0;
-      font-size: 42px;
-      box-shadow: 0 0 24px rgba(0, 230, 160, 0.15);
+    .small {
+      margin-top: 19px;
+      color: #7489a7;
+      font-size: 11px;
+      line-height: 1.6;
     }
 
-    .success-title {
-      margin-bottom: 14px;
-      color: #00e6a0;
-      font-size: 21px;
-    }
-
-    @media (max-width: 380px) {
-      .card {
-        padding: 28px 18px;
-      }
-
-      .logo {
-        font-size: 26px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .spinner {
-        animation-duration: 2s;
-      }
-
-      .button {
-        transition: none;
-      }
+    .hidden {
+      display: none !important;
     }
   </style>
 </head>
 
 <body>
-  <div class="background"></div>
-  <div class="glow"></div>
-
-  <!-- FRASE NO TOPO -->
-  <div class="top-title">
-    PROXY VIP CRAQUETE GRÁTIS, SEM KEY
-  </div>
-
   <main class="card">
-    <div class="logo">TNT <span>APK 2.0</span></div>
+    <div class="logo">V24</div>
 
-    <!-- TELA INICIAL -->
+    <h1>Proxy V24 grátis</h1>
+
+    <p class="subtitle">
+      Acesse o canal e siga as etapas para liberar o gerador de key.
+    </p>
+
+    <!-- ETAPA 1: ENTRAR NO CANAL -->
     <section id="locked">
-      <h1>🔒 ACESSO BLOQUEADO</h1>
-
-      <p class="description">
-        Inscreva-se para liberar o download.
-      </p>
-
-      <button class="button" id="subscribeButton">
-        ENTRAR NO CANAL
-      </button>
-    </section>
-
-    <!-- VERIFICAÇÃO DE 15 SEGUNDOS -->
-    <section id="checking" class="hidden" aria-live="polite">
-      <h1>AGUARDE A VERIFICAÇÃO</h1>
-
-      <div class="spinner"></div>
-
-      <p class="status">
-        Aguarde enquanto preparamos o acesso ao download...
-      </p>
-
-      <div class="countdown" id="countdown">15s</div>
-
-      <div class="progress-track">
-        <div class="progress" id="progress"></div>
+      <div class="status">
+        🔒 ACESSO BLOQUEADO
       </div>
-    </section>
 
-    <!-- DOWNLOAD LIBERADO -->
-    <section id="unlocked" class="hidden" aria-live="polite">
-      <div class="success-icon">✓</div>
-
-      <h1 class="success-title">
-        VERIFICAÇÃO CONCLUÍDA
-      </h1>
-
-      <p class="description">
-        A etapa de espera terminou. O download está disponível.
+      <p class="subtitle">
+        Entre no nosso canal do WhatsApp para desbloquear o acesso ao gerador.
       </p>
 
       <a
         class="button"
-        id="downloadButton"
-        href="https://alpharede.com/0RoIn4hPJsM"
+        href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="iniciarVerificacao()"
+      >
+        INSCREVA-SE NO CANAL
+      </a>
+
+      <button
+        class="button secondary"
+        style="margin-top: 12px"
+        onclick="iniciarVerificacao()"
+      >
+        JÁ ENTREI — VERIFICAR
+      </button>
+    </section>
+
+    <!-- ETAPA 2: VERIFICAÇÃO VISUAL -->
+    <section id="verification">
+      <div class="spinner"></div>
+
+      <div class="status">
+        VERIFICANDO INSCRIÇÃO...
+      </div>
+
+      <p class="subtitle">
+        Aguarde enquanto preparamos seu acesso.
+      </p>
+
+      <p id="countdown">Aguarde 15 segundos...</p>
+
+      <div class="progress-track">
+        <div class="progress-bar" id="progress"></div>
+      </div>
+    </section>
+
+    <!-- ETAPA 3: GERADOR LIBERADO -->
+    <section id="unlocked">
+      <div class="status success">
+        ✓ ACESSO LIBERADO
+      </div>
+
+      <p class="subtitle">
+        Você pode acessar o gerador de key agora.
+      </p>
+
+      <a
+        class="button"
+        href="https://alpharede.com/LQWvBSf3t4p"
         target="_blank"
         rel="noopener noreferrer"
       >
-        LIBERAR O DOWNLOAD
+        GERAR KEY
       </a>
     </section>
+
+    <p class="small">
+      Proxy V24 grátis<br>
+      Acesso ao gerador
+    </p>
   </main>
 
   <script>
-    const WHATSAPP_URL =
-      "https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x";
+    const TEMPO_VERIFICACAO = 15;
+    let verificacaoIniciada = false;
 
-    const locked = document.getElementById("locked");
-    const checking = document.getElementById("checking");
-    const unlocked = document.getElementById("unlocked");
+    function iniciarVerificacao() {
+      if (verificacaoIniciada) return;
 
-    const subscribeButton =
-      document.getElementById("subscribeButton");
+      verificacaoIniciada = true;
 
-    const countdown = document.getElementById("countdown");
-    const progress = document.getElementById("progress");
+      document.getElementById("locked").style.display = "none";
+      document.getElementById("verification").style.display = "block";
 
-    let started = false;
-    let waitingForReturn = false;
+      let restante = TEMPO_VERIFICACAO;
 
-    subscribeButton.addEventListener("click", function () {
-      if (started || waitingForReturn) return;
+      const contador = document.getElementById("countdown");
+      const barra = document.getElementById("progress");
 
-      waitingForReturn = true;
+      contador.textContent = "Aguarde " + restante + " segundos...";
 
-      // Abre o canal do WhatsApp em uma nova aba.
-      const channelTab = window.open(
-        WHATSAPP_URL,
-        "_blank"
-      );
+      const intervalo = setInterval(() => {
+        restante--;
 
-      // Caso o navegador bloqueie a nova aba, abre o canal
-      // nesta mesma aba.
-      if (!channelTab) {
-        waitingForReturn = false;
-        window.location.href = WHATSAPP_URL;
-        return;
-      }
+        const concluido =
+          ((TEMPO_VERIFICACAO - restante) / TEMPO_VERIFICACAO) * 100;
 
-      subscribeButton.textContent = "CANAL ABERTO";
-      subscribeButton.disabled = true;
+        barra.style.width = concluido + "%";
 
-      // Inicia a contagem quando a pessoa voltar ao site.
-      function returnedToPage() {
-        if (document.visibilityState !== "visible") return;
-        if (started) return;
+        if (restante > 0) {
+          contador.textContent = "Aguarde " + restante + " segundos...";
+        } else {
+          clearInterval(intervalo);
 
-        document.removeEventListener(
-          "visibilitychange",
-          returnedToPage
-        );
-
-        window.removeEventListener(
-          "focus",
-          returnedToPage
-        );
-
-        waitingForReturn = false;
-        startVerification();
-      }
-
-      document.addEventListener(
-        "visibilitychange",
-        returnedToPage
-      );
-
-      window.addEventListener(
-        "focus",
-        returnedToPage
-      );
-    });
-
-    function startVerification() {
-      if (started) return;
-      started = true;
-
-      locked.classList.add("hidden");
-      checking.classList.remove("hidden");
-
-      let seconds = 15;
-
-      countdown.textContent = seconds + "s";
-      progress.style.width = "0%";
-
-      const timer = setInterval(function () {
-        seconds--;
-
-        countdown.textContent = seconds + "s";
-
-        progress.style.width =
-          ((15 - seconds) / 15 * 100) + "%";
-
-        if (seconds <= 0) {
-          clearInterval(timer);
-
-          checking.classList.add("hidden");
-          unlocked.classList.remove("hidden");
+          document.getElementById("verification").style.display = "none";
+          document.getElementById("unlocked").style.display = "block";
         }
       }, 1000);
     }
   </script>
 </body>
-</html>
+        </html>
