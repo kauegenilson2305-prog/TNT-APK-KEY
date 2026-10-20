@@ -77,7 +77,7 @@
       letter-spacing: 1px;
     }
 
-    .status.success {
+    .success {
       color: #5cffad;
       background: #0b251d;
       border-color: #176b4a;
@@ -103,16 +103,13 @@
       transform: translateY(-1px);
     }
 
-    .button:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 4px;
+    .download {
+      background: linear-gradient(90deg, #087b46, #13bd70);
     }
 
-    .secondary {
+    .generator {
       margin-top: 12px;
-      color: #a9cfff;
-      background: #102747;
-      border: 1px solid #2168b5;
+      background: linear-gradient(90deg, #0865e9, #159dff);
     }
 
     #verification,
@@ -147,18 +144,14 @@
       width: 0%;
       height: 100%;
       background: #169aff;
-      transition: width 0.3s linear;
+      transition: width 1s linear;
     }
 
     .small {
-      margin-top: 19px;
+      margin-top: 22px;
       color: #7489a7;
       font-size: 11px;
       line-height: 1.6;
-    }
-
-    .hidden {
-      display: none !important;
     }
   </style>
 </head>
@@ -170,69 +163,58 @@
     <h1>Proxy V24 grátis</h1>
 
     <p class="subtitle">
-      Acesse o canal e siga as etapas para liberar o gerador de key.
+      Entre no canal para desbloquear o acesso ao download e ao gerador de key.
     </p>
 
-    <!-- ETAPA 1: ENTRAR NO CANAL -->
+    <!-- ETAPA 1: SOMENTE O BOTÃO DO CANAL -->
     <section id="locked">
-      <div class="status">
-        🔒 ACESSO BLOQUEADO
-      </div>
-
-      <p class="subtitle">
-        Entre no nosso canal do WhatsApp para desbloquear o acesso ao gerador.
-      </p>
+      <div class="status">🔒 ACESSO BLOQUEADO</div>
 
       <a
+        id="channelButton"
         class="button"
         href="https://whatsapp.com/channel/0029Vb7b86gLo4hktDKFZ63x"
         target="_blank"
         rel="noopener noreferrer"
-        onclick="iniciarVerificacao()"
       >
         INSCREVA-SE NO CANAL
       </a>
-
-      <button
-        class="button secondary"
-        style="margin-top: 12px"
-        onclick="iniciarVerificacao()"
-      >
-        JÁ ENTREI — VERIFICAR
-      </button>
     </section>
 
-    <!-- ETAPA 2: VERIFICAÇÃO VISUAL -->
+    <!-- ETAPA 2: VERIFICAÇÃO -->
     <section id="verification">
       <div class="spinner"></div>
 
-      <div class="status">
-        VERIFICANDO INSCRIÇÃO...
-      </div>
+      <div class="status">VERIFICANDO...</div>
 
-      <p class="subtitle">
-        Aguarde enquanto preparamos seu acesso.
+      <p class="subtitle" id="countdown">
+        Aguarde 15 segundos...
       </p>
-
-      <p id="countdown">Aguarde 15 segundos...</p>
 
       <div class="progress-track">
         <div class="progress-bar" id="progress"></div>
       </div>
     </section>
 
-    <!-- ETAPA 3: GERADOR LIBERADO -->
+    <!-- ETAPA 3: OS DOIS BOTÕES -->
     <section id="unlocked">
-      <div class="status success">
-        ✓ ACESSO LIBERADO
-      </div>
+      <div class="status success">✓ ETAPA CONCLUÍDA</div>
 
       <p class="subtitle">
-        Você pode acessar o gerador de key agora.
+        Escolha uma das opções abaixo.
       </p>
 
       <a
-        class="button"
+        class="button download"
+        href="https://alpharede.com/IbE9JquzaCl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        DOWNLOAD
+      </a>
+
+      <a
+        class="button generator"
         href="https://alpharede.com/LQWvBSf3t4p"
         target="_blank"
         rel="noopener noreferrer"
@@ -241,41 +223,36 @@
       </a>
     </section>
 
-    <p class="small">
-      Proxy V24 grátis<br>
-      Acesso ao gerador
-    </p>
+    <p class="small">Proxy V24 grátis</p>
   </main>
 
   <script>
-    const TEMPO_VERIFICACAO = 15;
-    let verificacaoIniciada = false;
+    const TEMPO = 15;
+    let iniciou = false;
 
-    function iniciarVerificacao() {
-      if (verificacaoIniciada) return;
+    const botaoCanal = document.getElementById("channelButton");
 
-      verificacaoIniciada = true;
+    // A verificação começa quando a pessoa clica no botão do canal.
+    botaoCanal.addEventListener("click", function () {
+      if (iniciou) return;
+      iniciou = true;
 
       document.getElementById("locked").style.display = "none";
       document.getElementById("verification").style.display = "block";
 
-      let restante = TEMPO_VERIFICACAO;
-
+      let restante = TEMPO;
       const contador = document.getElementById("countdown");
       const barra = document.getElementById("progress");
 
-      contador.textContent = "Aguarde " + restante + " segundos...";
-
-      const intervalo = setInterval(() => {
+      const intervalo = setInterval(function () {
         restante--;
 
-        const concluido =
-          ((TEMPO_VERIFICACAO - restante) / TEMPO_VERIFICACAO) * 100;
-
-        barra.style.width = concluido + "%";
+        const porcentagem = ((TEMPO - restante) / TEMPO) * 100;
+        barra.style.width = porcentagem + "%";
 
         if (restante > 0) {
-          contador.textContent = "Aguarde " + restante + " segundos...";
+          contador.textContent =
+            "Aguarde " + restante + " segundos...";
         } else {
           clearInterval(intervalo);
 
@@ -283,7 +260,7 @@
           document.getElementById("unlocked").style.display = "block";
         }
       }, 1000);
-    }
+    });
   </script>
 </body>
-        </html>
+</html>
