@@ -44,27 +44,26 @@
   <main class="panel">
     <h1 class="brand">TNTAPK</h1>
     <p class="subtitle">GERADOR GRÁTIS</p>
-    <p class="status" id="status">Toque no botão para gerar sua key.</p>
-    <div class="keybox empty" id="keyBox" aria-live="polite">SUA KEY APARECERÁ AQUI</div>
+    <div class="keybox hidden" id="keyBox" aria-live="polite"></div>
     <div class="loader-wrap" id="loader" aria-live="polite">
       <div class="spinner" aria-hidden="true"></div>
       <div class="count"><span id="seconds">5</span>s</div>
       <div class="status">Gerando sua key, aguarde...</div>
     </div>
-    <button class="primary" id="generateBtn" type="button">GERAR KEY</button>
+    <button class="primary" id="generateBtn" type="button">GERAR KEY GRÁTIS</button>
     <button class="copy hidden" id="copyBtn" type="button">COPIAR KEY</button>
     <p class="hint">TNT APK • Sistema de geração de keys</p>
   </main>
   <script>
     // As keys são exibidas em sequência e reiniciam após a sétima.
     const keys = [
-      'TNT-APK-10831083',
-      'TNT-APK-33293329',
-      'TNT-APK-46524652',
-      'TNT-APK-35913591',
-      'TNT-APK-38003800',
-      'TNT-APK-44014401',
-      'TNT-APK-51475147'
+      'TNT-APK-87188718',
+      'TNT-APK-97249724',
+      'TNT-APK-96539653',
+      'TNT-APK-48164816',
+      'TNT-APK-83588358',
+      'TNT-APK-54055405',
+      'TNT-APK-05260526'
     ];
     let nextKeyIndex = 0;
     let currentKey = '';
@@ -74,16 +73,13 @@
     const keyBox = document.getElementById('keyBox');
     const loader = document.getElementById('loader');
     const seconds = document.getElementById('seconds');
-    const status = document.getElementById('status');
 
     generateBtn.addEventListener('click', () => {
       if (busy) return;
       busy = true;
       generateBtn.disabled = true;
       copyBtn.classList.add('hidden');
-      keyBox.classList.add('empty');
-      keyBox.textContent = 'GERANDO...';
-      status.textContent = 'Preparando sua key';
+      keyBox.classList.add('hidden');
       loader.classList.add('show');
       let remaining = 5;
       seconds.textContent = remaining;
@@ -95,9 +91,8 @@
           currentKey = keys[nextKeyIndex];
           nextKeyIndex = (nextKeyIndex + 1) % keys.length;
           keyBox.textContent = currentKey;
-          keyBox.classList.remove('empty');
+          keyBox.classList.remove('hidden');
           loader.classList.remove('show');
-          status.textContent = 'Key gerada com sucesso!';
           generateBtn.textContent = 'GERAR KEY NOVA';
           generateBtn.disabled = false;
           copyBtn.classList.remove('hidden');
