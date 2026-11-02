@@ -16,6 +16,7 @@ body {
     background: #050611;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 .space {
@@ -40,7 +41,9 @@ body {
 }
 
 @keyframes drift {
-    to { transform: translateY(-220px); }
+    to {
+        transform: translateY(-220px);
+    }
 }
 
 .planet {
@@ -86,6 +89,7 @@ body {
     font-weight: 900;
     background: linear-gradient(90deg, #58d9ff, #a58bff, #ff67db);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -176,7 +180,9 @@ button {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .status {
@@ -196,7 +202,10 @@ button {
 
 <body>
 
-<div class="space"><div class="stars"></div></div>
+<div class="space">
+    <div class="stars"></div>
+</div>
+
 <div class="planet"></div>
 <div class="planet2"></div>
 
@@ -223,6 +232,7 @@ GERAR KEY GRÁTIS
 <div class="loader" id="loader"></div>
 
 <div class="result" id="result">
+
     <div style="font-size:12px;color:#a8aed8">
         SUA KEY
     </div>
@@ -232,6 +242,7 @@ GERAR KEY GRÁTIS
     <button class="copy" onclick="copyKey()">
         📋 COPIAR KEY
     </button>
+
 </div>
 
 <div class="status" id="status"></div>
@@ -246,10 +257,10 @@ TNT APK • YOUTUBER TNT APK
 
 <script>
 
-// 7 KEYS ATUALIZADAS
+// 7 KEYS CORRIGIDAS E CONFERIDAS
 
 const keys = [
-    "TNT-APK-44644446",
+    "TNT-APK-44644464",
     "TNT-APK-32233223",
     "TNT-APK-22962296",
     "TNT-APK-92069206",
@@ -334,4 +345,4 @@ async function copyKey() {
 </script>
 
 </body>
-  </html>
+    </html>
