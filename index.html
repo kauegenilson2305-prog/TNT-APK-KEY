@@ -1,348 +1,449 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#191922">
 <title>TNT APK - Gerador de Keys</title>
 
 <style>
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background: #050611;
-    color: white;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 25%, #310b12 0%, transparent 55%),
+    #050505;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
-.space {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(circle at 20% 20%, #25205b, transparent 35%),
-        radial-gradient(circle at 80% 75%, #35104d, transparent 35%),
-        linear-gradient(135deg, #03040b, #080b20, #13051b);
+header {
+  height: 75px;
+  background: #191922;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  font-size: 23px;
 }
 
-.stars {
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(2px 2px at 20% 30%, white 50%, transparent 60%),
-        radial-gradient(1px 1px at 70% 20%, #a9caff 50%, transparent 60%),
-        radial-gradient(2px 2px at 45% 80%, white 50%, transparent 60%);
-    background-size: 260px 220px;
-    animation: drift 30s linear infinite;
+.avatar {
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#555,#111);
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  border: 1px solid #555;
 }
 
-@keyframes drift {
-    to {
-        transform: translateY(-220px);
-    }
-}
-
-.planet {
-    position: fixed;
-    z-index: -1;
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    right: -65px;
-    top: 12%;
-    background: radial-gradient(circle at 30% 30%, #8e8cff, #3830a0 45%, #100b38 75%);
-    box-shadow: 0 0 55px #5948ff55;
-    opacity: .45;
-}
-
-.planet2 {
-    position: fixed;
-    z-index: -1;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    left: -35px;
-    bottom: 12%;
-    background: radial-gradient(circle at 30% 30%, #ff8be7, #8b247e 50%, #260b34);
-    opacity: .45;
-}
-
-.container {
-    width: 92%;
-    max-width: 520px;
-    margin: auto;
-    padding: 35px 0;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.header h1 {
-    font-size: clamp(38px, 10vw, 62px);
-    margin: 8px 0;
-    font-weight: 900;
-    background: linear-gradient(90deg, #58d9ff, #a58bff, #ff67db);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.header p {
-    color: #c7c7e8;
-    letter-spacing: 2px;
-}
-
-.tag {
-    color: #b6b9ff;
-    font-size: 12px;
-    letter-spacing: 4px;
+main {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 0 16px 35px;
 }
 
 .card {
-    border: 1px solid #6e64ff66;
-    background: linear-gradient(145deg, #11152be8, #090a19ef);
-    border-radius: 22px;
-    padding: 28px 22px;
-    box-shadow: 0 0 35px #4b35ff22;
-    text-align: center;
+  background: #141416;
+  border: 1px solid #292929;
+  border-radius: 4px;
+  padding: 25px 15px;
+  text-align: center;
+  margin-bottom: 28px;
 }
 
-.description {
-    color: #b9bddb;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 22px;
+.big-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  font-size: 43px;
+  background: linear-gradient(135deg,#555,#111);
+  border: 2px solid #333;
+}
+
+.generate-title {
+  font-size: 27px;
+  margin-bottom: 15px;
 }
 
 button {
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    letter-spacing: 1px;
+  cursor: pointer;
+  border: none;
+  color: white;
 }
 
-.generate {
-    width: 100%;
-    padding: 17px;
-    border-radius: 13px;
-    color: white;
-    font-size: 15px;
-    background: linear-gradient(90deg, #246bff, #8a36ff, #d02dce);
-    box-shadow: 0 7px 25px #6a3cff55;
+.generate-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  background: linear-gradient(100deg,#a31330,#e12d52);
 }
 
-.generate:disabled {
-    opacity: .65;
-    cursor: wait;
-}
-
-.result {
-    display: none;
-    margin-top: 20px;
-    padding: 16px;
-    border: 1px solid #7c69ff66;
-    border-radius: 13px;
-    background: #050817;
-}
-
-.key {
-    font-size: clamp(17px, 5vw, 23px);
-    font-weight: bold;
-    color: #8feaff;
-    overflow-wrap: anywhere;
-    margin: 15px 0;
-}
-
-.copy {
-    padding: 11px 18px;
-    border-radius: 9px;
-    background: #24284b;
-    color: white;
-    border: 1px solid #696cff;
+.generate-btn:disabled {
+  opacity: .6;
+  cursor: wait;
 }
 
 .loader {
-    display: none;
-    width: 46px;
-    height: 46px;
-    border: 4px solid #34365f;
-    border-top-color: #8d70ff;
-    border-right-color: #42d9ff;
-    border-radius: 50%;
-    margin: 18px auto;
-    animation: spin .8s linear infinite;
+  display: none;
+  margin: 18px 0;
+}
+
+.loader.show {
+  display: block;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #383838;
+  border-top-color: #e12d52;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin .8s linear infinite;
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+  to { transform: rotate(360deg); }
+}
+
+.count {
+  font-size: 27px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #ff4770;
 }
 
 .status {
-    color: #c5c7e8;
-    font-size: 13px;
-    margin-top: 15px;
+  color: #aaa;
+  margin-top: 8px;
 }
 
-.footer {
-    text-align: center;
-    color: #777da8;
-    font-size: 12px;
-    margin-top: 22px;
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.stat {
+  background: #141416;
+  border: 1px solid #292929;
+  padding: 22px 8px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+.stat-icon {
+  font-size: 30px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.counter {
+  background: #17171a;
+  border: 1px solid #333;
+  padding: 16px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #aaa;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.section-title {
+  color: #aaa;
+  font-size: 19px;
+  margin-bottom: 14px;
+}
+
+.key-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.key-item {
+  display: flex;
+  align-items: center;
+  background: #202024;
+  border: 1px solid #424249;
+  border-radius: 4px;
+  padding: 15px 12px;
+  gap: 13px;
+  min-height: 70px;
+}
+
+.key-number {
+  color: #ec4782;
+  font-size: 21px;
+}
+
+.key-icon {
+  color: #666;
+  font-size: 24px;
+}
+
+.key-value {
+  flex: 1;
+  font-size: clamp(14px,4vw,19px);
+  overflow-wrap: anywhere;
+}
+
+.copy-btn {
+  background: transparent;
+  color: #888;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.copy-btn:active {
+  color: #ff4770;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+  background: #141416;
+  border: 1px solid #292929;
+}
+
+.notice {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-top: 25px;
+}
+
+@media(max-width:400px) {
+  .stats { gap: 12px; }
+  .stat { font-size: 17px; }
+  header { font-size: 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="space">
-    <div class="stars"></div>
-</div>
-
-<div class="planet"></div>
-<div class="planet2"></div>
-
-<main class="container">
-
-<header class="header">
-    <div class="tag">PAINEL ONLINE</div>
-    <h1>TNT APK</h1>
-    <p>GERADOR DE KEY GRÁTIS</p>
+<header>
+  <span>Adm Proxy tnt</span>
+  <div class="avatar">🎅</div>
 </header>
 
-<section class="card">
+<main>
 
-<h2>🚀 Gerador de Keys</h2>
+  <section class="card">
 
-<p class="description">
-Clique no botão abaixo e aguarde 5 segundos para revelar sua key.
-</p>
+    <div class="big-avatar">🎅</div>
 
-<button class="generate" id="generateBtn" onclick="generateKey()">
-GERAR KEY GRÁTIS
-</button>
-
-<div class="loader" id="loader"></div>
-
-<div class="result" id="result">
-
-    <div style="font-size:12px;color:#a8aed8">
-        SUA KEY
+    <div class="generate-title">
+      Gerar uma key nova
     </div>
 
-    <div class="key" id="keyText"></div>
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <div class="count">
+        <span id="seconds">5</span>s
+      </div>
+      <div class="status">
+        Gerando sua Key, aguarde...
+      </div>
+    </div>
 
-    <button class="copy" onclick="copyKey()">
-        📋 COPIAR KEY
+    <button class="generate-btn" id="generateBtn">
+      GERAR KEY
     </button>
 
-</div>
+  </section>
 
-<div class="status" id="status"></div>
+  <section class="stats">
 
-</section>
+    <div class="stat">
+      <div class="stat-icon">🔧</div>
+      <div>Key Geradas</div>
+      <strong id="generatedCount">0</strong>
+    </div>
 
-<div class="footer">
-TNT APK • YOUTUBER TNT APK
-</div>
+    <div class="stat">
+      <div class="stat-icon">⌁</div>
+      <div>Keys Vencidas</div>
+      <strong id="expiredCount">0</strong>
+    </div>
+
+  </section>
+
+  <section class="counter">
+    <span>Keys: 7</span>
+    <span>➜</span>
+    <span>Keys disabled: 0</span>
+  </section>
+
+  <div class="section-title">
+    Recently registered keys
+  </div>
+
+  <div class="key-list" id="keyList">
+    <div class="empty">
+      Nenhuma Key gerada ainda.
+    </div>
+  </div>
+
+  <div class="notice">
+    TNT APK • Sistema de geração de Keys
+  </div>
 
 </main>
 
 <script>
 
-// 7 KEYS CORRIGIDAS E CONFERIDAS
-
+// NOVAS KEYS TNT APK
 const keys = [
-    "TNT-APK-44644464",
-    "TNT-APK-32233223",
-    "TNT-APK-22962296",
-    "TNT-APK-92069206",
-    "TNT-APK-15101510",
-    "TNT-APK-98669866",
-    "TNT-APK-52365236"
+  'TNT-APK-36243624',
+  'TNT-APK-46464646',
+  'TNT-APK-40774077',
+  'TNT-APK-63736373',
+  'TNT-APK-03470347',
+  'TNT-APK-64756475',
+  'TNT-APK-24772477'
 ];
 
-let keyIndex = 0;
+let nextKeyIndex = 0;
+let generated = 0;
 let busy = false;
 
-// GERAR KEY
+const generateBtn =
+  document.getElementById('generateBtn');
+
+const loader =
+  document.getElementById('loader');
+
+const seconds =
+  document.getElementById('seconds');
+
+const keyList =
+  document.getElementById('keyList');
+
+const generatedCount =
+  document.getElementById('generatedCount');
 
 function generateKey() {
 
-    if (busy) return;
+  if (busy) return;
 
-    busy = true;
+  busy = true;
+  generateBtn.disabled = true;
+  generateBtn.textContent = 'AGUARDE...';
 
-    const btn = document.getElementById("generateBtn");
-    const loader = document.getElementById("loader");
-    const result = document.getElementById("result");
-    const status = document.getElementById("status");
+  loader.classList.add('show');
 
-    btn.disabled = true;
-    btn.textContent = "GERANDO KEY...";
+  let remaining = 5;
+  seconds.textContent = remaining;
 
-    loader.style.display = "block";
-    result.style.display = "none";
+  const countdown = setInterval(() => {
 
-    status.textContent = "Aguarde 5 segundos...";
+    remaining--;
 
-    setTimeout(() => {
+    if (remaining > 0) {
 
-        document.getElementById("keyText").textContent =
-            keys[keyIndex];
+      seconds.textContent = remaining;
 
-        keyIndex = (keyIndex + 1) % keys.length;
+    } else {
 
-        loader.style.display = "none";
-        result.style.display = "block";
+      clearInterval(countdown);
 
-        btn.disabled = false;
-        btn.textContent = "GERAR KEY NOVA";
+      const currentKey = keys[nextKeyIndex];
 
-        status.textContent = "Key gerada com sucesso!";
+      nextKeyIndex =
+        (nextKeyIndex + 1) % keys.length;
 
-        busy = false;
+      generated++;
 
-    }, 5000);
+      generatedCount.textContent = generated;
+
+      addKeyToList(currentKey, generated);
+
+      loader.classList.remove('show');
+
+      generateBtn.disabled = false;
+      generateBtn.textContent = 'GERAR OUTRA KEY';
+
+      busy = false;
+    }
+
+  }, 1000);
 }
 
-// COPIAR KEY
+function addKeyToList(key, number) {
 
-async function copyKey() {
+  const empty = keyList.querySelector('.empty');
 
-    const value = document.getElementById("keyText").textContent;
-    const status = document.getElementById("status");
+  if (empty) empty.remove();
+
+  const item = document.createElement('div');
+  item.className = 'key-item';
+
+  const numberEl = document.createElement('span');
+  numberEl.className = 'key-number';
+  numberEl.textContent = number;
+
+  const icon = document.createElement('span');
+  icon.className = 'key-icon';
+  icon.textContent = '🔑';
+
+  const value = document.createElement('span');
+  value.className = 'key-value';
+  value.textContent = key;
+
+  const copy = document.createElement('button');
+  copy.className = 'copy-btn';
+  copy.textContent = '▢';
+  copy.title = 'Copiar Key';
+
+  copy.addEventListener('click', async () => {
 
     try {
-
-        await navigator.clipboard.writeText(value);
-
-        status.textContent = "Key copiada com sucesso!";
-
-    } catch (error) {
-
-        const field = document.createElement("textarea");
-
-        field.value = value;
-        document.body.appendChild(field);
-
-        field.select();
-        document.execCommand("copy");
-
-        field.remove();
-
-        status.textContent = "Key copiada!";
+      await navigator.clipboard.writeText(key);
+    } catch {
+      const field = document.createElement('textarea');
+      field.value = key;
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand('copy');
+      field.remove();
     }
+
+    copy.textContent = '✓';
+
+    setTimeout(() => {
+      copy.textContent = '▢';
+    }, 1500);
+
+  });
+
+  item.append(numberEl, icon, value, copy);
+
+  keyList.prepend(item);
 }
+
+generateBtn.addEventListener('click', generateKey);
 
 </script>
 
 </body>
     </html>
+    
