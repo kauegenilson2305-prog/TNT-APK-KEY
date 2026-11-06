@@ -4,452 +4,543 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#191922">
-<title>TNT APK - Gerador de Keys</title>
+<meta name="theme-color" content="#07152e">
+<title>TNT APK • Gerador de Keys Natalino</title>
 
 <style>
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse at 50% 25%, #310b12 0%, transparent 55%),
-    #050505;
-  color: white;
+  min-height: 100svh;
   font-family: Arial, sans-serif;
+  color: white;
+  background:
+    radial-gradient(ellipse at top, #164b86, transparent 55%),
+    linear-gradient(160deg, #071a36, #080d25 65%, #10183b);
+  overflow-x: hidden;
 }
 
-header {
-  height: 75px;
-  background: #191922;
+#snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.lights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.lights span {
+  width: 9px;
+  height: 15px;
+  border-radius: 50%;
+  background: #20eaff;
+  box-shadow: 0 0 12px #20eaff;
+  animation: blink 1.3s infinite alternate;
+}
+
+.lights span:nth-child(3n) {
+  background: #ff385d;
+  box-shadow: 0 0 14px #ff385d;
+}
+
+.lights span:nth-child(2n) {
+  background: #ffe27a;
+  box-shadow: 0 0 14px #ffe27a;
+  animation-delay: .5s;
+}
+
+@keyframes blink {
+  from { opacity: .35; }
+  to { opacity: 1; }
+}
+
+.page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 65px 18px 35px;
+  position: relative;
+  z-index: 2;
+}
+
+.top {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.top .stars {
+  color: #b8edff;
+  font-size: 20px;
+  letter-spacing: 8px;
+  text-shadow: 0 0 15px #29dfff;
+}
+
+.top p {
+  margin-top: 10px;
+  color: #b8d8ff;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.panel {
+  width: 100%;
+  max-width: 450px;
+  padding: 3px;
+  border-radius: 27px;
+  background: linear-gradient(140deg, #19d9ff, #173d88, #a7eaff);
+  box-shadow: 0 0 35px rgba(0,195,255,.3);
+}
+
+.inner {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 30px 23px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top, rgba(20,110,200,.25), transparent 48%),
+    linear-gradient(160deg, #07132d, #070b20 70%, #0c1737);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  display: inline-block;
+  padding: 9px 17px;
+  border-radius: 30px;
+  color: #29f5a0;
+  background: rgba(0,255,155,.1);
+  border: 1px solid rgba(0,255,155,.25);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.santa {
+  width: 130px;
+  height: 130px;
+  margin: 22px auto 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 25px;
-  font-size: 23px;
-}
-
-.avatar {
-  width: 43px;
-  height: 43px;
+  justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(135deg,#555,#111);
-  display: grid;
-  place-items: center;
-  font-size: 23px;
-  border: 1px solid #555;
+  background: radial-gradient(circle, rgba(40,177,255,.22), transparent 70%);
+  border: 1px solid rgba(70,203,255,.25);
+  box-shadow: 0 0 25px rgba(0,195,255,.18);
+  font-size: 78px;
+  animation: float 3s ease-in-out infinite;
 }
 
-main {
-  max-width: 650px;
-  margin: 30px auto;
-  padding: 0 16px 35px;
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
 }
 
-.card {
-  background: #141416;
-  border: 1px solid #292929;
-  border-radius: 4px;
-  padding: 25px 15px;
-  text-align: center;
-  margin-bottom: 28px;
+h1 {
+  font-size: 40px;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #13c9ff, #a9f3ff, #19c5ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 12px rgba(0,190,255,.4));
 }
 
-.big-avatar {
-  width: 95px;
-  height: 95px;
-  border-radius: 50%;
-  margin: 0 auto 18px;
-  display: grid;
-  place-items: center;
-  font-size: 43px;
-  background: linear-gradient(135deg,#555,#111);
-  border: 2px solid #333;
-}
-
-.generate-title {
-  font-size: 27px;
-  margin-bottom: 15px;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  color: white;
-}
-
-.generate-btn {
-  width: 100%;
-  padding: 16px;
-  border-radius: 5px;
-  font-size: 17px;
+.subtitle {
+  margin-top: 8px;
+  color: #f4d98d;
+  font-size: 11px;
   font-weight: bold;
-  background: linear-gradient(100deg,#a31330,#e12d52);
+  letter-spacing: 2px;
 }
 
-.generate-btn:disabled {
-  opacity: .6;
-  cursor: wait;
+.description {
+  margin: 25px auto;
+  color: #d4def6;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
-.loader {
-  display: none;
-  margin: 18px 0;
+.description strong {
+  color: #34d8ff;
 }
 
-.loader.show {
-  display: block;
-}
-
-.spinner {
-  width: 42px;
-  height: 42px;
-  border: 4px solid #383838;
-  border-top-color: #e12d52;
-  border-radius: 50%;
-  margin: auto;
-  animation: spin .8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.count {
-  font-size: 27px;
-  font-weight: bold;
-  margin-top: 10px;
-  color: #ff4770;
+.generator-box {
+  padding: 19px 15px;
+  border: 1px solid rgba(50,195,255,.25);
+  border-radius: 16px;
+  background: rgba(10,35,75,.65);
 }
 
 .status {
-  color: #aaa;
-  margin-top: 8px;
+  color: #9eb8e5;
+  font-size: 12px;
+  margin-bottom: 15px;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin-bottom: 28px;
-}
-
-.stat {
-  background: #141416;
-  border: 1px solid #292929;
-  padding: 22px 8px;
-  text-align: center;
-  font-size: 20px;
-  border-radius: 4px;
-}
-
-.stat-icon {
+.countdown {
+  min-height: 42px;
+  margin-bottom: 13px;
+  color: #48dfff;
   font-size: 30px;
-  color: #666;
+  font-weight: 900;
+  text-shadow: 0 0 15px rgba(0,190,255,.6);
+}
+
+.button {
+  width: 100%;
+  padding: 17px 10px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 13px;
+  background: linear-gradient(100deg, #087cff, #12d4f0);
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,185,255,.3);
+  transition: .2s;
+}
+
+.button:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.key-area {
+  display: none;
+  margin-top: 20px;
+  animation: appear .4s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.key-label {
+  color: #ffe39a;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
   margin-bottom: 10px;
 }
 
-.counter {
-  background: #17171a;
-  border: 1px solid #333;
-  padding: 16px 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: #aaa;
-  margin-bottom: 30px;
-  font-size: 15px;
-}
-
-.section-title {
-  color: #aaa;
-  font-size: 19px;
-  margin-bottom: 14px;
-}
-
-.key-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.key-item {
-  display: flex;
-  align-items: center;
-  background: #202024;
-  border: 1px solid #424249;
-  border-radius: 4px;
-  padding: 15px 12px;
-  gap: 13px;
-  min-height: 70px;
-}
-
-.key-number {
-  color: #ec4782;
-  font-size: 21px;
-}
-
-.key-icon {
-  color: #888;
-  font-size: 23px;
-}
-
-.key-value {
-  flex: 1;
-  font-size: clamp(14px,4vw,19px);
+.key {
+  padding: 15px 8px;
+  border: 1px dashed #28d7ff;
+  border-radius: 10px;
+  color: #4ce5ff;
+  background: rgba(0,190,255,.08);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 1px;
   overflow-wrap: anywhere;
+  text-shadow: 0 0 12px rgba(0,190,255,.4);
 }
 
-.copy-btn {
-  background: transparent;
-  color: #888;
-  font-size: 25px;
-  padding: 5px;
+.copy-button {
+  margin-top: 12px;
+  background: linear-gradient(100deg, #087b55, #13c98b);
+  box-shadow: 0 0 18px rgba(0,255,155,.2);
 }
 
-.copy-btn:active {
-  color: #ff4770;
+.gift {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 11px;
+  border: 1px solid rgba(255,218,130,.2);
+  background: rgba(255,215,120,.05);
+  color: #ffe4a1;
+  font-size: 11px;
+  line-height: 1.7;
 }
 
-.empty {
+.footer {
+  margin-top: 23px;
+  color: #8d9dbc;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.footer strong {
+  color: #39d8ff;
+  letter-spacing: 2px;
+}
+
+.bottom {
+  margin-top: 22px;
+  color: #b8d8ff;
+  font-size: 11px;
+  letter-spacing: 2px;
   text-align: center;
-  color: #777;
-  padding: 20px;
-  background: #141416;
-  border: 1px solid #292929;
 }
 
-.notice {
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-  margin-top: 25px;
-}
-
-@media(max-width:400px) {
-  .stats { gap: 12px; }
-  .stat { font-size: 17px; }
-  header { font-size: 20px; }
+@media(max-width:380px) {
+  .inner { padding: 25px 16px; }
+  h1 { font-size: 34px; }
+  .key { font-size: 15px; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <span>Adm Proxy tnt</span>
-  <div class="avatar">🎅</div>
-</header>
+<canvas id="snow"></canvas>
 
-<main>
+<div class="lights">
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+</div>
 
-  <section class="card">
+<main class="page">
 
-    <div class="big-avatar">🎅</div>
-
-    <div class="generate-title">
-      Gerar uma key nova
-    </div>
-
-    <div class="loader" id="loader">
-      <div class="spinner"></div>
-
-      <div class="count">
-        <span id="seconds">5</span>s
-      </div>
-
-      <div class="status" id="status">
-        Gerando sua Key, aguarde...
-      </div>
-    </div>
-
-    <button class="generate-btn" id="generateBtn">
-      GERAR KEY
-    </button>
-
-  </section>
-
-  <section class="stats">
-
-    <div class="stat">
-      <div class="stat-icon">🔧</div>
-      <div>Key Geradas</div>
-      <strong id="generatedCount">0</strong>
-    </div>
-
-    <div class="stat">
-      <div class="stat-icon">⌁</div>
-      <div>Keys Vencidas</div>
-      <strong>0</strong>
-    </div>
-
-  </section>
-
-  <section class="counter">
-    <span>Keys: 1</span>
-    <span>➜</span>
-    <span>Keys disabled: 0</span>
-  </section>
-
-  <div class="section-title">
-    Recently registered keys
+  <div class="top">
+    <div class="stars">✦ ❄ ✦ ❄ ✦</div>
+    <p>EDIÇÃO ESPECIAL DE NATAL</p>
   </div>
 
-  <div class="key-list" id="keyList">
-    <div class="empty">
-      Nenhuma Key gerada ainda.
-    </div>
-  </div>
+  <section class="panel">
+    <div class="inner">
+      <div class="content">
 
-  <div class="notice">
-    TNT APK • Sistema de geração de keys
+        <div class="badge">● GERADOR ONLINE</div>
+
+        <div class="santa">🎅</div>
+
+        <h1>TNT APK</h1>
+
+        <div class="subtitle">❄ GERADOR DE KEYS ❄</div>
+
+        <p class="description">
+          Bem-vindo ao gerador oficial do
+          <strong>TNT APK!</strong>
+          <br>
+          Clique no botão abaixo e aguarde
+          alguns segundos para liberar sua key.
+        </p>
+
+        <div class="generator-box">
+
+          <div class="status" id="status">
+            🎁 Pronto para gerar sua key!
+          </div>
+
+          <div class="countdown" id="countdown">
+            ❄
+          </div>
+
+          <button class="button" id="generateButton"
+            onclick="gerarKey()">
+            🎁 GERAR MINHA KEY
+          </button>
+
+          <div class="key-area" id="keyArea">
+
+            <div class="key-label">
+              ✨ SUA KEY FOI GERADA ✨
+            </div>
+
+            <div class="key" id="key">
+              TNT-APK-2026-XIT
+            </div>
+
+            <button class="button copy-button"
+              onclick="copiarKey()">
+              📋 COPIAR KEY
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="gift">
+          🎄 Um presente especial de Natal espera por você!
+          <br>
+          Sua key estará disponível após a contagem.
+        </div>
+
+        <div class="footer">
+          Boas festas e um Feliz Natal! ❄<br>
+          <strong>TNT APK • 2026</strong>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom">
+    ✦ 🎄 QUE A MAGIA DO NATAL ESTEJA NO AR 🎄 ✦
   </div>
 
 </main>
 
 <script>
+const KEY_GERADA = "TNT-APK-2026-XIT";
 
-// ÚNICA KEY FIXA DO GERADOR
-const FIXED_KEY = 'TNT-APK-2026-XIT';
+let gerando = false;
 
-let generated = 0;
-let busy = false;
+function gerarKey() {
+  if (gerando) return;
 
-const generateBtn =
-  document.getElementById('generateBtn');
+  gerando = true;
 
-const loader =
-  document.getElementById('loader');
+  const button = document.getElementById("generateButton");
+  const status = document.getElementById("status");
+  const countdown = document.getElementById("countdown");
+  const keyArea = document.getElementById("keyArea");
 
-const seconds =
-  document.getElementById('seconds');
+  let segundos = 5;
 
-const status =
-  document.getElementById('status');
+  button.disabled = true;
+  button.textContent = "⏳ AGUARDE...";
+  keyArea.style.display = "none";
 
-const keyList =
-  document.getElementById('keyList');
+  status.textContent = "❄ Preparando sua key...";
+  countdown.textContent = segundos;
 
-const generatedCount =
-  document.getElementById('generatedCount');
+  const intervalo = setInterval(() => {
+    segundos--;
 
-function generateKey() {
-
-  if (busy) return;
-
-  busy = true;
-
-  generateBtn.disabled = true;
-  generateBtn.textContent = 'AGUARDE...';
-
-  loader.classList.add('show');
-
-  let remaining = 5;
-
-  seconds.textContent = remaining;
-  status.textContent = 'Gerando sua Key, aguarde...';
-
-  const countdown = setInterval(() => {
-
-    remaining--;
-
-    if (remaining > 0) {
-
-      seconds.textContent = remaining;
-
+    if (segundos > 0) {
+      countdown.textContent = segundos;
     } else {
+      clearInterval(intervalo);
 
-      clearInterval(countdown);
+      document.getElementById("key").textContent = KEY_GERADA;
 
-      // Sempre gera exatamente a mesma Key
-      const currentKey = FIXED_KEY;
+      countdown.textContent = "✓";
+      status.textContent = "🎉 Key gerada com sucesso!";
+      keyArea.style.display = "block";
 
-      generated++;
+      button.disabled = false;
+      button.textContent = "🔄 GERAR NOVAMENTE";
 
-      generatedCount.textContent = generated;
-
-      addKeyToList(currentKey, generated);
-
-      status.textContent = 'Key gerada com sucesso!';
-
-      loader.classList.remove('show');
-
-      generateBtn.disabled = false;
-      generateBtn.textContent = 'GERAR KEY NOVA';
-
-      busy = false;
+      gerando = false;
     }
-
   }, 1000);
 }
 
-function addKeyToList(key, number) {
+async function copiarKey() {
+  const key = document.getElementById("key").textContent;
+  const button = document.querySelector(".copy-button");
 
-  const empty = keyList.querySelector('.empty');
-
-  if (empty) {
-    empty.remove();
+  try {
+    await navigator.clipboard.writeText(key);
+    button.textContent = "✓ KEY COPIADA!";
+  } catch (error) {
+    const campo = document.createElement("textarea");
+    campo.value = key;
+    document.body.appendChild(campo);
+    campo.select();
+    document.execCommand("copy");
+    campo.remove();
+    button.textContent = "✓ KEY COPIADA!";
   }
 
-  const item = document.createElement('div');
-  item.className = 'key-item';
-
-  const numberEl = document.createElement('span');
-  numberEl.className = 'key-number';
-  numberEl.textContent = number;
-
-  const icon = document.createElement('span');
-  icon.className = 'key-icon';
-  icon.textContent = '🔑';
-
-  const value = document.createElement('span');
-  value.className = 'key-value';
-  value.textContent = key;
-
-  const copy = document.createElement('button');
-  copy.className = 'copy-btn';
-  copy.textContent = '▢';
-  copy.title = 'Copiar Key';
-
-  copy.addEventListener('click', async () => {
-
-    try {
-
-      await navigator.clipboard.writeText(key);
-
-    } catch {
-
-      const field = document.createElement('textarea');
-
-      field.value = key;
-
-      document.body.appendChild(field);
-
-      field.select();
-      document.execCommand('copy');
-
-      field.remove();
-    }
-
-    copy.textContent = '✓';
-
-    setTimeout(() => {
-      copy.textContent = '▢';
-    }, 1500);
-
-  });
-
-  item.append(numberEl, icon, value, copy);
-
-  keyList.prepend(item);
+  setTimeout(() => {
+    button.textContent = "📋 COPIAR KEY";
+  }, 2000);
 }
 
-generateBtn.addEventListener('click', generateKey);
+/* NEVE ANIMADA NA TELA INTEIRA */
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
 
+let flakes = [];
+
+function ajustarTela() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  canvas.style.width = window.innerWidth + "px";
+  canvas.style.height = window.innerHeight + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  flakes = [];
+
+  const quantidade = Math.min(
+    160,
+    Math.floor(window.innerWidth / 3)
+  );
+
+  for (let i = 0; i < quantidade; i++) {
+    flakes.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      size: Math.random() * 3 + .7,
+      speed: Math.random() * 1.5 + .4,
+      wind: Math.random() * .7 - .35,
+      opacity: Math.random() * .65 + .25
+    });
+  }
+}
+
+function animarNeve() {
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  flakes.forEach(f => {
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(235,248,255,${f.opacity})`;
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = "#9eeaff";
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    f.y += f.speed;
+    f.x += f.wind;
+
+    if (f.y > window.innerHeight + 5) {
+      f.y = -5;
+      f.x = Math.random() * window.innerWidth;
+    }
+
+    if (f.x > window.innerWidth + 5) f.x = -5;
+    if (f.x < -5) f.x = window.innerWidth + 5;
+  });
+
+  requestAnimationFrame(animarNeve);
+}
+
+window.addEventListener("resize", ajustarTela);
+
+ajustarTela();
+animarNeve();
 </script>
 
 </body>
