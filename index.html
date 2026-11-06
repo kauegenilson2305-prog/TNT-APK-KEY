@@ -194,8 +194,8 @@ button {
 }
 
 .key-icon {
-  color: #666;
-  font-size: 24px;
+  color: #888;
+  font-size: 23px;
 }
 
 .key-value {
@@ -257,10 +257,12 @@ button {
 
     <div class="loader" id="loader">
       <div class="spinner"></div>
+
       <div class="count">
         <span id="seconds">5</span>s
       </div>
-      <div class="status">
+
+      <div class="status" id="status">
         Gerando sua Key, aguarde...
       </div>
     </div>
@@ -282,13 +284,13 @@ button {
     <div class="stat">
       <div class="stat-icon">⌁</div>
       <div>Keys Vencidas</div>
-      <strong id="expiredCount">0</strong>
+      <strong>0</strong>
     </div>
 
   </section>
 
   <section class="counter">
-    <span>Keys: 7</span>
+    <span>Keys: 1</span>
     <span>➜</span>
     <span>Keys disabled: 0</span>
   </section>
@@ -304,25 +306,16 @@ button {
   </div>
 
   <div class="notice">
-    TNT APK • Sistema de geração de Keys
+    TNT APK • Sistema de geração de keys
   </div>
 
 </main>
 
 <script>
 
-// NOVAS KEYS TNT APK
-const keys = [
-  'TNT-APK-36243624',
-  'TNT-APK-46464646',
-  'TNT-APK-40774077',
-  'TNT-APK-63736373',
-  'TNT-APK-03470347',
-  'TNT-APK-64756475',
-  'TNT-APK-24772477'
-];
+// ÚNICA KEY FIXA DO GERADOR
+const FIXED_KEY = 'TNT-APK-2026-XIT';
 
-let nextKeyIndex = 0;
 let generated = 0;
 let busy = false;
 
@@ -335,6 +328,9 @@ const loader =
 const seconds =
   document.getElementById('seconds');
 
+const status =
+  document.getElementById('status');
+
 const keyList =
   document.getElementById('keyList');
 
@@ -346,13 +342,16 @@ function generateKey() {
   if (busy) return;
 
   busy = true;
+
   generateBtn.disabled = true;
   generateBtn.textContent = 'AGUARDE...';
 
   loader.classList.add('show');
 
   let remaining = 5;
+
   seconds.textContent = remaining;
+  status.textContent = 'Gerando sua Key, aguarde...';
 
   const countdown = setInterval(() => {
 
@@ -366,10 +365,8 @@ function generateKey() {
 
       clearInterval(countdown);
 
-      const currentKey = keys[nextKeyIndex];
-
-      nextKeyIndex =
-        (nextKeyIndex + 1) % keys.length;
+      // Sempre gera exatamente a mesma Key
+      const currentKey = FIXED_KEY;
 
       generated++;
 
@@ -377,10 +374,12 @@ function generateKey() {
 
       addKeyToList(currentKey, generated);
 
+      status.textContent = 'Key gerada com sucesso!';
+
       loader.classList.remove('show');
 
       generateBtn.disabled = false;
-      generateBtn.textContent = 'GERAR OUTRA KEY';
+      generateBtn.textContent = 'GERAR KEY NOVA';
 
       busy = false;
     }
@@ -392,7 +391,9 @@ function addKeyToList(key, number) {
 
   const empty = keyList.querySelector('.empty');
 
-  if (empty) empty.remove();
+  if (empty) {
+    empty.remove();
+  }
 
   const item = document.createElement('div');
   item.className = 'key-item';
@@ -417,13 +418,20 @@ function addKeyToList(key, number) {
   copy.addEventListener('click', async () => {
 
     try {
+
       await navigator.clipboard.writeText(key);
+
     } catch {
+
       const field = document.createElement('textarea');
+
       field.value = key;
+
       document.body.appendChild(field);
+
       field.select();
       document.execCommand('copy');
+
       field.remove();
     }
 
@@ -445,5 +453,5 @@ generateBtn.addEventListener('click', generateKey);
 </script>
 
 </body>
-    </html>
-    
+  </html>
+  
