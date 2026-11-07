@@ -178,6 +178,7 @@ h1 span {
     border: 1px solid #19c8ff;
     box-shadow: 0 0 15px rgba(25,200,255,.25);
     overflow-wrap: anywhere;
+    animation: aparecer .4s ease;
 }
 
 #keyTexto {
@@ -185,12 +186,6 @@ h1 span {
     font-weight: bold;
     letter-spacing: 1px;
     color: #fff;
-}
-
-.numeroKey {
-    color: #19c8ff;
-    font-size: 11px;
-    margin-top: 9px;
 }
 
 .botao {
@@ -214,12 +209,6 @@ h1 span {
     box-shadow: 0 0 30px #19c8ff;
 }
 
-.botao:disabled {
-    opacity: .6;
-    cursor: not-allowed;
-    transform: none;
-}
-
 #copiar {
     display: none;
     margin-top: 12px;
@@ -227,7 +216,7 @@ h1 span {
     color: #171000;
 }
 
-#gerarNovamente {
+#gerarNova {
     display: none;
     margin-top: 12px;
 }
@@ -301,14 +290,13 @@ h1 span {
 
     <div id="resultado">
         <div id="keyTexto"></div>
-        <div class="numeroKey" id="numeroKey"></div>
     </div>
 
     <button class="botao" id="copiar">
         📋 COPIAR KEY
     </button>
 
-    <button class="botao" id="gerarNovamente">
+    <button class="botao" id="gerarNova">
         🔑 GERAR KEY NOVA
     </button>
 
@@ -324,7 +312,8 @@ h1 span {
 </main>
 
 <script>
-/* AS 7 KEYS NOVAS */
+
+/* LISTA DE KEYS */
 const keys = [
     "TNT-APK-73927392",
     "TNT-APK-01340134",
@@ -335,21 +324,23 @@ const keys = [
     "TNT-APK-41364136"
 ];
 
-/* CONTROLE DO CICLO INFINITO */
+/* CONTROLE DO GERADOR */
 let indice = 0;
 let temporizador = null;
 let gerando = false;
 
 const botaoGerar = document.getElementById("gerar");
 const botaoCopiar = document.getElementById("copiar");
-const botaoNova = document.getElementById("gerarNovamente");
+const botaoNova = document.getElementById("gerarNova");
+
 const contador = document.getElementById("contador");
 const tempo = document.getElementById("tempo");
 const resultado = document.getElementById("resultado");
 const keyTexto = document.getElementById("keyTexto");
-const numeroKey = document.getElementById("numeroKey");
 
+/* INICIAR GERAÇÃO */
 function iniciarGeracao() {
+
     if (gerando) return;
 
     gerando = true;
@@ -367,6 +358,7 @@ function iniciarGeracao() {
     tempo.textContent = segundos;
 
     temporizador = setInterval(() => {
+
         segundos--;
         tempo.textContent = segundos;
 
@@ -374,41 +366,52 @@ function iniciarGeracao() {
             clearInterval(temporizador);
             mostrarKey();
         }
+
     }, 1000);
 }
 
+/* MOSTRAR KEY SEM INDICAR A POSIÇÃO */
 function mostrarKey() {
+
     const keyAtual = keys[indice];
 
     keyTexto.textContent = keyAtual;
-    numeroKey.textContent =
-        "KEY " + (indice + 1) + " DE " + keys.length;
 
     contador.style.display = "none";
     resultado.style.display = "block";
+
     botaoCopiar.style.display = "block";
     botaoNova.style.display = "block";
 
-    // Avança para a próxima KEY.
-    // Depois da sétima, retorna à primeira.
+    // CICLO INFINITO
     indice = (indice + 1) % keys.length;
 
     gerando = false;
 }
 
+/* COPIAR KEY */
 async function copiarKey() {
+
     const texto = keyTexto.textContent;
 
     try {
+
         await navigator.clipboard.writeText(texto);
+
         botaoCopiar.textContent = "✓ KEY COPIADA!";
+
     } catch (erro) {
+
         const campo = document.createElement("textarea");
+
         campo.value = texto;
         document.body.appendChild(campo);
+
         campo.select();
         document.execCommand("copy");
+
         campo.remove();
+
         botaoCopiar.textContent = "✓ KEY COPIADA!";
     }
 
@@ -422,13 +425,14 @@ botaoNova.addEventListener("click", iniciarGeracao);
 botaoCopiar.addEventListener("click", copiarKey);
 
 
-/* ANIMAÇÃO DE NEVE */
+/* NEVE ANIMADA */
 const canvas = document.getElementById("snow");
 const ctx = canvas.getContext("2d");
 
 let flocos = [];
 
 function ajustarCanvas() {
+
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     canvas.width = window.innerWidth * dpr;
@@ -441,9 +445,11 @@ function ajustarCanvas() {
 }
 
 function criarNeve() {
+
     flocos = [];
 
     for (let i = 0; i < 100; i++) {
+
         flocos.push({
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
@@ -455,14 +461,25 @@ function criarNeve() {
 }
 
 function animarNeve() {
+
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     flocos.forEach(f => {
+
         ctx.beginPath();
-        ctx.arc(f.x, f.y, f.tamanho, 0, Math.PI * 2);
+
+        ctx.arc(
+            f.x,
+            f.y,
+            f.tamanho,
+            0,
+            Math.PI * 2
+        );
+
         ctx.fillStyle = "rgba(220,245,255,.85)";
         ctx.shadowBlur = 8;
         ctx.shadowColor = "#a9eaff";
+
         ctx.fill();
 
         f.y += f.velocidade;
@@ -473,11 +490,18 @@ function animarNeve() {
             f.x = Math.random() * window.innerWidth;
         }
 
-        if (f.x > window.innerWidth + 5) f.x = -5;
-        if (f.x < -5) f.x = window.innerWidth + 5;
+        if (f.x > window.innerWidth + 5) {
+            f.x = -5;
+        }
+
+        if (f.x < -5) {
+            f.x = window.innerWidth + 5;
+        }
+
     });
 
     ctx.shadowBlur = 0;
+
     requestAnimationFrame(animarNeve);
 }
 
@@ -489,6 +513,7 @@ window.addEventListener("resize", () => {
 ajustarCanvas();
 criarNeve();
 animarNeve();
+
 </script>
 
 </body>
