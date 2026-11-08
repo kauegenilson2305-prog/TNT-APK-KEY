@@ -4,517 +4,365 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#06152c">
-<title>TNT APK - Gerador de Keys</title>
+<meta name="theme-color" content="#08051a">
+<title>TNT APK • Gerador de Keys</title>
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: radial-gradient(
-        ellipse at top,
-        #102d55,
-        #061326 55%,
-        #020712
-    );
-    overflow-x: hidden;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    radial-gradient(circle at top, #102c55 0%, #08051a 55%, #02030a 100%);
+  overflow-x: hidden;
 }
 
 #snow {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.luzes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    z-index: 3;
-    pointer-events: none;
+.lights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 3;
+  pointer-events: none;
 }
 
-.luzes span {
-    width: 9px;
-    height: 18px;
-    border-radius: 50%;
-    background: #19c8ff;
-    box-shadow: 0 0 12px currentColor;
-    animation: piscar 1s infinite alternate;
+.light {
+  width: 10px;
+  height: 15px;
+  border-radius: 50%;
+  animation: blink 1s infinite alternate;
+  box-shadow: 0 0 12px currentColor;
 }
 
-.luzes span:nth-child(2n) {
-    background: #ff3333;
-    animation-delay: .4s;
-}
+.light:nth-child(1) { color: #00d9ff; background: #00d9ff; }
+.light:nth-child(2) { color: #ff1744; background: #ff1744; animation-delay: .3s; }
+.light:nth-child(3) { color: #00ff88; background: #00ff88; animation-delay: .6s; }
+.light:nth-child(4) { color: #ffe600; background: #ffe600; animation-delay: .2s; }
+.light:nth-child(5) { color: #bd43ff; background: #bd43ff; animation-delay: .5s; }
+.light:nth-child(6) { color: #00d9ff; background: #00d9ff; animation-delay: .8s; }
 
-.luzes span:nth-child(3n) {
-    background: #ffe66d;
-    animation-delay: .8s;
-}
-
-@keyframes piscar {
-    from { opacity: .35; }
-    to { opacity: 1; }
+@keyframes blink {
+  from { opacity: .35; }
+  to { opacity: 1; }
 }
 
 .container {
-    position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 65px 18px 35px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 55px 20px 35px;
 }
 
-.painel {
-    width: 100%;
-    max-width: 410px;
-    padding: 30px 23px;
-    text-align: center;
-    border-radius: 20px;
-    background: rgba(4, 17, 38, .91);
-    border: 2px solid #19c8ff;
-    box-shadow:
-        0 0 15px #19c8ff,
-        0 0 35px rgba(25,200,255,.35),
-        inset 0 0 20px rgba(25,200,255,.08);
-    animation: aparecer .8s ease;
-}
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.header {
+  text-align: center;
+  margin-bottom: 35px;
 }
 
 .santa {
-    font-size: 62px;
-    margin-bottom: 8px;
-    animation: flutuar 3s ease-in-out infinite;
-}
-
-@keyframes flutuar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+  font-size: 65px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 15px #00cfff);
 }
 
 h1 {
-    font-size: 31px;
-    font-weight: 900;
-    color: white;
-    text-shadow: 0 0 12px #19c8ff;
+  font-size: 29px;
+  color: #fff;
+  text-shadow: 0 0 12px #00cfff;
 }
 
-h1 span {
-    color: #19c8ff;
+.subtitle {
+  color: #a9dfff;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
-.subtitulo {
-    margin-top: 9px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #a9eaff;
-}
-
-.decoracao {
-    margin: 20px 0;
-    color: #ffe66d;
-    font-size: 14px;
-}
-
-.mensagem {
-    color: #d6edff;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 23px;
+.panel {
+  background: rgba(10, 25, 52, .92);
+  border: 1px solid #087fbd;
+  border-radius: 15px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 195, 255, .2);
 }
 
 .status {
-    display: inline-block;
-    padding: 9px 17px;
-    border-radius: 30px;
-    border: 1px solid #19c8ff;
-    color: #65dcff;
-    box-shadow: 0 0 12px rgba(25,200,255,.4);
-    font-size: 12px;
-    margin-bottom: 22px;
+  color: #8edfff;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
-#contador {
-    display: none;
-    font-size: 23px;
-    font-weight: bold;
-    color: #ffe66d;
-    margin: 22px 0;
-    text-shadow: 0 0 12px #ffe66d;
+.countdown {
+  font-size: 65px;
+  font-weight: bold;
+  color: #00d9ff;
+  text-shadow: 0 0 20px #00bfff;
+  margin: 20px 0;
 }
 
-#resultado {
-    display: none;
-    margin: 20px 0;
-    padding: 17px 8px;
-    border-radius: 10px;
-    background: rgba(25,200,255,.10);
-    border: 1px solid #19c8ff;
-    box-shadow: 0 0 15px rgba(25,200,255,.25);
-    overflow-wrap: anywhere;
-    animation: aparecer .4s ease;
+.key {
+  display: none;
+  padding: 17px 10px;
+  margin: 20px 0;
+  border: 1px solid #00cfff;
+  border-radius: 10px;
+  background: rgba(0, 180, 255, .10);
+  color: #fff;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+  box-shadow: 0 0 15px rgba(0, 200, 255, .2);
 }
 
-#keyTexto {
-    font-size: 19px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #fff;
+button {
+  width: 100%;
+  border: none;
+  border-radius: 9px;
+  padding: 16px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
 }
 
-.botao {
-    display: block;
-    width: 100%;
-    padding: 16px 10px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(120deg, #19c8ff, #1264ce);
-    color: #001020;
-    font-size: 16px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    cursor: pointer;
-    box-shadow: 0 0 18px rgba(25,200,255,.65);
-    transition: .25s;
+button:active {
+  transform: scale(.97);
 }
 
-.botao:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 30px #19c8ff;
+.generate {
+  color: #001522;
+  background: linear-gradient(90deg, #00d9ff, #168cff);
+  box-shadow: 0 0 18px rgba(0, 195, 255, .35);
 }
 
-#copiar {
-    display: none;
-    margin-top: 12px;
-    background: linear-gradient(120deg, #ffe66d, #ffad32);
-    color: #171000;
+.copy {
+  display: none;
+  color: white;
+  background: linear-gradient(90deg, #087fbd, #4935c9);
 }
 
-#gerarNova {
-    display: none;
-    margin-top: 12px;
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
 }
 
-.aviso {
-    margin-top: 22px;
-    color: #a8bfd4;
-    font-size: 11px;
-    line-height: 1.6;
+.footer {
+  text-align: center;
+  margin-top: 25px;
+  color: #8cb9d8;
+  font-size: 12px;
 }
 
-.rodape {
-    margin-top: 20px;
-    color: #19c8ff;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-@media(max-width:380px) {
-    .painel {
-        padding: 25px 16px;
-    }
-
-    h1 {
-        font-size: 27px;
-    }
-
-    #keyTexto {
-        font-size: 16px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="luzes">
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-</div>
-
 <canvas id="snow"></canvas>
 
+<div class="lights">
+  <span class="light"></span>
+  <span class="light"></span>
+  <span class="light"></span>
+  <span class="light"></span>
+  <span class="light"></span>
+  <span class="light"></span>
+</div>
+
 <main class="container">
-<section class="painel">
 
+  <header class="header">
     <div class="santa">🎅</div>
+    <h1>TNT APK</h1>
+    <p class="subtitle">Gerador de Keys • Edição Natalina</p>
+  </header>
 
-    <h1>TNT <span>APK</span></h1>
+  <section class="panel">
 
-    <div class="subtitulo">GERADOR DE KEYS</div>
-
-    <div class="decoracao">❄️ ✨ 🎄 ✨ ❄️</div>
-
-    <div class="status">● SISTEMA ONLINE</div>
-
-    <p class="mensagem">
-        Bem-vindo ao gerador TNT APK!<br>
-        Clique abaixo para gerar sua KEY.
+    <p class="status" id="status">
+      🎄 Clique abaixo para gerar sua key!
     </p>
 
-    <button class="botao" id="gerar">
-        GERAR KEY
+    <div class="countdown" id="countdown"></div>
+
+    <div class="key" id="key"></div>
+
+    <button class="generate" id="generateBtn" onclick="generateKey()">
+      🎁 GERAR KEY
     </button>
 
-    <div id="contador">
-        Aguarde: <span id="tempo">5</span>s
-    </div>
-
-    <div id="resultado">
-        <div id="keyTexto"></div>
-    </div>
-
-    <button class="botao" id="copiar">
-        📋 COPIAR KEY
+    <button class="copy" id="copyBtn" onclick="copyKey()">
+      📋 COPIAR KEY
     </button>
 
-    <button class="botao" id="gerarNova">
-        🔑 GERAR KEY NOVA
-    </button>
+  </section>
 
-    <div class="aviso">
-        Boas festas! Aproveite o gerador TNT APK.
-    </div>
+  <footer class="footer">
+    ❄️ TNT APK • Boas festas! 🎄
+  </footer>
 
-    <div class="rodape">
-        TNT APK © 2026
-    </div>
-
-</section>
 </main>
 
 <script>
-
-/* LISTA DE KEYS */
+// LISTA ATUALIZADA: SOMENTE AS 7 KEYS NOVAS
 const keys = [
-    "TNT-APK-73927392",
-    "TNT-APK-01340134",
-    "TNT-APK-93679367",
-    "TNT-APK-29452945",
-    "TNT-APK-10061006",
-    "TNT-APK-63276327",
-    "TNT-APK-41364136"
+  "TNT-APK-86798679",
+  "TNT-APK-91199119",
+  "TNT-APK-80748074",
+  "TNT-APK-56155615",
+  "TNT-APK-16631663",
+  "TNT-APK-04370437",
+  "TNT-APK-70727072"
 ];
 
-/* CONTROLE DO GERADOR */
-let indice = 0;
-let temporizador = null;
-let gerando = false;
+let nextKeyIndex = 0;
+let currentKey = "";
+let generating = false;
 
-const botaoGerar = document.getElementById("gerar");
-const botaoCopiar = document.getElementById("copiar");
-const botaoNova = document.getElementById("gerarNova");
+function generateKey() {
+  if (generating) return;
 
-const contador = document.getElementById("contador");
-const tempo = document.getElementById("tempo");
-const resultado = document.getElementById("resultado");
-const keyTexto = document.getElementById("keyTexto");
+  generating = true;
 
-/* INICIAR GERAÇÃO */
-function iniciarGeracao() {
+  const status = document.getElementById("status");
+  const countdown = document.getElementById("countdown");
+  const keyBox = document.getElementById("key");
+  const generateBtn = document.getElementById("generateBtn");
+  const copyBtn = document.getElementById("copyBtn");
 
-    if (gerando) return;
+  keyBox.style.display = "none";
+  copyBtn.style.display = "none";
+  generateBtn.disabled = true;
 
-    gerando = true;
+  let seconds = 5;
 
-    clearInterval(temporizador);
+  status.textContent = "⏳ Preparando sua nova key...";
+  countdown.textContent = seconds;
 
-    botaoGerar.style.display = "none";
-    botaoNova.style.display = "none";
-    botaoCopiar.style.display = "none";
-    resultado.style.display = "none";
+  const timer = setInterval(() => {
+    seconds--;
 
-    contador.style.display = "block";
+    if (seconds > 0) {
+      countdown.textContent = seconds;
+    } else {
+      clearInterval(timer);
 
-    let segundos = 5;
-    tempo.textContent = segundos;
+      currentKey = keys[nextKeyIndex];
 
-    temporizador = setInterval(() => {
+      nextKeyIndex = (nextKeyIndex + 1) % keys.length;
 
-        segundos--;
-        tempo.textContent = segundos;
+      countdown.textContent = "";
+      keyBox.textContent = currentKey;
+      keyBox.style.display = "block";
 
-        if (segundos <= 0) {
-            clearInterval(temporizador);
-            mostrarKey();
-        }
+      status.textContent = "✅ Sua key foi gerada!";
 
-    }, 1000);
-}
+      generateBtn.textContent = "🔑 GERAR KEY NOVA";
+      generateBtn.disabled = false;
 
-/* MOSTRAR KEY SEM INDICAR A POSIÇÃO */
-function mostrarKey() {
+      copyBtn.style.display = "block";
 
-    const keyAtual = keys[indice];
-
-    keyTexto.textContent = keyAtual;
-
-    contador.style.display = "none";
-    resultado.style.display = "block";
-
-    botaoCopiar.style.display = "block";
-    botaoNova.style.display = "block";
-
-    // CICLO INFINITO
-    indice = (indice + 1) % keys.length;
-
-    gerando = false;
-}
-
-/* COPIAR KEY */
-async function copiarKey() {
-
-    const texto = keyTexto.textContent;
-
-    try {
-
-        await navigator.clipboard.writeText(texto);
-
-        botaoCopiar.textContent = "✓ KEY COPIADA!";
-
-    } catch (erro) {
-
-        const campo = document.createElement("textarea");
-
-        campo.value = texto;
-        document.body.appendChild(campo);
-
-        campo.select();
-        document.execCommand("copy");
-
-        campo.remove();
-
-        botaoCopiar.textContent = "✓ KEY COPIADA!";
+      generating = false;
     }
-
-    setTimeout(() => {
-        botaoCopiar.textContent = "📋 COPIAR KEY";
-    }, 1800);
+  }, 1000);
 }
 
-botaoGerar.addEventListener("click", iniciarGeracao);
-botaoNova.addEventListener("click", iniciarGeracao);
-botaoCopiar.addEventListener("click", copiarKey);
+async function copyKey() {
+  if (!currentKey) return;
 
+  try {
+    await navigator.clipboard.writeText(currentKey);
+    document.getElementById("copyBtn").textContent = "✅ KEY COPIADA!";
 
-/* NEVE ANIMADA */
+  } catch (error) {
+    const textarea = document.createElement("textarea");
+    textarea.value = currentKey;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+
+    document.getElementById("copyBtn").textContent = "✅ KEY COPIADA!";
+  }
+
+  setTimeout(() => {
+    document.getElementById("copyBtn").textContent = "📋 COPIAR KEY";
+  }, 1800);
+}
+
+// ANIMAÇÃO DE NEVE
 const canvas = document.getElementById("snow");
 const ctx = canvas.getContext("2d");
 
-let flocos = [];
+let flakes = [];
 
-function ajustarCanvas() {
-
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
-function criarNeve() {
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
-    flocos = [];
+for (let i = 0; i < 100; i++) {
+  flakes.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 3 + 1,
+    speed: Math.random() * 1.5 + .5,
+    drift: Math.random() * 1 - .5
+  });
+}
 
-    for (let i = 0; i < 100; i++) {
+function animateSnow() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        flocos.push({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            tamanho: Math.random() * 3 + 1,
-            velocidade: Math.random() * 1.5 + .4,
-            vento: Math.random() * .8 - .4
-        });
+  ctx.fillStyle = "rgba(255,255,255,.85)";
+  ctx.beginPath();
+
+  flakes.forEach(flake => {
+    ctx.moveTo(flake.x, flake.y);
+    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+
+    flake.y += flake.speed;
+    flake.x += flake.drift;
+
+    if (flake.y > canvas.height) {
+      flake.y = -5;
+      flake.x = Math.random() * canvas.width;
     }
+
+    if (flake.x > canvas.width) flake.x = 0;
+    if (flake.x < 0) flake.x = canvas.width;
+  });
+
+  ctx.fill();
+  requestAnimationFrame(animateSnow);
 }
 
-function animarNeve() {
-
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-    flocos.forEach(f => {
-
-        ctx.beginPath();
-
-        ctx.arc(
-            f.x,
-            f.y,
-            f.tamanho,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle = "rgba(220,245,255,.85)";
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = "#a9eaff";
-
-        ctx.fill();
-
-        f.y += f.velocidade;
-        f.x += f.vento;
-
-        if (f.y > window.innerHeight + 5) {
-            f.y = -5;
-            f.x = Math.random() * window.innerWidth;
-        }
-
-        if (f.x > window.innerWidth + 5) {
-            f.x = -5;
-        }
-
-        if (f.x < -5) {
-            f.x = window.innerWidth + 5;
-        }
-
-    });
-
-    ctx.shadowBlur = 0;
-
-    requestAnimationFrame(animarNeve);
-}
-
-window.addEventListener("resize", () => {
-    ajustarCanvas();
-    criarNeve();
-});
-
-ajustarCanvas();
-criarNeve();
-animarNeve();
-
+animateSnow();
 </script>
 
 </body>
-</html>
+    </html>
+    
