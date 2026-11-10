@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08051a">
-<title>TNT APK • Gerador de Keys</title>
+<meta name="theme-color" content="#121212">
+<title>Adm Proxy TNT • Gerador de Keys</title>
 
 <style>
 * {
@@ -17,128 +17,130 @@
 body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  color: white;
-  background:
-    radial-gradient(circle at top, #102c55 0%, #08051a 55%, #02030a 100%);
+  color: #fff;
+  background: #050505;
   overflow-x: hidden;
 }
 
-#snow {
+/* FUNDO PRETO COM EFEITOS VERMELHOS */
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(130,0,0,.22), transparent 35%),
+    radial-gradient(ellipse at 80% 55%, rgba(100,0,0,.20), transparent 40%),
+    repeating-linear-gradient(
+      105deg,
+      transparent 0px,
+      transparent 65px,
+      rgba(130,0,0,.13) 68px,
+      transparent 74px
+    ),
+    #050505;
 }
 
-.lights {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+header {
+  height: 85px;
+  background: #191921;
   display: flex;
-  justify-content: space-around;
-  z-index: 3;
-  pointer-events: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: 1px solid #25252b;
 }
 
-.light {
-  width: 10px;
-  height: 15px;
+.header-title {
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.avatar-small {
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  animation: blink 1s infinite alternate;
-  box-shadow: 0 0 12px currentColor;
-}
-
-.light:nth-child(1) { color: #00d9ff; background: #00d9ff; }
-.light:nth-child(2) { color: #ff1744; background: #ff1744; animation-delay: .3s; }
-.light:nth-child(3) { color: #00ff88; background: #00ff88; animation-delay: .6s; }
-.light:nth-child(4) { color: #ffe600; background: #ffe600; animation-delay: .2s; }
-.light:nth-child(5) { color: #bd43ff; background: #bd43ff; animation-delay: .5s; }
-.light:nth-child(6) { color: #00d9ff; background: #00d9ff; animation-delay: .8s; }
-
-@keyframes blink {
-  from { opacity: .35; }
-  to { opacity: 1; }
+  background: #292929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  border: 1px solid #444;
 }
 
 .container {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: 480px;
+  max-width: 680px;
   margin: auto;
-  padding: 55px 20px 35px;
+  padding: 30px 20px;
 }
 
-.header {
+.card {
+  background: #141414;
+  border: 1px solid #292929;
+  border-radius: 4px;
+  padding: 25px 20px;
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
-.santa {
-  font-size: 65px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 15px #00cfff);
+.avatar {
+  width: 95px;
+  height: 95px;
+  margin: auto auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #444, #111);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 53px;
+  border: 2px solid #383838;
 }
 
 h1 {
-  font-size: 29px;
-  color: #fff;
-  text-shadow: 0 0 12px #00cfff;
+  font-size: 27px;
+  font-weight: 400;
 }
 
 .subtitle {
-  color: #a9dfff;
+  color: #929292;
   font-size: 14px;
   margin-top: 10px;
 }
 
-.panel {
-  background: rgba(10, 25, 52, .92);
-  border: 1px solid #087fbd;
-  border-radius: 15px;
-  padding: 28px 20px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 195, 255, .2);
-}
-
-.status {
-  color: #8edfff;
-  font-size: 15px;
-  margin-bottom: 20px;
+.key-box {
+  display: none;
+  margin-top: 25px;
+  padding: 18px 10px;
+  background: #202024;
+  border: 1px solid #45454b;
+  border-radius: 4px;
+  font-size: 22px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+  color: white;
 }
 
 .countdown {
-  font-size: 65px;
+  display: none;
+  font-size: 60px;
   font-weight: bold;
-  color: #00d9ff;
-  text-shadow: 0 0 20px #00bfff;
+  color: #e83b79;
   margin: 20px 0;
 }
 
-.key {
-  display: none;
-  padding: 17px 10px;
-  margin: 20px 0;
-  border: 1px solid #00cfff;
-  border-radius: 10px;
-  background: rgba(0, 180, 255, .10);
-  color: #fff;
-  font-size: 23px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  overflow-wrap: anywhere;
-  box-shadow: 0 0 15px rgba(0, 200, 255, .2);
+.status {
+  color: #aaa;
+  font-size: 15px;
+  margin-top: 15px;
 }
 
 button {
   width: 100%;
-  border: none;
-  border-radius: 9px;
-  padding: 16px;
-  margin-top: 12px;
+  padding: 17px;
+  margin-top: 15px;
+  border: 1px solid #444;
+  border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -146,93 +148,133 @@ button {
 }
 
 button:active {
-  transform: scale(.97);
+  transform: scale(.98);
 }
 
 .generate {
-  color: #001522;
-  background: linear-gradient(90deg, #00d9ff, #168cff);
-  box-shadow: 0 0 18px rgba(0, 195, 255, .35);
+  color: white;
+  background: linear-gradient(90deg, #a50024, #e52d65);
+  border: none;
 }
 
 .copy {
   display: none;
   color: white;
-  background: linear-gradient(90deg, #087fbd, #4935c9);
+  background: #292929;
 }
 
 button:disabled {
-  opacity: .6;
+  opacity: .55;
   cursor: not-allowed;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.action-card {
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 4px;
+  padding: 25px 8px;
+  text-align: center;
+}
+
+.action-icon {
+  color: #686868;
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.action-card p {
+  font-size: 18px;
 }
 
 .footer {
   text-align: center;
-  margin-top: 25px;
-  color: #8cb9d8;
+  color: #686868;
   font-size: 12px;
+  margin: 30px 0 15px;
 }
 
+@media (max-width: 380px) {
+  .header-title { font-size: 20px; }
+  h1 { font-size: 23px; }
+  .action-card p { font-size: 15px; }
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="snow"></canvas>
-
-<div class="lights">
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-  <span class="light"></span>
-</div>
+<header>
+  <div class="header-title">Adm Proxy tnt</div>
+  <div class="avatar-small">🎅</div>
+</header>
 
 <main class="container">
 
-  <header class="header">
-    <div class="santa">🎅</div>
-    <h1>TNT APK</h1>
-    <p class="subtitle">Gerador de Keys • Edição Natalina</p>
-  </header>
+  <section class="card">
+    <div class="avatar">🎅</div>
 
-  <section class="panel">
-
-    <p class="status" id="status">
-      🎄 Clique abaixo para gerar sua key!
-    </p>
+    <h1>Gerar uma key nova</h1>
+    <p class="subtitle">Gerador de acesso TNT APK</p>
 
     <div class="countdown" id="countdown"></div>
 
-    <div class="key" id="key"></div>
+    <div class="key-box" id="keyBox"></div>
 
-    <button class="generate" id="generateBtn" onclick="generateKey()">
-      🎁 GERAR KEY
+    <p class="status" id="status">
+      Clique no botão abaixo para gerar uma key.
+    </p>
+
+    <button
+      class="generate"
+      id="generateBtn"
+      onclick="generateKey()">
+      GERAR KEY
     </button>
 
-    <button class="copy" id="copyBtn" onclick="copyKey()">
-      📋 COPIAR KEY
+    <button
+      class="copy"
+      id="copyBtn"
+      onclick="copyKey()">
+      COPIAR KEY
     </button>
+  </section>
 
+  <section class="actions">
+    <div class="action-card">
+      <div class="action-icon">🔑</div>
+      <p>Key Geradas</p>
+    </div>
+
+    <div class="action-card">
+      <div class="action-icon">🔒</div>
+      <p>Keys Vencidas</p>
+    </div>
   </section>
 
   <footer class="footer">
-    ❄️ TNT APK • Boas festas! 🎄
+    ADM PROXY TNT • GERADOR DE KEYS
   </footer>
 
 </main>
 
 <script>
-// LISTA ATUALIZADA: SOMENTE AS 7 KEYS NOVAS
+
+/* SOMENTE AS 7 KEYS NOVAS */
 const keys = [
-  "TNT-APK-86798679",
-  "TNT-APK-91199119",
-  "TNT-APK-80748074",
-  "TNT-APK-56155615",
-  "TNT-APK-16631663",
-  "TNT-APK-04370437",
-  "TNT-APK-70727072"
+  "TNT-43364336",
+  "TNT-58405840",
+  "TNT-19181918",
+  "TNT-23662366",
+  "TNT-50995099",
+  "TNT-75327532",
+  "TNT-40014001"
 ];
 
 let nextKeyIndex = 0;
@@ -240,129 +282,90 @@ let currentKey = "";
 let generating = false;
 
 function generateKey() {
+
   if (generating) return;
 
   generating = true;
 
-  const status = document.getElementById("status");
-  const countdown = document.getElementById("countdown");
-  const keyBox = document.getElementById("key");
   const generateBtn = document.getElementById("generateBtn");
   const copyBtn = document.getElementById("copyBtn");
+  const keyBox = document.getElementById("keyBox");
+  const countdown = document.getElementById("countdown");
+  const status = document.getElementById("status");
 
-  keyBox.style.display = "none";
-  copyBtn.style.display = "none";
   generateBtn.disabled = true;
+  copyBtn.style.display = "none";
+  keyBox.style.display = "none";
+
+  countdown.style.display = "block";
+  status.textContent = "Preparando sua nova key...";
 
   let seconds = 5;
-
-  status.textContent = "⏳ Preparando sua nova key...";
   countdown.textContent = seconds;
 
   const timer = setInterval(() => {
+
     seconds--;
 
     if (seconds > 0) {
       countdown.textContent = seconds;
-    } else {
-      clearInterval(timer);
-
-      currentKey = keys[nextKeyIndex];
-
-      nextKeyIndex = (nextKeyIndex + 1) % keys.length;
-
-      countdown.textContent = "";
-      keyBox.textContent = currentKey;
-      keyBox.style.display = "block";
-
-      status.textContent = "✅ Sua key foi gerada!";
-
-      generateBtn.textContent = "🔑 GERAR KEY NOVA";
-      generateBtn.disabled = false;
-
-      copyBtn.style.display = "block";
-
-      generating = false;
+      return;
     }
+
+    clearInterval(timer);
+
+    currentKey = keys[nextKeyIndex];
+
+    nextKeyIndex = (nextKeyIndex + 1) % keys.length;
+
+    countdown.style.display = "none";
+
+    keyBox.textContent = currentKey;
+    keyBox.style.display = "block";
+
+    status.textContent = "Sua key foi gerada com sucesso!";
+
+    generateBtn.textContent = "GERAR KEY NOVA";
+    generateBtn.disabled = false;
+
+    copyBtn.style.display = "block";
+
+    generating = false;
+
   }, 1000);
 }
 
 async function copyKey() {
+
   if (!currentKey) return;
 
+  const copyBtn = document.getElementById("copyBtn");
+
   try {
+
     await navigator.clipboard.writeText(currentKey);
-    document.getElementById("copyBtn").textContent = "✅ KEY COPIADA!";
 
   } catch (error) {
+
     const textarea = document.createElement("textarea");
+
     textarea.value = currentKey;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     textarea.remove();
 
-    document.getElementById("copyBtn").textContent = "✅ KEY COPIADA!";
   }
 
+  copyBtn.textContent = "KEY COPIADA!";
+
   setTimeout(() => {
-    document.getElementById("copyBtn").textContent = "📋 COPIAR KEY";
+    copyBtn.textContent = "COPIAR KEY";
   }, 1800);
 }
 
-// ANIMAÇÃO DE NEVE
-const canvas = document.getElementById("snow");
-const ctx = canvas.getContext("2d");
-
-let flakes = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-
-for (let i = 0; i < 100; i++) {
-  flakes.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 3 + 1,
-    speed: Math.random() * 1.5 + .5,
-    drift: Math.random() * 1 - .5
-  });
-}
-
-function animateSnow() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "rgba(255,255,255,.85)";
-  ctx.beginPath();
-
-  flakes.forEach(flake => {
-    ctx.moveTo(flake.x, flake.y);
-    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-
-    flake.y += flake.speed;
-    flake.x += flake.drift;
-
-    if (flake.y > canvas.height) {
-      flake.y = -5;
-      flake.x = Math.random() * canvas.width;
-    }
-
-    if (flake.x > canvas.width) flake.x = 0;
-    if (flake.x < 0) flake.x = canvas.width;
-  });
-
-  ctx.fill();
-  requestAnimationFrame(animateSnow);
-}
-
-animateSnow();
 </script>
 
 </body>
-    </html>
-    
+  </html>
+  
